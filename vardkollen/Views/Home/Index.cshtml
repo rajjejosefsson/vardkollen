@@ -12,34 +12,69 @@
         height: 300px;
         box-shadow: 0 3px 3px -3px #777;
         border-radius: 10px;
-        margin-bottom: 300px;
     }
 
-        .login-form form {
-            float: right;
-            margin-right: 25px;
-        }
+    .login-form form {
+        float: right;
+        margin-right: 25px;
+    }
 
     .center-block {
-        margin-top: 120px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 60px;
     }
+
+    #inputPassword {
+        margin-top: 10px;
+    }
+
+
+    .form-signin-heading {
+        margin-bottom: 19px;
+        margin-top: 15px;
+    }
+
+
+
+       body {
+        background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../Content/Images/happyman.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        }
+
+       .login-holder {
+         
+       }
+
+    .push {
+        height:500px;
+    }
+
+
 </style>
 
-<div class="login-form center-block">
-    <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+
+<div class="login-holder">
+    <div class="login-form center-block">
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Inloggning</h2>
+
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="email@gmail.com" required autofocus>
+
+            <label for="inputPassword" class="sr-only">Lösenord</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Lösenord" required>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Kom ihåg mig
+                </label>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Logga in</button>
+        </form>
+    </div>
+</div>
+
+<div class="push">
+
 </div>

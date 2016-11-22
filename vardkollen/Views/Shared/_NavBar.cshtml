@@ -6,14 +6,13 @@
 
     .navbar-default {
         background-color: #ffffff;
-        box-shadow: 0 1px 2px #efefef;
+        box-shadow: 0 1px 2px #585858;
     }
 
-    .navbar-default .navbar-nav li a {
+        .navbar-default .navbar-nav li a {
             color: white;
             font-weight: bold;
         }
-
 </style>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -29,17 +28,17 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Hem", "Index", "Home")</li>
+                <li>@Html.ActionLink("Om oss", "About", "Home")</li>
                 <li>@Html.ActionLink("Patient", "Index", "Patient")</li>
-                <li>@Html.ActionLink("Schedule", "Index", "Schedule")</li>
-                <li>@Html.ActionLink("Staff", "Index", "Staff")</li>
+                <li>@Html.ActionLink("Schema", "Index", "Schedule")</li>
+                <li>@Html.ActionLink("Personal", "Index", "Staff")</li>
                 <li>@Html.ActionLink("Task", "Index", "Task")</li>
 
             </ul>
 
 
-            
+
         </div>
     </div>
 </nav>

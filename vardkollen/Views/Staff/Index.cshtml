@@ -3,54 +3,67 @@
 }
 
 
+<link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <style>
-
+    .panel-default {
+        margin-top: 60px;
+    }
 </style>
 
-<div class="row down">
-    <div class="col-md-12">
+<h1>Personal Uppgifter</h1>
 
-        <h1>Staff</h1>
+<div class="row">
+    <div class="col-md-12">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">Personal</div>
+            <div class="panel-heading">Patienter</div>
             <div class="panel-body">
-
-            </div>
-            <!-- Table -->
-            <table class="table">
-                <thead>
+               <!-- Table -->
+                <table id="myTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Förnamn</th>
+                            <th>Efternamn</th>
+                        </tr>
+                    </thead>
                     <tr>
-                        <th>#</th>
-                        <th>Förnamn</th>
-                        <th>Efternamn</th>
+                        <th>1</th>
+                        <td>Patrik</td>
+                        <td>Emilsson</td>
                     </tr>
-                </thead>
-                <tr>
-                    <th scope="row"> 1</th>
-                    <td>Patrik</td>
-                    <td>Emilsson</td>
-                </tr>
 
-                <tr>
-                    <th scope="row"> 2</th>
-                    <td>Rasmus</td>
-                    <td>Josefsson</td>
-                </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>Rasmus</td>
+                        <td>Josefsson</td>
+                    </tr>
 
-                <tr>
-                    <th scope="row"> 3</th>
-                    <td>Martin</td>
-                    <td>Matsson</td>
-                </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>Martin</td>
+                        <td>Matsson</td>
+                    </tr>
 
-                <tr>
-                    <th scope="row"> 4</th>
-                    <td>Vidar</td>
-                    <td>Asp Johansson</td>
-                </tr>
-            </table>
-
+                    <tr>
+                        <th>4</th>
+                        <td>Vidar</td>
+                        <td>Asp Johansson</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-
+    </div>
 </div>
+
+
+@section scripts {
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+
+            });
+        });
+    </script>
+}
