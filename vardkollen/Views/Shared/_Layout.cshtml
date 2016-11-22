@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
      @Styles.Render("~/Content/css")
+    <script src="https://use.fontawesome.com/11ab90a810.js"></script>
+
      @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -15,15 +17,14 @@
         @RenderSection("banner", required: false)
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted">Footer text blabla copyright 2016</p>
-            </div>
-        </footer>
-    </div>
+<div class="container">
+    @RenderBody()
+</div>
+    @Html.Partial("_Footer")
+
+
     @Scripts.Render("~/bundles/lib")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
