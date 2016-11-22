@@ -16,7 +16,9 @@
     @Html.Partial("_NavBar")
 
 
-    <!-- All pages are rendered inside this container-->
+    @RenderSection("outsideContainer", required: false)
+
+<!-- All pages are rendered inside this container-->
     <div class="container">
         @RenderBody()
     </div>
