@@ -22,7 +22,7 @@ namespace demopurpose
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-cerulean.css",
                       "~/Content/site.css"));
         }
     }
