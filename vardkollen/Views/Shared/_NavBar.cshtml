@@ -1,18 +1,21 @@
 ﻿<style>
-    .navbar-default .navbar-nav li a:hover {
-        color: #555;
-    }
+   
 
-
-    .navbar-default {
+       .navbar-default {
         background-color: #ffffff;
         box-shadow: 0 1px 2px #585858;
-    }
+        }
 
-        .navbar-default .navbar-nav li a {
+        .navbar-default li a {
             color: white;
             font-weight: bold;
         }
+
+        .navbar-default .navbar-nav li a:hover {
+            transition: background-color 0.8s ease;
+        }
+       
+
 </style>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -28,12 +31,30 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Hem", "Index", "Home")</li>
-                <li>@Html.ActionLink("Om oss", "About", "Home")</li>
-                <li>@Html.ActionLink("Patient", "Index", "Patient")</li>
-                <li>@Html.ActionLink("Schema", "Index", "Schedule")</li>
-                <li>@Html.ActionLink("Personal", "Index", "Staff")</li>
-                <li>@Html.ActionLink("Task", "Index", "Task")</li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")">
+                    @Html.ActionLink("Hem", "Index", "Home")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "About" ? "active" : "")">
+                    @Html.ActionLink("Om oss", "About", "Home")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient" ? "active" : "")">
+                    @Html.ActionLink("Patient", "Index", "Patient")
+                </li>
+
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Schedule" ? "active" : "")">
+                    @Html.ActionLink("Schema", "Index", "Schedule")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Staff" ? "active" : "")">
+                    @Html.ActionLink("Personal", "Index", "Staff")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Task" ? "active" : "")">
+                    @Html.ActionLink("Task", "Index", "Task")
+                </li>
 
             </ul>
 
@@ -44,8 +65,3 @@
 </nav>
 
 
-@section scripts
-{
-
-
-}
