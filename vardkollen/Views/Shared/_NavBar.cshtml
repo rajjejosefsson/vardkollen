@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "About" ? "active" : "")">
-                    @Html.ActionLink("Om oss", "About", "Home")
+                    @Html.ActionLink("Om oss", "Index", "About")
                 </li>
 
                 <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient" ? "active" : "")">
