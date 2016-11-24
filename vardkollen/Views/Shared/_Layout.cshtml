@@ -18,7 +18,7 @@
 
     @RenderSection("outsideContainer", required: false)
 
-<!-- All pages are rendered inside this container-->
+    <!-- All pages are rendered inside this container-->
     <div class="container content" id="content">
         @RenderBody()
     </div>
@@ -30,32 +30,6 @@
 
     <!-- Render script bundle from App_Start > BundleConfig.cs -->
     @Scripts.Render("~/bundles/lib")
-
-    
-    
-    <script>
-
-        // function to set the height on fly
-    function autoHeight() {
-    $('#content').css('min-height', 0);
-    $('#content').css('min-height', (
-    $(document).height()
-    - $('#navbar').height()
-    - $('#footer').height()
-    ));
-    }
-
-    // onDocumentReady function bind
-    $(document).ready(function() {
-    autoHeight();
-    });
-
-    // onResize bind of the function
-    $(window).resize(function() {
-    autoHeight();
-    });
-
-    </script>
 
 
 
