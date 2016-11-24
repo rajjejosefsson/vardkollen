@@ -26,38 +26,55 @@
 
 <h1 class="text-center">Task</h1>
 
+<!-- DETTA KANSKE VI INTE ENS SKA HA HÄR?????-->
 <div class="row">
     <div class="col-xs-12 col-md-12">
-        <div class="task-list">
-            <ul class="list-group center-block">
-                <li class="list-group-item">
-                    <input type="checkbox" value="" class="pull-left">
-                    <p>Matat grisen</p>
-                </li>
-                <li class="list-group-item">
-                    <input type="checkbox" value="" class="pull-left">
-                    <p>Tvätta</p>
-                </li>
-                <li class="list-group-item">
-                    <input type="checkbox" value="" class="pull-left">
-                    <p>Dammsuga</p>
-                </li>
-                <li class="list-group-item">
-                    <input type="checkbox" value="" class="pull-left">
-                    <p>Fyllt på kylskåp</p>
-                </li>
-                <li class="list-group-item">
-                    <input type="checkbox" value="" class="pull-left">
-                    <p>Matat Katten</p>
-                </li>
-                <li class="list-group-item">
-                    <textarea class="form-control center-block" rows="3" placeholder="Övriga kommentarer..."></textarea>
-                </li>        
-            </ul>
-            <input type="button" value="Klar" class="btn btn-block btn-lg btn-success center-block" />
-         
-        </div>
-
+        <button type="button" class="btn btn-default dropdown-toggle center-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Välj patient <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu col-xs-12 col-md-12">.         <!--DROPDOWNMENYN ÄR FÖR STOR!!!-->
+            <li><a href="#">Vidar</a></li>
+            <li><a href="#">Rasmus</a></li>
+            <li><a href="#">Martin</a></li>
+            <li><a href="#">Putte</a></li>
+        </ul>
     </div>
+</div>
+
+
+    <div class="row"> </div>
+        <div class="col-xs-12 col-md-12">
+            <div class="task-list">
+                <ul class="list-group center-block">
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Matat grisen</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Tvätta</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Dammsuga</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Fyllt på kylskåp</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Matat Katten</p>
+                    </li>
+                    <li class="list-group-item">
+                        <textarea class="form-control center-block" rows="3" placeholder="Övriga kommentarer..."></textarea>
+                    </li>
+                </ul>
+                <input type="button" value="Klar" class="btn btn-block btn-lg btn-success center-block" />
+
+            </div>
+    </div>
+
+   
 
 </div>
