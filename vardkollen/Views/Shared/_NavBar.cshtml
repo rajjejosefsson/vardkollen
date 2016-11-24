@@ -23,6 +23,11 @@
             width: 60px;
         }
 
+
+        .navbar-center {
+            margin-left: 140px;
+        }
+
 </style>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -46,25 +51,36 @@
                     @Html.ActionLink("Om oss", "Index", "About")
                 </li>
 
-                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient" ? "active" : "")">
-                    @Html.ActionLink("Patient", "Index", "Patient")
+              
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Relatives" ? "active" : "")">
+                    @Html.ActionLink("Anhörig", "Index", "Relatives")
                 </li>
 
-
-                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Schedule" ? "active" : "")">
-                    @Html.ActionLink("Schema", "Index", "Schedule")
-                </li>
-
-                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Staff" ? "active" : "")">
-                    @Html.ActionLink("Personal", "Index", "Staff")
-                </li>
-
-                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Task" ? "active" : "")">
-                    @Html.ActionLink("Task", "Index", "Task")
-                </li>
 
             </ul>
 
+            <ul class="nav navbar-nav navbar-center">
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Task" ? "active" : "")">
+                    @Html.ActionLink("Personal/Task", "Index", "Task")
+                </li>
+            </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Schedule" ? "active" : "")">
+                    @Html.ActionLink("Admin/Schema", "Index", "Schedule")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient" ? "active" : "")">
+                    @Html.ActionLink("Admin/Patient", "Index", "Patient")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Staff" ? "active" : "")">
+                    @Html.ActionLink("Admin/Personal", "Index", "Staff")
+                </li>
+            </ul>
 
 
         </div>
