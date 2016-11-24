@@ -9,7 +9,7 @@
         margin-top: 100px;
         margin-left: 60px;
         padding: 15px;
-        width: 282px;
+        max-width: 282px;
         height: 300px;
         box-shadow: 0 3px 3px -3px #777;
         border-radius: 10px;
@@ -21,6 +21,7 @@
         color: white;
         font-size: 60px;
         font-weight: bold;
+        float: right;
     }
 
     .center-block {
@@ -30,7 +31,6 @@
     #inputPassword {
         margin-top: 10px;
     }
-
 
 
     .form-signin-heading {
@@ -47,27 +47,30 @@
     }
 
 
+
+   @@media (max-width: 1200px) {
+       
+        h1 {
+             margin-top: 60px;
+             font-size: 45px;
+             float: left;
+         }
+
+        
+          .login-form-holder {
+                margin-top: 0px;
+                margin-left: 0px;
+            }
+    }
  
+
     @@media (max-width: 600px) {
     
 
         
- h1 {
-     margin: 30px 0;
-      font-size: 45px;
-  
+
 
     }
-
-  h1.text-right {
-        text-align: center;
-   }
-
-  .login-form-holder {
-        margin-top: 0px;
-        margin-left: 0px;
-    }
-}
 
 
     @@media (max-width: 480px) {
@@ -85,7 +88,7 @@
     <div class="col-md-12">
 
         <div class="col-xs-12 col-md-6">
-            <h1 class="text-right">Vi gör skillnad</h1>
+            <h1 class="">Vi gör skillnad</h1>
         </div>
 
 

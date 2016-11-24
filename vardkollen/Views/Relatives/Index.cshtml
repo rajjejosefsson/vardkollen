@@ -4,58 +4,114 @@
 
 
 <style>
-    .task-holder {
-        padding: 15px;
-      /* background-color: gray; */
-    }
 
-    .task-item {
-        background-color: white;
-        height: 200px;
-        margin: 15px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    }
+      .task-holder {
+        /* background-color: gray; */
+        }
 
 
+
+      /* Left side Card Item (Info) */
     .item-left {
         height: 200px;
         background-color: white;
         margin: 15px;
         padding: 5px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
     }
 
-
-    .task-item:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    transition: all 100ms ease-in;
-}
-
-    .bottom-card {
+      .left-main-content {
         padding: 5px;
     }
 
 
+
+    /* Right Side Card Item (Tasks)  */
+    .task-heading {
+        border-bottom: 0.5px solid black;
+        height: 50px;
+        line-height: 50px;
+    }
+  
+
+    .task-item {
+        background-color: white;
+        height: 310px;
+        max-width: 400px;
+        margin: 15px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+
+    .task-item:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        transition: all 100ms ease-in;
+    }
+
+   .bottom-task-card button {
+        margin: 5px 0;
+        width: 130px;
+    }
+
+ 
+
+    /* Some random fixing */
+   
+    .card-heading div {
+        height: 100%;
+    }
+
+      .task-heading p {
+          margin: 0;
+      }
+
+  
+   .list-group {
+        margin: 0;
+    }
+
+    .list-group-item {
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .list-special .list-group-item:first-child {
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+    }
+
+    .list-special .list-group-item:last-child {
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+
 </style>
+
+
 <h1 class="text-center">Anhöriga</h1>
 
 <div class="row">
-
-    <div class="col-md-3">
+    <!-- Left side of page-->
+    <div class="col-md-4">
         <div class="task-holder">
             <div class="item-left">
                 <h3 class="text-center">Person Uppgifter</h3>
-                <div class="bottom-card">
-                    <p>Namn:</p>
-                    <p>Pers nr:</p>
-                    <p>Telefon:</p>
-
+                <div class="left-main-content">
+                    <p>
+                        <strong>Namn:</strong>
+                    </p>
+                    <p>
+                        <strong>Persnr:</strong>
+                    </p>
+                    <p>
+                        <strong>Telefon:</strong>
+                    </p>
                 </div>
             </div>
             <div class="item-left">
                 <h3 class="text-center">Medecin</h3>
-
             </div>
             <div class="item-left">
                 <h3 class="text-center">Medecin</h3>
@@ -63,15 +119,60 @@
             <div class="item-left">
                 <h3 class="text-center">Allergier</h3>
             </div>
-
         </div>
     </div>
 
-    <div class="col-md-9">
+
+    <!-- Right side of page-->
+    <div class="col-md-8">
         <div class="task-holder">
+            
+            <!-- One Task Item -->
             <div class="task-item">
-                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="task-heading">
+                            <div class="col-md-6">
+                                <p>Text Text</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="pull-right">24/5 15:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="task-list">
+                            <ul class="list-group list-special">
+                                <li class="list-group-item">
+                                    <input type="checkbox" value="" class="pull-left">
+                                    <p>Matat grisen</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" value="" class="pull-left">
+                                    <p>Tvätta</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" value="" class="pull-left">
+                                    <p>Vattna Vidar</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" value="" class="pull-left">
+                                    <p>Klappa Katten</p>
+                                </li>
+                          
+                            </ul>
+                            <div class="text-center bottom-task-card">
+                                <button class="btn btn-primary">Mer Info</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- Task Item Ends Here -->
+
+            <!-- Do same shit again from db -->
             <div class="task-item"></div>
             <div class="task-item"></div>
             <div class="task-item"></div>
