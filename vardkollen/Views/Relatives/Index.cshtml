@@ -4,24 +4,31 @@
 
 
 <style>
-
-      .task-holder {
+    .task-holder {
         /* background-color: gray; */
-        }
+    }
 
 
 
-      /* Left side Card Item (Info) */
+    /* Left side Card Item (Info) */
     .item-left {
-        height: 200px;
+        height: 180px;
         background-color: white;
         margin: 15px;
         padding: 15px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
 
- 
-      .left-main-content {
+    .item-left.profile {
+             padding: 0;
+    }
+
+        .item-left img {
+            margin-top: 20px;
+        }
+
+    .left-main-content {
+    
     }
 
 
@@ -31,14 +38,14 @@
     .task-heading {
         border-bottom: 0.5px solid black;
         height: 50px;
-        line-height: 50px;
+        line-heigtht: 50px;
         background-color: #eaeaea;
     }
 
-    .task-heading p {
-        font-weight: bold;
-    }
-  
+        .task-heading p {
+            font-weight: bold;
+        }
+
 
     .task-item {
         background-color: white;
@@ -50,30 +57,30 @@
     }
 
 
-    .task-item:hover {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        transition: all 100ms ease-in;
-    }
+        .task-item:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            transition: all 100ms ease-in;
+        }
 
-   .bottom-task-card button {
+    .bottom-task-card button {
         margin: 5px 0;
         width: 130px;
     }
 
- 
+
 
     /* Some random fixing */
-   
+
     .card-heading div {
         height: 100%;
     }
 
-      .task-heading p {
-          margin: 0;
-      }
+    .task-heading p {
+        margin: 0;
+    }
 
-  
-   .list-group {
+
+    .list-group {
         margin: 0;
     }
 
@@ -96,6 +103,20 @@
         margin-left: 100px;
     }
 
+   @@media (max-width: 480px) {
+       .item-left {
+        min-height: 300px;
+       }
+       .task-item {
+            height: 330px;
+       }
+
+         .pagination-holder {
+        margin-left: 0;
+         }
+    }
+  
+
 </style>
 
 
@@ -103,22 +124,39 @@
 
 <div class="row">
     <!-- Left side of page-->
-    <div class="col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-5">
         <div class="task-holder">
-            <div class="item-left">
-                <h3>Person Uppgifter</h3>
-                <div class="left-main-content">
-                    <p><strong>Namn:</strong> Hulda Johansson </p>
-                    <p><strong>Persnr:</strong>410321-3123</p>
-                    <p><strong>Telefon:</strong>073-21234</p>
+            <div class="item-left profile">
+                <div class="col-xs-4">
+                    <img src="~/Content/Images/user-female-picture.png" style="width: 110px" alt="" />
                 </div>
+                <div class="col-xs-8">
+                    <h3>Person Uppgifter</h3>
+
+                    <div class="left-main-content">
+                        <p>
+                            <strong>Namn:</strong> Hulda Johansson
+                        </p>
+                        <p>
+                            <strong>Persnr:</strong>410321-3123
+                        </p>
+                        <p>
+                            <strong>Telefon:</strong>073-21234
+                        </p>
+                    </div>
+                </div>
+
+               
             </div>
             <div class="item-left">
                 <h3>Medecin</h3>
                 <div class="left-main-content">
-                    <p><strong>Oro:</strong>Mirtazapin 10 mg/dag </p>
-                    <p><strong>Sömnsvårigheter:</strong>Zopiklon 20 mg/dag</p>
-                    <p><strong>Illamående:</strong>Primperan 20 mg/dag</p>
+                    <p><strong>Oro:</strong>Mirtazapin 10 mg/dag
+                    </p>
+                    <p><strong>Sömnsvårigheter:</strong>Zopiklon 20 mg/dag
+                    </p>
+                    <p><strong>Illamående:</strong>Primperan 20 mg/dag
+                    </p>
                 </div>
             </div>
             <div class="item-left">
@@ -137,18 +175,18 @@
 
 
     <!-- Right side of page-->
-    <div class="col-md-8">
+    <div class="col-xs-12 col-sm-6 col-md-7">
         <div class="task-holder">
-            
+
             <!-- One Task Item -->
             <div class="task-item">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="task-heading">
-                            <div class="col-md-8">
-                                <p>Dagens Schema 24/5 15:00</p>
+                            <div class="col-xs-9">
+                                <p>24/6</p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-xs-3">
                                 <p class="pull-right">Tid</p>
                             </div>
                         </div>
@@ -159,18 +197,49 @@
                         <div class="task-list">
                             <ul class="list-group list-special">
                                 <li class="list-group-item list-group-item-success">
-                                    <p>Matat grisen</p>
+
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <p>Matat grisen</p>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <p class="pull-right">15.00</p>
+                                        </div>
+                                    </div>
+
                                 </li>
                                 <li class="list-group-item list-group-item-success">
-                                    <p>Tvätta</p>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <p>Vattna Vidar</p>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <p class="pull-right">15.12</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="list-group-item">
-                                    <p>Vattna Vidar</p>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <p>Tvättat</p>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <p class="pull-right">16.00</p>
+                                        </div>
+                                    </div>
+
                                 </li>
                                 <li class="list-group-item">
-                                    <p>Klappa Katten</p>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <p>Medecin</p>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <p class="pull-right">19.22</p>
+                                        </div>
+                                    </div>
                                 </li>
-                          
+
                             </ul>
                             <div class="text-center bottom-task-card">
                                 <button class="btn btn-primary">Mer Info</button>
@@ -180,7 +249,6 @@
                 </div>
             </div>
             <!-- Task Item Ends Here -->
-
             <!-- Do same shit again from db -->
             <div class="task-item"></div>
             <div class="task-item"></div>
@@ -210,8 +278,9 @@
                 </nav>
             </div>
             <!-- Pagination Ends -->
-
         </div>
     </div>
+    <!--  Right Ends Here -->
+
 </div>
 
