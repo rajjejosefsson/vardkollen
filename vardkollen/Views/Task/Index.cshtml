@@ -8,8 +8,13 @@
         font-size: 20px;
     }
 
+    .nav-tab-holder,
     .list-group {
         max-width: 400px;
+    }
+   
+    .nav-tabs.nav-justified>li>a {
+    border-bottom: none;
     }
 
     input[type="checkbox"] {
@@ -25,17 +30,50 @@
         margin: 10px 0;
     }
 
-    .dropdown button {
-        min-width: 230px;
-    }
+    
 
 
 
 </style>
 
-<h1 class="text-center">Task</h1>
+<div class="row">
+    <div class="start-banner text-center">
+        <h1 class="">Uppgifter</h1>
+        <p>Här finns alla dina patienter som du har på ditt schema</p>
 
 
+        <div style="text-align: center">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Patinter
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Jan-Olof</a></li>
+                    <li><a href="#">Will Jobe</a></li>
+                    <li><a href="#">Vidar</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+ <div class="row">
+            <div class="center-block nav-tab-holder">
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="presentation" class="active"><a href="#">Uppgifter</a></li>
+                    <li role="presentation"><a href="#">Övrig Info</a></li>
+                    <li role="presentation"><a href="#">Akuta nummer</a></li>
+                </ul>
+            </div>
+        </div>
 
 <div class="row">
 
@@ -44,26 +82,18 @@
     <div class="col-md-6">
 
 
-        <div style="text-align: center">
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                   Patinter
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </div>
-        </div>
+        
 
+
+ 
 
 
         <div class="task-list">
+            <div class="col-md-12">
             <ul class="list-group center-block">
+           
+
+
                 <li class="list-group-item">
                     <input type="checkbox" value="" class="pull-left">
                     <p>Matat grisen</p>
@@ -87,10 +117,14 @@
                 <li class="list-group-item">
                     <textarea class="form-control center-block" rows="3" placeholder="Övriga kommentarer..."></textarea>
                 </li>
+                <li class="list-group-item">
+                    <input type="button" value="Klar" class="btn btn-block btn-lg btn-success center-block" />
+                </li>
+
             </ul>
-            <input type="button" value="Klar" class="btn btn-block btn-lg btn-success center-block"/>
 
         </div>
+    </div>
     </div>
 
 
