@@ -4,34 +4,44 @@
 
 
 <style>
-    .task-item {
-        border: 1px solid black;
+    
+
+    .task-holder {
+        padding: 15px;
+        background-color: gray;
     }
 
+     .task-item {
+         background-color: white;
+         height: 200px;
+         border: 1px solid black;
+         margin: 15px;
+     }
+
+
+    .item-left {
+        height: 200px;
+        border: 1px solid black;
+        margin: 15px;
+    }
 </style>
-
-
 <h1 class="text-center">Anhöriga</h1>
 
+<div class="row"> 
+     <div class="col-md-3">
+        <div class="item-left"></div>
+        <div class="item-left"></div>
+        <div class="item-left"></div>
+        <div class="item-left"></div>
+    </div>
 
-<div class="row">
-    <div class="col-md-12">
-
-
-
-        <div class="col-md-6">
-
+    <div class="col-md-9">
+        <div class="task-holder">
+            <div class="task-item"></div>
+            <div class="task-item"></div>
+            <div class="task-item"></div>
+            <div class="task-item"></div>
         </div>
-
-        <div class="col-md-6">
-
-            <div class="task-item">
-
-            </div>
-
-
-        </div>
-
     </div>
 </div>
 
