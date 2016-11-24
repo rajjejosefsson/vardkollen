@@ -193,7 +193,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\happyman.jpg" />
+    <Content Include="Content\Images\Martin .jpg" />
     <Content Include="Content\Images\medic-logo.png" />
+    <Content Include="Content\Images\Patrik.jpg" />
+    <Content Include="Content\Images\Rasmus.jpg" />
+    <Content Include="Content\Images\Vidar.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
