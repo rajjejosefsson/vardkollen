@@ -1,13 +1,19 @@
-﻿@{
-    ViewBag.Title = "About Page";
+﻿@model vardkollen.ViewModels.PatientViewModel
+@{
+    ViewBag.Title = "Personal";
 }
 
 
-<link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+<link href="//cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+
 <style>
     .panel-default {
         margin-top: 20px;
     }
+
+
 </style>
 
 
@@ -20,67 +26,87 @@
 
 
 <div class="row">
-    <div class="col-md-4">
-        <form>
-            <div class="form-group">
-                <label for="exampleInputName2">Förnamn</label>
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="Darth">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputLastname2">Efternamn</label>
-                <input type="text" class="form-control" id="exampleInputLastname2" placeholder="Vader">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputBirthDate2">Personnummer</label>
-                <input type="text" class="form-control" id="exampleInputBirthDate2" placeholder="ÅÅ/MM/DD-XXXX">
-            </div>
-            <button type="submit" class="btn btn-default btn-success">Lägg till</button>
-        </form>
-    </div>
 
-    <div class="col-md-8">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Patienter</div>
-            <div class="panel-body">
-                <!-- Table -->
-                <table id="myTable" class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Förnamn</th>
-                            <th>Efternamn</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <th>1</th>
-                        <td>Patrik</td>
-                        <td>Emilsson</td>
-                    </tr>
+    <div class="col-md-12">
 
-                    <tr>
-                        <th>2</th>
-                        <td>Rasmus</td>
-                        <td>Josefsson</td>
-                    </tr>
+        <div class="col-md-4">
+            @using (Html.BeginForm("CreatePatient", "Patient", "POST"))
+            {
+                @Html.AntiForgeryToken()
 
-                    <tr>
-                        <th>3</th>
-                        <td>Martin</td>
-                        <td>Matsson</td>
-                    </tr>
 
+                <div class="form-group">
+                    <label for="firstName">Förnamn</label>
+                    @Html.TextBoxFor(model => model.Patient.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Patient.FirstName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Efternamn</label>
+                    @Html.TextBoxFor(model => model.Patient.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Patient.LastName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="personNumber">Personnummer</label>
+                    @Html.TextBoxFor(model => model.Patient.PersonNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Patient.PersonNumber, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Telefonnummer</label>
+                    @Html.TextBoxFor(model => model.Patient.PhoneNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Patient.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="adress">Adress</label>
+                    @Html.TextBoxFor(model => model.Patient.Adress, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Patient.Adress, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">Postnummer</label>
+                    @Html.TextBoxFor(model => model.Patient.ZipCode, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Patient.ZipCode, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+
+
+
+       
+
+
+
+
+
+        <!-- TABLE USING Jquery -->
+        <div class="col-md-8">
+            <table id="patientTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
                     <tr>
-                        <th>4</th>
-                        <td>Vidar</td>
-                        <td>Asp Johansson</td>
+                        <th>#</th>
+                        <th>Förnamn</th>
+                        <th>Efternamn</th>
+                        <th>Personnummer</th>
+                        <th>Telefonnummer</th>
+                        <th>Adress</th>
+                        <th>Postnummer</th>
+                        <th>Edit/Delete</th>
                     </tr>
-                </table>
-            </div>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </div>
-
 </div>
+
+
+
+
+
 
 
 
@@ -88,12 +114,115 @@
 <div style="height: 150px"></div>
 
 @section scripts {
-    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable({
 
-            });
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
+
+
+
+
+    <script>
+        $(document)
+            .ready(function() {
+                $('#myTable')
+                    .DataTable({
+                        responsive: true,
+                        "language": {
+                            "lengthMenu": "Visar _MENU_ personer per sida",
+                            "zeroRecords": "Vi hittade tyvärr inget",
+                            "info": "Visar _PAGE_ av _PAGES_",
+                            "infoEmpty": "Inga uppgifter tillgängliga",
+                            "infoFiltered": "(filtered from _MAX_ total records)",
+                            "search": "Sök",
+                            "paginate": {
+                                "first": "Första",
+                                "last": "Sista",
+                                "next": "Nästa",
+                                "previous": "Föregående"
+                            },
+                            "processing": "Söker...",
+                        }
+
+
+                    });
+
+
+
+
+                var table = $("#patientTable")
+                    .DataTable({
+                        responsive: true,
+                        "language": {
+                            "lengthMenu": "Visar _MENU_ personer per sida",
+                            "zeroRecords": "Vi hittade tyvärr inget",
+                            "info": "Visar _PAGE_ av _PAGES_",
+                            "infoEmpty": "Inga uppgifter tillgängliga",
+                            "infoFiltered": "(filtered from _MAX_ total records)",
+                            "search": "Sök",
+                            "paginate": {
+                                "first": "Första",
+                                "last": "Sista",
+                                "next": "Nästa",
+                                "previous": "Föregående"
+                            },
+                            "processing": "Söker...",
+                        },
+
+
+
+                        ajax: {
+                                url: "/Patient/GetPatients",
+                                type: "GET",
+                                "dataType": "json"
+                            },
+                            columns: [
+                            { data: "Id" },
+                            { data: "FirstName" },
+                            { data: "LastName" },
+                            { data: "PersonNumber" },
+                            { data: "PhoneNumber" },
+                            { data: "Adress" },
+                            { data: "ZipCode" },
+                            { data: "Id",
+                                render: function (data) {
+                                    return "<button class='btn btn-danger js-delete' data-patient-id=" + data + ">Delete</button>";
+                                }
+                            }
+                ]
+               });
+
+
+
+
+                $("#patientTable").on("click", ".js-delete", function () {
+                    var removeButton = $(this);
+
+                    // Get ref to  collapsed tr and colapsed tr to get remove when success
+                    var collapsedTr = removeButton.closest('tr');
+                    var partedTr = collapsedTr.prev('tr.parent');
+
+                
+                     var patientId = $(this).data('patient-id');
+
+                            $.ajax({
+                                url: "@Url.Action("DeletePatient", "Patient")",
+                                method: "POST",
+                                data: { id: patientId },
+                                success: function () {
+                                    alert("success");
+                                    collapsedTr.remove();
+                                    partedTr.remove();
+                                }
+                            });
+                });
+
+
+
         });
+
+
     </script>
 }

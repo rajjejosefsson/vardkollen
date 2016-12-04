@@ -1,4 +1,4 @@
-namespace demopurpose.Migrations
+namespace vardkollen.Migrations
 {
     using System;
     using System.Data.Entity;

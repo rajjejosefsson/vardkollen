@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
@@ -179,12 +180,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611302056017_initmig.cs" />
+    <Compile Include="Migrations\201611302056017_initmig.Designer.cs">
+      <DependentUpon>201611302056017_initmig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\PatientAndScheduleViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeSheduleTasksViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\PatientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-cerulean.css" />
@@ -266,14 +275,36 @@
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Patient\backup.cshtml" />
+    <Content Include="Views\Relatives\_RelativePartialView.cshtml" />
+    <Content Include="Views\Relatives\Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611302056017_initmig.resx">
+      <DependentUpon>201611302056017_initmig.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CareCheck.DataAccess\CareCheck.DataAccess.csproj">
+      <Project>{ded366ac-a1c7-404c-9b28-209f773d00ce}</Project>
+      <Name>CareCheck.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CareCheck.DomainClasses\CareCheck.DomainClasses.csproj">
+      <Project>{FCB826D6-252D-4B20-8832-EE43B59F3828}</Project>
+      <Name>CareCheck.DomainClasses</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

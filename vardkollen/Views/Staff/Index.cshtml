@@ -1,9 +1,12 @@
-﻿@{
+﻿@model vardkollen.ViewModels.EmployeeViewModel
+@{
     ViewBag.Title = "Personal";
 }
 
 
 <link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
 <style>
     .panel-default {
         margin-top: 20px;
@@ -19,81 +22,249 @@
 </div>
 
 
-<div class="row">
-    <div class="col-md-4">
-        <form>
-            <div class="form-group">
-                <label for="exampleInputName2">Förnamn</label>
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="Darth">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputLastname2">Efternamn</label>
-                <input type="text" class="form-control" id="exampleInputLastname2" placeholder="Vader">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputBirthDate2">Personnummer</label>
-                <input type="text" class="form-control" id="exampleInputBirthDate2" placeholder="ÅÅ/MM/DD-XXXX">
-            </div>
-            <button type="submit" class="btn btn-default btn-success">Lägg till</button>
-        </form>
-    </div>
 
-    <div class="col-md-8">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Patienter</div>
-            <div class="panel-body">
-                <!-- Table -->
-                <table id="myTable" class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Förnamn</th>
-                            <th>Efternamn</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <th>1</th>
-                        <td>Patrik</td>
-                        <td>Emilsson</td>
-                    </tr>
+<div class="col-md-12">
+    <!-- TESTER -->
 
-                    <tr>
-                        <th>2</th>
-                        <td>Rasmus</td>
-                        <td>Josefsson</td>
-                    </tr>
 
-                    <tr>
-                        <th>3</th>
-                        <td>Martin</td>
-                        <td>Matsson</td>
-                    </tr>
+   
 
-                    <tr>
-                        <th>4</th>
-                        <td>Vidar</td>
-                        <td>Asp Johansson</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
+
+
+    <!-- TESTER ENDS -->
+
 
 </div>
 
+<div class="row">
+
+    <div class="col-md-12">
+
+
+        <div class="col-md-4 form-holder">
+            @using (Html.BeginForm("CreateEmployee", "Staff", "POST"))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-group">
+                    <label for="firstName">Förnamn</label>
+                    @Html.TextBoxFor(model => model.Employee.FirstName, new { @class = "form-control", id = "firstName" })
+                    @Html.ValidationMessageFor(model => model.Employee.FirstName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Efternamn</label>
+                    @Html.TextBoxFor(model => model.Employee.LastName, new { @class = "form-control", id = "lastName" })
+                    @Html.ValidationMessageFor(model => model.Employee.LastName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="personNumber">Personnummer</label>
+                    @Html.TextBoxFor(model => model.Employee.PersonNumber, new { @class = "form-control", id = "personNumber" })
+                    @Html.ValidationMessageFor(model => model.Employee.PersonNumber, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Telefonnummer</label>
+                    @Html.TextBoxFor(model => model.Employee.PhoneNumber, new { @class = "form-control", id = "phoneNumber" })
+                    @Html.ValidationMessageFor(model => model.Employee.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="adress">Adress</label>
+                    @Html.TextBoxFor(model => model.Employee.Adress, new { @class = "form-control",id = "adress" })
+                    @Html.ValidationMessageFor(model => model.Employee.Adress, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">Postnummer</label>
+                    @Html.TextBoxFor(model => model.Employee.ZipCode, new { @class = "form-control", id = "zipCode" })
+                    @Html.ValidationMessageFor(model => model.Employee.ZipCode, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.HiddenFor(e => e.Employee.Id, new { @id = "hiddenId" })
+                    <input type="submit" value="Create" class="btn btn-primary create-save-btn"/>
+                </div>
+            }
+
+
+        </div>
+
+
+
+        <div class="col-md-8">
+         
+                    <!-- Table -->
+                    <table id="myTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Förnamn</th>
+                                <th>Efternamn</th>
+                                <th>Personnummer</th>
+                                <th>Telefonnummer</th>
+                                <th>Adress</th>
+                                <th>Postnummer</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var employee in Model.Employees)
+                            {
+                                <tr class="tr-id">
+                                    <td>@employee.Id</td>
+                                    <td><p id="">@employee.FirstName</p></td>
+                                    <td><p id="">@employee.LastName</p></td>
+                                    <td><p id="">@employee.PersonNumber</p></td>
+                                    <td><p id="">@employee.PhoneNumber</p></td>
+                                    <td><p id="">@employee.Adress</p></td>
+                                    <td><p id="">@employee.ZipCode</p></td>
+                                    <td>
+                                        <button class="btn btn-primary editButton"
+                                                data-id="@employee.Id"
+                                                data-firstname="@employee.FirstName"
+                                                data-lastname="@employee.LastName" data-firstName="@employee.FirstName"
+                                                data-personnumber="@employee.PersonNumber"
+                                                data-phonenumber="@employee.PhoneNumber"
+                                                data-adress="@employee.Adress"
+                                                data-zipcode="@employee.ZipCode">
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-danger deleteButton" 
+                                                data-id="@employee.Id"
+                                         >Delete</button>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
 
 
 <div style="height: 150px"></div>
 
 @section scripts {
-    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
+
+
+
+
     <script>
         $(document).ready(function () {
-            $('#myTable').DataTable({
 
+            var globalTable = $('#myTable').DataTable({
+                responsive: true,
+                "language": {
+                    "lengthMenu": "Visar _MENU_ personer per sida",
+                    "zeroRecords": "Vi hittade tyvärr inget",
+                    "info": "Visar _PAGE_ av _PAGES_",
+                    "infoEmpty": "Inga uppgifter tillgängliga",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "search": "Sök",
+                    "paginate": {
+                        "first": "Första",
+                        "last": "Sista",
+                        "next": "Nästa",
+                        "previous": "Föregående"
+                    },
+                    "processing": "Söker...",
+                }
             });
+
+          
+
+            $("#myTable").on("click", ".editButton", function () {
+                var employee = $(this).data();
+                console.log(employee);
+                $("#hiddenId").val(employee.id);
+                $("#firstName").val(employee.firstname);
+                $("#lastName").val(employee.lastname);
+                $("#personNumber").val(employee.personnumber);
+                $("#phoneNumber").val(employee.phonenumber);
+                $("#adress").val(employee.adress);
+                $("#zipCode").val(employee.zipcode);
+                $(".create-save-btn").attr("value", "Save/Create");
+            });
+         
+
+            $("#myTable").on("click", ".deleteButton", function () {
+                var removeButton = $(this);
+
+
+
+                var collapsedTr = removeButton.closest('tr');
+                var partedTr = collapsedTr.prev('tr.parent');
+
+                // Remove collapsed tr 
+                collapsedTr.remove();
+                partedTr.remove();
+              
+
+                
+
+                var employeeId = $(this).data('id');
+                console.log(employeeId);
+                console.log("DELETE IT");
+
+
+
+                $.ajax({
+                    type: "post",
+                    url: "@Url.Action("DeleteEmployee", "Staff")",
+                    ajaxasync: true,
+                    data: { id: employeeId },
+
+                    success: function () {
+                        alert("success");
+
+                    },
+                    error: function (data) {
+                        alert(data.x);
+                    }
+              });
+
+                
+            
+
+
+           });
+
         });
     </script>
 }
+
+
+<!--
+
+
+
+e.preventDefault();
+
+$.ajax({
+type: "post",
+url: "@Url.Action("DeleteEmployee", "Staff")",
+ajaxasync: true,
+data: { id: employeeadId },
+
+success: function () {
+alert("success");
+
+},
+error: function (data) {
+alert(data.x);
+}
+});
+
+
+
+-->

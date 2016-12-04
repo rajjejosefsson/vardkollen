@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vardkollen", "vardkollen\vardkollen.csproj", "{EAB1471A-48CE-41CD-96DE-D72E168479AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareCheck.DomainClasses", "CareCheck.DomainClasses\CareCheck.DomainClasses.csproj", "{FCB826D6-252D-4B20-8832-EE43B59F3828}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareCheck.DataAccess", "CareCheck.DataAccess\CareCheck.DataAccess.csproj", "{DED366AC-A1C7-404C-9B28-209F773D00CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EAB1471A-48CE-41CD-96DE-D72E168479AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAB1471A-48CE-41CD-96DE-D72E168479AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAB1471A-48CE-41CD-96DE-D72E168479AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB826D6-252D-4B20-8832-EE43B59F3828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB826D6-252D-4B20-8832-EE43B59F3828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB826D6-252D-4B20-8832-EE43B59F3828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB826D6-252D-4B20-8832-EE43B59F3828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED366AC-A1C7-404C-9B28-209F773D00CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED366AC-A1C7-404C-9B28-209F773D00CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED366AC-A1C7-404C-9B28-209F773D00CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED366AC-A1C7-404C-9B28-209F773D00CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

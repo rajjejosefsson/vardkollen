@@ -1,123 +1,15 @@
-﻿@{
+﻿@model vardkollen.ViewModels.PatientAndScheduleViewModel
+@{
     ViewBag.Title = "About Page";
 }
 
 
 <style>
-    .task-holder {
-        /* background-color: gray; */
-    }
-
-
-
-    /* Left side Card Item (Info) */
-    .item-left {
-        height: 180px;
-        background-color: white;
-        margin: 15px;
-        padding: 15px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    }
-
-    .item-left.profile {
-             padding: 0;
-        margin-bottom: 60px;
-    }
-
-        .item-left img {
-            margin-top: 20px;
-        }
-
-    .left-main-content {
-    
-    }
-
-
-
-
-    /* Right Side Card Item (Tasks)  */
-    .task-heading {
-        border-bottom: 0.5px solid black;
-        height: 50px;
-        line-height: 50px;
-        background-color: #eaeaea;
-    }
-
-        .task-heading p {
-            font-weight: bold;
-        }
-
-
-    .task-item {
-        background-color: white;
-        height: 310px;
-        max-width: 400px;
-        margin: 15px;
-        overflow: hidden;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    }
-
-
-        .task-item:hover {
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            transition: all 100ms ease-in;
-        }
-
-    .bottom-task-card button {
-        margin: 5px 0;
-        width: 130px;
-    }
-
-
-
-    /* Some random fixing */
-
-    .card-heading div {
-        height: 100%;
-    }
-
-    .task-heading p {
-        margin: 0;
-    }
-
-
-    .list-group {
-        margin: 0;
-    }
-
-    .list-group-item {
-        border-left: 0;
-        border-right: 0;
-    }
-
-    .list-special .list-group-item:first-child {
-        border-top-right-radius: 0px;
-        border-top-left-radius: 0px;
-    }
-
-    .list-special .list-group-item:last-child {
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 0px;
-    }
-
-    .pagination-holder {
-        margin-left: 100px;
-    }
-
-   @@media (max-width: 480px) {
-       .item-left {
-        min-height: 300px;
-       }
-       .task-item {
-            height: 330px;
-       }
-
-         .pagination-holder {
-        margin-left: 0;
-         }
+   
+    .dropdown-name, h4 {
+        margin-left: 40px;
     }
   
-
 </style>
 
 
@@ -128,165 +20,70 @@
 </div>
 
 
-<div class="row">
-    <!-- Left side of page-->
-    <div class="col-xs-12 col-sm-6 col-md-5">
-        <div class="task-holder">
-            <div class="item-left profile">
-                <div class="col-xs-4">
-                    <img src="~/Content/Images/user-female-picture.png" style="width: 110px" alt=""/>
-                </div>
-                <div class="col-xs-8">
-                    <h3>Hulda Johansson</h3>
 
-                    <div class="left-main-content">
-
-                        <p>
-                            <strong>Persnr:</strong>410321-3123
-                        </p>
-                        <p>
-                            <strong>Telefon:</strong>073-21234
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-             <h1 style="color: black; margin-left: 30px">Övrigt</h1>
-            <hr />
-            <div class="item-left">
-                <h3>Medecin</h3>
-                <div class="left-main-content">
-                    <p><strong>Oro:</strong>Mirtazapin 10 mg/dag
-                    </p>
-                    <p><strong>Sömnsvårigheter:</strong>Zopiklon 20 mg/dag
-                    </p>
-                    <p><strong>Illamående:</strong>Primperan 20 mg/dag
-                    </p>
-                </div>
-            </div>
-            <div class="item-left">
-                <h3>Allergier</h3>
-                <div class="left-main-content">
-                    <p><strong>Namn:</strong> Hulda Johansson </p>
-                    <p><strong>Persnr:</strong>410321-3123</p>
-                    <p><strong>Telefon:</strong>073-21234</p>
-                </div>
-            </div>
-            <div class="item-left">
-                <h3>Annhöriga</h3>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Right side of page-->
-    <div class="col-xs-12 col-sm-6 col-md-7">
-        
-        <div class="task-holder">
-
-            <!-- One Task Item -->
-            <div class="task-item">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="task-heading">
-                            <div class="col-xs-9">
-                                <p>24/6</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <p class="pull-right">Tid</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="task-list">
-                            <ul class="list-group list-special">
-                                <li class="list-group-item list-group-item-success">
-
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <p>Matat grisen</p>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <p class="pull-right">15.00</p>
-                                        </div>
-                                    </div>
-
-                                </li>
-                                <li class="list-group-item list-group-item-success">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <p>Vattna Vidar</p>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <p class="pull-right">15.12</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <p>Tvättat</p>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <p class="pull-right">16.00</p>
-                                        </div>
-                                    </div>
-
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <p>Medecin</p>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <p class="pull-right">19.22</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                            </ul>
-                            <div class="text-center bottom-task-card">
-                                <button class="btn btn-primary">Mer Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Task Item Ends Here -->
-            <!-- Do same shit again from db -->
-            <div class="task-item"></div>
-            <div class="task-item"></div>
-            <div class="task-item"></div>
-
-
-            <!-- Pagination -->
-            <div class="pagination-holder">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- Pagination Ends -->
-        </div>
-    </div>
-    <!--  Right Ends Here -->
-
+<div class="col-md-12">
+    <!-- Check if relatives "patients" is > 1, if so show dropdown with all it "patients" else show the only "patient" -->
+    @if (Model.Relative.Patients.Count() > 1)
+    {
+        <h4>Välj Anhörig</h4>
+        <select name="myFormInputName" id="myFormInputName" class="form-control dropdown-name">
+            @foreach (var link in Model.Relative.Patients)
+            {
+                <option value="@(link.Id)">@(link.FirstName)</option>
+            }
+        </select>
+    }
 </div>
 
+
+
+<div class="col-md-12">
+    <div id="partialPlaceHolder" style="display: none;"></div>
+</div>
+
+
+
+
+
+@section scripts {
+    <script>
+
+        function renderPatient(patientId) {
+            /* Request the partial view with .get request. */
+            $.get('/Relatives/MyAction/' + patientId, function (data) {
+
+                /* data is the pure html returned from action method, load it to your page */
+                $('#partialPlaceHolder').html(data);
+                /* little fade in effect */
+                $('#partialPlaceHolder').fadeIn('fast');
+            });
+        }
+
+
+
+        $(document).ready(function () {
+
+            // Initial patient to render
+            var patientId = $("#myFormInputName").val();
+            renderPatient(patientId);
+
+
+
+            // Select patient to show
+            $("#myFormInputName").on('change', function () {
+                var patientId = $(this).val();
+                renderPatient(patientId);
+
+            });
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+}
