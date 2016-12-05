@@ -1,0 +1,69 @@
+﻿@model vardkollen.ViewModels.EmployeeSheduleTasksViewModel
+@{
+    ViewBag.Title = "About Page";
+}
+
+
+<style>
+    .app-checkbox {
+        font-size: 20px;
+    }
+
+    .nav-tab-holder,
+    .list-group {
+        max-width: 400px;
+    }
+
+    .nav-tabs.nav-justified > li > a {
+        border-bottom: none;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+        width: 20px; /*Desired width*/
+        height: 20px; /*Desired height*/
+    }
+
+</style>
+
+
+
+
+
+<div class="row">
+    <div class="center-block nav-tab-holder">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" class="active"><a href="#">Uppgifter</a></li>
+            <li role="presentation"><a href="#">Övrig Info</a></li>
+            <li role="presentation"><a href="#">Akuta nummer</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="task-list">
+            <div class="col-md-12">
+                <ul class="list-group center-block todolist-ul">
+
+                    @foreach (var item in Model.Schedule.TodoList)
+                    {
+                        <li class="list-group-item">
+                            <input type="checkbox" value="@item" class="pull-left checkbox" checked="@item.IsDone">
+                            <p>@item.Task.Name</p>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+
+<div style="height: 150px"></div>
+
+

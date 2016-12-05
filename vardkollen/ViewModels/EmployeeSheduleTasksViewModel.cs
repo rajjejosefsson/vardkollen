@@ -1,5 +1,4 @@
 ﻿using CareCheck.DomainClasses;
-using System;
 using System.Collections.Generic;
 
 namespace vardkollen.ViewModels
@@ -7,11 +6,11 @@ namespace vardkollen.ViewModels
     public class EmployeeSheduleTasksViewModel
     {
 
-        public int ScheduleId { get; set; }
 
-        public List<TodoList> TodoList { get; set; }
+        public ICollection<Schedule> Schedules { get; set; }
+
+        public Schedule Schedule { get; set; }
         public Patient Patient { get; set; }
-        public DateTime DateTime { get; set; }
 
 
 

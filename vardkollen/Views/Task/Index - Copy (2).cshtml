@@ -1,0 +1,367 @@
+﻿@model List<CareCheck.DomainClasses.Schedule>
+@{
+    ViewBag.Title = "About Page";
+}
+
+
+<style>
+    .app-checkbox {
+        font-size: 20px;
+    }
+
+    .nav-tab-holder,
+    .list-group {
+        max-width: 400px;
+    }
+
+    .nav-tabs.nav-justified > li > a {
+        border-bottom: none;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+        width: 20px; /*Desired width*/
+        height: 20px; /*Desired height*/
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 10px 0;
+    }
+</style>
+
+<div class="row">
+
+    <!--
+    <pre>
+@ViewBag.jsonTest   
+ </pre>
+         -->
+
+    <div class="start-banner text-center">
+        <h1 class="">Uppgifter</h1>
+        <p>Här finns alla dina patienter som du har på ditt schema</p>
+
+
+
+
+        <div style="text-align: center">
+            <div class="dropdown form-group">
+                <select name="myFormInputName" id="myFormInputName" class="form-control">
+                    @foreach (var schedule in Model)
+                    {
+                        <option value="@(schedule.Id - 1)">@schedule.Patient.FirstName @schedule.DateTime</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="row">
+    <div class="center-block nav-tab-holder">
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation" class="active"><a href="#">Uppgifter</a></li>
+            <li role="presentation"><a href="#">Övrig Info</a></li>
+            <li role="presentation"><a href="#">Akuta nummer</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+
+
+
+
+        <div class="task-list">
+            <div class="col-md-12">
+                <ul class="list-group center-block todolist-ul">
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+        <div class="col-md-12">
+            <hr />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1>Testing</h1>
+        </div>
+
+
+
+        <!-- BACK UP HERE AND DOWN-->
+
+        <div class="task-list">
+            <div class="col-md-12">
+                <ul class="list-group center-block">
+
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Matat grisen</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Tvätta</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Dammsuga</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Fyllt på kylskåp</p>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="checkbox" value="" class="pull-left">
+                        <p>Matat Katten</p>
+                    </li>
+                    <li class="list-group-item">
+                        <textarea class="form-control center-block" rows="3" placeholder="Övriga kommentarer..."></textarea>
+                    </li>
+                    <li class="list-group-item">
+                        <input type="button" value="Klar" class="btn btn-block btn-lg btn-success center-block" />
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- BACKUP -->
+
+        <div class="col-md-12">
+            <hr />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1>Backup(using model to populate)</h1>
+        </div>
+
+
+        <div class="task-list">
+            <div class="col-md-12">
+                <ul class="list-group center-block">
+                    @{ int selected = (int) ViewBag.selected; }
+
+
+                    <!-- ElementAt = is the list of schedules we have in model (first in dropdown is 0) -->
+                    @foreach (var item in Model.ElementAt(selected).TodoList.ToList())
+                    {
+                        <li class="list-group-item">
+                            <input type="checkbox" value="" class="pull-left">
+                            @item.Task.Name
+                        </li>
+                    }
+
+
+                    <li class="list-group-item">
+                        <input type="button" value="Klar" class="btn btn-block btn-lg btn-success center-block"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BACKUP END -->
+
+
+
+
+    </div>
+
+
+    <div class="col-md-3"></div>
+
+</div>
+
+
+
+
+<div class="col-md-12">
+    <!-- TESTER -->
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li> @item.Patient.FirstName @item.DateTime</li>
+        }
+    </ul>
+    <!-- TESTER ENDS -->
+</div>
+
+
+
+
+
+<div style="height: 150px"></div>
+
+
+
+@section scripts {
+    <script>
+
+
+
+        $(document).ready(function () {
+            var model = @Html.Raw(@ViewBag.jsonTest);
+            $(".todolist-ul").children('li').remove();
+
+
+
+
+
+
+
+            /* Init values (array item 0) */ 
+                        
+            // Get todolist for patient above of the date
+            // Show Task Name and isDone
+            console.log(model[0].TodoList.$values);
+            var todolist = model[0].TodoList.$values;
+
+
+            for (var i = 0; i < todolist.length; i++) {    
+
+                $(".todolist-ul").append("" +
+                 "<li class='list-group-item'>" +
+                      "<input type='checkbox' value='" + i +  "' class='pull-left checkbox'>" +
+                      "<p>" + 
+                         todolist[i].Task.Name +
+                      "</p>" +
+                 "</li>"
+                  );
+
+                // Set isDone on the last child  (li above)
+                $(".todolist-ul").children('li:last-child').children('input').prop("checked",todolist[i].IsDone );
+            }
+
+
+            
+            $(".todolist-ul").append("" +
+                "<li class='list-group-item'>" +
+                        "<input type='button' value='Klar' class='btn btn-block btn-lg btn-success center-block' />" +
+                 "</li>" 
+            );
+
+
+
+
+
+         
+            /* When changing the dropdown list item  */
+
+            $("#myFormInputName").on('change', function () {
+                console.log($("#myFormInputName").val());
+                // Remove the list items 
+                $(".todolist-ul").children('li').remove();
+
+                // Get the id from the dropdownlist
+                var selectedDropdown = $("#myFormInputName").val();
+
+                // Get the todolist items of selected dropdown schedule
+                var todolist = model[selectedDropdown].TodoList.$values;
+                console.log(model[selectedDropdown].TodoList.$values);
+                
+                for (var i = 0; i < todolist.length; i++) {        
+                    $(".todolist-ul").append("" +
+                      "<li class='list-group-item'>" +
+                           "<input type='checkbox' value='" + i +  "' class='pull-left checkbox'>" +
+                           "<p>" + 
+                              todolist[i].Task.Name +
+                           "</p>" +
+                      "</li>"
+                       );
+
+                    // Set isDone on the last child  (li above)
+                    $(".todolist-ul").children('li:last-child').children('input').prop("checked",todolist[i].IsDone );
+                }
+
+
+                $(".todolist-ul").append("" +
+                 "<li class='list-group-item'>" +
+                     "<input type='button' value='Klar' class='btn btn-block btn-lg btn-success center-block' />" +
+                  "</li>" 
+                  );
+
+            });
+
+
+        
+
+
+
+
+            console.log(model);
+
+        
+
+            // Get patient info and schedule date
+            console.log(model[0].Patient.FirstName + " " + model[0].DateTime);
+
+
+
+            for (var i = 0; i < todolist.length; i++) {
+                console.log(todolist[i].Task.Name);
+                console.log(todolist[i].IsDone);
+            }
+
+
+
+
+      
+
+
+
+
+
+
+        });
+
+
+
+
+
+
+
+
+    </script>
+}

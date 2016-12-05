@@ -283,6 +283,8 @@
     <Content Include="Views\Patient\backup.cshtml" />
     <Content Include="Views\Relatives\_RelativePartialView.cshtml" />
     <Content Include="Views\Relatives\Index - Copy.cshtml" />
+    <Content Include="Views\Task\_TaskPartialView.cshtml" />
+    <Content Include="Views\Task\Index - Copy %282%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
