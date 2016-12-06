@@ -7,7 +7,7 @@ using vardkollen.ViewModels;
 
 namespace vardkollen.Controllers
 {
-    public class StaffController : Controller
+    public class EmployeesController : Controller
     {
         private readonly CareCheckDbContext _context = new CareCheckDbContext();
 
@@ -15,7 +15,6 @@ namespace vardkollen.Controllers
         // GET: Staff
         public ActionResult Index()
         {
-
 
             var viewModel = new EmployeeViewModel
             {

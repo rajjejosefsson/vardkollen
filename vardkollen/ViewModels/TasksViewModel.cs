@@ -1,17 +1,26 @@
 ﻿using CareCheck.DomainClasses;
 using System.Collections.Generic;
+using vardkollen.Models;
 
 namespace vardkollen.ViewModels
 {
-    public class EmployeeSheduleTasksViewModel
+    public class TasksViewModel
     {
 
 
         public ICollection<Schedule> Schedules { get; set; }
 
         public Schedule Schedule { get; set; }
-        public Patient Patient { get; set; }
 
+
+        public List<TasksModel> Tasks { get; set; }
+
+
+        public TasksViewModel()
+        {
+            Tasks = new List<TasksModel>();
+
+        }
 
 
     }

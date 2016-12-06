@@ -167,16 +167,16 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\Other\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EmployeesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Other\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\RelativesController.cs" />
-    <Compile Include="Controllers\ScheduleController.cs" />
-    <Compile Include="Controllers\StaffController.cs" />
-    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\Admin\PatientController.cs" />
+    <Compile Include="Controllers\Admin\RelativesController.cs" />
+    <Compile Include="Controllers\Admin\ScheduleController.cs" />
+    <Compile Include="Controllers\Admin\EmployeesController.cs" />
+    <Compile Include="Controllers\Employees\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,12 +186,16 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TasksModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CreateScheduleViewModel.cs" />
+    <Compile Include="ViewModels\DeleteScheduleViewModel.cs" />
     <Compile Include="ViewModels\PatientAndScheduleViewModel.cs" />
-    <Compile Include="ViewModels\EmployeeSheduleTasksViewModel.cs" />
+    <Compile Include="ViewModels\TasksViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\PatientViewModel.cs" />
   </ItemGroup>
@@ -272,22 +276,19 @@
     <Content Include="Views\Schedule\Index.cshtml" />
     <Content Include="Views\Relatives\Index.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
-    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Patient\backup.cshtml" />
     <Content Include="Views\Relatives\_RelativePartialView.cshtml" />
     <Content Include="Views\Relatives\Index - Copy.cshtml" />
     <Content Include="Views\Task\_TaskPartialView.cshtml" />
     <Content Include="Views\Task\Index - Copy %282%29.cshtml" />
+    <Content Include="Views\Schedule\_Modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\BackupSkit\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

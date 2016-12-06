@@ -1,0 +1,32 @@
+﻿@model vardkollen.ViewModels.DeleteScheduleViewModel
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Delete Entry In Db</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("DeleteSchedule", "Schedule", "POST"))
+            {
+                    @Html.AntiForgeryToken()
+
+
+                <p>Är du säker på att du vill ta bort <strong> @Model.Patient.FirstName  @Model.Patient.LastName</strong> från schemat ?</p>
+                <p style="color: red">Det går inte ångra sig</p>
+
+
+                @Model.ScheduleId
+
+                <div class="modal-footer">
+                    @Html.HiddenFor(s => s.ScheduleId, new { @id = "hiddenId" })
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Create" class="btn btn-danger create-save-btn"/>
+                </div>
+                }
+            </div>
+          
+        </div>
+    </div>
+</div>

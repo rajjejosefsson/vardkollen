@@ -78,8 +78,8 @@
                     @Html.ActionLink("Admin/Patient", "Index", "Patient")
                 </li>
 
-                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Staff" ? "active" : "")">
-                    @Html.ActionLink("Admin/Personal", "Index", "Staff")
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Employees" ? "active" : "")">
+                    @Html.ActionLink("Admin/Personal", "Index", "Employees")
                 </li>
             </ul>
 

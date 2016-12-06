@@ -1,4 +1,4 @@
-﻿@model vardkollen.ViewModels.EmployeeSheduleTasksViewModel
+﻿@model vardkollen.ViewModels.TasksViewModel
 @{
     ViewBag.Title = "About Page";
 }
@@ -23,7 +23,6 @@
         width: 20px; /*Desired width*/
         height: 20px; /*Desired height*/
     }
-
 </style>
 
 
@@ -46,16 +45,27 @@
     <div class="col-md-6">
         <div class="task-list">
             <div class="col-md-12">
+            @using (Html.BeginForm("UpdateTodoList", "Task", "POST"))
+            {
+                @Html.AntiForgeryToken()
+
                 <ul class="list-group center-block todolist-ul">
 
-                    @foreach (var item in Model.Schedule.TodoList)
+                    @for (var i = 0; i < @Model.Tasks.Count; i++)
                     {
                         <li class="list-group-item">
-                            <input type="checkbox" value="@item" class="pull-left checkbox" checked="@item.IsDone">
-                            <p>@item.Task.Name</p>
-                    </li>
+                            @Html.HiddenFor(x => x.Tasks[i].Id)
+                            @Html.CheckBoxFor(x => x.Tasks[i].IsChecked, new { @class = "pull-left checkbox" })
+                            <p>@Model.Tasks[i].TaskName</p>
+                        </li>
                     }
+                    <li class="list-group-item">
+                        @Html.HiddenFor(x => x.Schedule.Id)
+
+                        <input type="submit" value="Klar" class="btn btn-block btn-lg btn-success center-block"/>
+                    </li>
                 </ul>
+            }
             </div>
         </div>
     </div>
@@ -65,5 +75,4 @@
 
 
 <div style="height: 150px"></div>
-
 

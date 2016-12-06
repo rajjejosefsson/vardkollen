@@ -3,15 +3,12 @@
     ViewBag.Title = "About Page";
 }
 
-
 <style>
    
     .dropdown-name, h4 {
         margin-left: 40px;
-    }
-  
+    } 
 </style>
-
 
 
 <div class="row">
@@ -54,6 +51,7 @@
 
                 /* data is the pure html returned from action method, load it to your page */
                 $('#partialPlaceHolder').html(data);
+
                 /* little fade in effect */
                 $('#partialPlaceHolder').fadeIn('fast');
             });
@@ -62,11 +60,9 @@
 
 
         $(document).ready(function () {
-
             // Initial patient to render
             var patientId = $("#myFormInputName").val();
             renderPatient(patientId);
-
 
 
             // Select patient to show
