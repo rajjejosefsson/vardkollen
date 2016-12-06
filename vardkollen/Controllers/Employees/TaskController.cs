@@ -72,7 +72,7 @@ namespace vardkollen.Controllers
         public ActionResult UpdateTodoList(TasksViewModel viewModel)
         {
 
-
+      
             var dataEntries = _context.TodoList.Where(i => i.ScheduleId == viewModel.Schedule.Id).ToList();
 
 

@@ -28,12 +28,7 @@ namespace vardkollen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateEmployee(Employee employee)
         {
-
-            // Check if user exist - if true - update
-            // if not - create new 
-
-
-
+     
 
             if (employee.Id == 0)
             {
