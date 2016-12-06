@@ -123,6 +123,12 @@ namespace vardkollen.Controllers
 
 
 
+        public ActionResult UpdateSchedule(string s)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
 
 
 
@@ -151,21 +157,35 @@ namespace vardkollen.Controllers
         public ActionResult BootstrapModal(int? id)
         {
             var schedule = _context.Schedules.Where(s => s.Id == id)
-                                 .Include(p => p.Patient)
+                                 .Include(p => p.Patient).Include(t => t.TodoList.Select(i => i.Task))
                                  .Single();
 
-            var viewModel = new DeleteScheduleViewModel
+
+
+            var taskItems = new List<TasksModel>();
+            foreach (var listItem in schedule.TodoList)
+            {
+                taskItems.Add(new TasksModel()
+                {
+                    Id = listItem.Id,
+                    IsChecked = false,
+                    TaskName = listItem.Task.Name
+                });
+            }
+
+
+
+
+            var viewModel = new ScheduleItemViewModel
             {
                 Patient = schedule.Patient,
-                ScheduleId = schedule.Id
+                ScheduleId = schedule.Id,
+                Tasks = taskItems
+
             };
 
             return PartialView("_Modal", viewModel);
         }
-
-
-
-
 
 
 

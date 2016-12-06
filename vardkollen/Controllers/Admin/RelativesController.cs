@@ -43,17 +43,18 @@ namespace vardkollen.Controllers
         {
 
 
-            var patient = _context.Patients.Where(p => p.Id == id)
-                .Include(m => m.Medications)
-                .Include(s => s.Schedules.Select(t => t.TodoList.Select(i => i.Task)))
-                .Single();
+            var patient = _context.Patients.Where(p => p.Id == id).Include(m => m.Medications).Single();
 
-
+            var schedule =
+                _context.Schedules.Where(p => p.PatientId == patient.Id)
+                .Include(d => d.TodoList.Select(t => t.Task))
+                .OrderByDescending(s => s.DateTime)
+                .ToList();
 
             var viewModel = new PatientAndScheduleViewModel
             {
                 Patient = patient,
-                Schedules = patient.Schedules
+                Schedules = schedule
             };
 
 
@@ -70,3 +71,14 @@ namespace vardkollen.Controllers
 
     }
 }
+
+
+/*
+ 
+         var patient = _context.Patients.Where(p => p.Id == id)
+                .Include(m => m.Medications)
+                .Include(s => s.Schedules.Select(t => t.TodoList.Select(i => i.Task)))
+                .Single();
+
+     
+     */

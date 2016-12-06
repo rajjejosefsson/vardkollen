@@ -17,7 +17,11 @@ namespace vardkollen.Controllers
         public ActionResult Index()
         {
 
-            var schedulesAndPatient = _context.Schedules.Where(s => s.EmployeeId == 1).Include(p => p.Patient).ToList();
+            // Employee is hardcoded with id 1 = Martin in Db
+            var schedulesAndPatient = _context.Schedules.Where(e => e.EmployeeId == 1)
+                                                        .OrderByDescending(s => s.DateTime)
+                                                        .Include(p => p.Patient)
+                                                        .ToList();
 
             var viewModel = new TasksViewModel
             {
