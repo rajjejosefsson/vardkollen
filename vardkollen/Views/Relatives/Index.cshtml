@@ -20,8 +20,7 @@
 
 <div class="col-md-12">
     <!-- Check if relatives "patients" is > 1, if so show dropdown with all it "patients" else show the only "patient" -->
-    @if (Model.Relative.Patients.Count() > 1)
-    {
+   
         <h4>Välj Anhörig</h4>
         <select name="myFormInputName" id="myFormInputName" class="form-control dropdown-name">
             @foreach (var link in Model.Relative.Patients)
@@ -29,7 +28,7 @@
                 <option value="@(link.Id)">@(link.FirstName)</option>
             }
         </select>
-    }
+    
 </div>
 
 
