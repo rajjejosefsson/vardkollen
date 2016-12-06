@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace CareCheck.DomainClasses
@@ -28,6 +29,13 @@ namespace CareCheck.DomainClasses
 
 
         public ICollection<Relative> Relatives { get; set; }
+
+
+        public Patient()
+        {
+            Relatives = new Collection<Relative>();
+        }
+
 
 
         public ICollection<Schedule> Schedules { get; set; }

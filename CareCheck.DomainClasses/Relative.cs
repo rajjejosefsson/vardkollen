@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace CareCheck.DomainClasses
 {
@@ -12,7 +13,14 @@ namespace CareCheck.DomainClasses
         public string Adress { get; set; }
         public string ZipCode { get; set; }
 
+
         public ICollection<Patient> Patients { get; set; }
+
+
+        public Relative()
+        {
+            Patients = new Collection<Patient>();
+        }
 
     }
 }

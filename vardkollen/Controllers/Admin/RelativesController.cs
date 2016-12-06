@@ -94,16 +94,12 @@ namespace vardkollen.Controllers
         public ActionResult CreateConnection(PatientsAndRelativesViewModel viewModel)
         {
 
-
-
-
-
+            // Get patient and relative object
             var relative = _context.Relatives.Single(r => r.Id == viewModel.RelativeId);
             var patient = _context.Patients.Single(p => p.Id == viewModel.PatientId);
 
-
+            // Connects the relative with patiion using navigations (collection) in EF 
             patient.Relatives.Add(relative);
-            relative.Patients.Add(patient);
 
             _context.SaveChanges();
 
