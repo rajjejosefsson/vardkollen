@@ -51,7 +51,7 @@
 
     .task-item {
         background-color: white;
-        height: 310px;
+        height: 300px;
         max-width: 400px;
         margin: 15px 10px 40px 10px;
         overflow: hidden;
@@ -81,6 +81,8 @@
         left: 50%;
         width: 130px;
         bottom: 8px;
+        cursor:pointer;
+        font-weight:bold;
     }
 
 
@@ -117,6 +119,17 @@
     .pagination-holder {
         margin-left: 100px;
     }
+
+
+
+    .expand{
+        height: 310px;
+    } 
+    
+    .expanded {
+        height: 600px;
+    }
+
 
     @@media (max-width: 480px) {
         .item-left {
@@ -209,6 +222,7 @@
 
                     <!-- One Task Item -->
                     <div class="task-item">
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="task-heading">
@@ -225,7 +239,7 @@
 
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="task-list">
+                                <div class="task-list" id="task-list">
 
 
                                     <!-- each task in one tasklist item -->
@@ -246,11 +260,16 @@
                                             </li>
                                         }
                                     </ul>
+
+
                                 </div>
                             </div>
                         </div>
 
-                        <button class="btn btn-primary btn-more-info">Mer Info</button>
+
+
+                        <a class="btn-more-info moreButton text-center"  name="moreButton" id="moreButton">Mer Info</a>
+
                     </div>
 
 
@@ -293,7 +312,23 @@
 
 
 
+<script>
+    $(document).ready(function () {
 
+
+        $('.moreButton').on('click', function () {
+
+          
+           var taskItemDiv = $(this).parent('div');
+           taskItemDiv.toggleClass("expand expanded");
+          
+
+        });
+
+    });
+   
+
+</script>
 
 
 
@@ -310,10 +345,8 @@
 @section scripts {
     <script>
 
-
-
-
-
+        
+       
 
 
     </script>

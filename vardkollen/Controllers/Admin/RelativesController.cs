@@ -69,8 +69,55 @@ namespace vardkollen.Controllers
         {
         }
 
+
+
+
+        public ActionResult RelativeConnection()
+        {
+
+
+            var patients = _context.Patients.ToList();
+            var relatives = _context.Relatives.ToList();
+
+
+            var viewModel = new PatientsAndRelativesViewModel
+            {
+                Patients = patients,
+                Relatives = relatives,
+            };
+
+
+            return View(viewModel);
+        }
+
+
+        public ActionResult CreateConnection(PatientsAndRelativesViewModel viewModel)
+        {
+
+
+
+
+
+            var relative = _context.Relatives.Single(r => r.Id == viewModel.RelativeId);
+            var patient = _context.Patients.Single(p => p.Id == viewModel.PatientId);
+
+
+            patient.Relatives.Add(relative);
+            relative.Patients.Add(patient);
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index");
+        }
     }
 }
+
+
+
+
+
+
 
 
 /*

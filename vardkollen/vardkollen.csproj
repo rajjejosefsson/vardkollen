@@ -195,6 +195,7 @@
     <Compile Include="ViewModels\CreateScheduleViewModel.cs" />
     <Compile Include="ViewModels\DeleteScheduleViewModel.cs" />
     <Compile Include="ViewModels\PatientAndScheduleViewModel.cs" />
+    <Compile Include="ViewModels\PatientsAndRelativesViewModel.cs" />
     <Compile Include="ViewModels\ScheduleItemViewModel.cs" />
     <Compile Include="ViewModels\TasksViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -287,10 +288,12 @@
     <Content Include="Views\Task\Index - Copy %282%29.cshtml" />
     <Content Include="Views\Schedule\_Modal.cshtml" />
     <Content Include="Views\Relatives\_RelativePartialView - Copy.cshtml" />
+    <Content Include="Views\Relatives\RelativeConnection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\BackupSkit\" />
+    <Folder Include="Views\ConnectPatients\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
