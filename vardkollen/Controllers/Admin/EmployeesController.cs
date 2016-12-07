@@ -12,7 +12,7 @@ namespace vardkollen.Controllers
         private readonly CareCheckDbContext _context = new CareCheckDbContext();
 
 
-        // GET: Staff
+
         public ActionResult Index()
         {
 
@@ -26,34 +26,58 @@ namespace vardkollen.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateEmployee(Employee employee)
+        public ActionResult CreateEmployee(EmployeeViewModel viewModel)
         {
 
 
-            if (employee.Id == 0)
+            if (ModelState.IsValid)
             {
-                // CREATE - is new employe
-                _context.Employees.Add(employee);
+
+                // if using create or edit
+                if (viewModel.Id == 0)
+                {
+                    // CREATE Employee
+
+                    var employee = new Employee
+                    {
+                        FirstName = viewModel.FirstName,
+                        LastName = viewModel.LastName,
+                        PersonNumber = viewModel.PersonNumber,
+                        PhoneNumber = viewModel.PhoneNumber,
+                        Adress = viewModel.Adress,
+                        ZipCode = viewModel.ZipCode,
+                    };
+
+                    _context.Employees.Add(employee);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    // EDIT Employee
+
+                    var employeeInDb = _context.Employees.Single(e => e.Id == viewModel.Id);
+
+                    employeeInDb.FirstName = viewModel.FirstName;
+                    employeeInDb.LastName = viewModel.LastName;
+                    employeeInDb.PersonNumber = viewModel.PersonNumber;
+                    employeeInDb.PhoneNumber = viewModel.PhoneNumber;
+                    employeeInDb.Adress = viewModel.Adress;
+                    employeeInDb.ZipCode = viewModel.ZipCode;
+                }
+
+
+
                 _context.SaveChanges();
-            }
-            else
-            {
-                var employeeInDb = _context.Employees.Single(e => e.Id == employee.Id);
+                return RedirectToAction("Index");
 
-                employeeInDb.FirstName = employee.FirstName;
-                employeeInDb.LastName = employee.LastName;
-                employeeInDb.PersonNumber = employee.PersonNumber;
-                employeeInDb.PhoneNumber = employee.PhoneNumber;
-                employeeInDb.Adress = employee.Adress;
-                employeeInDb.ZipCode = employee.ZipCode;
+
             }
 
 
+            // Temp
+            viewModel.Employees = _context.Employees.ToList();
 
-            _context.SaveChanges();
-
-
-            return RedirectToAction("Index");
+            return View("Index", viewModel);
         }
 
 
