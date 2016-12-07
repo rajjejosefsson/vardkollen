@@ -36,7 +36,7 @@ namespace vardkollen.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePatient(PatientViewModel viewModel)
+        public ActionResult CreatePatientOld(PatientViewModel viewModel)
         {
 
 
@@ -63,6 +63,75 @@ namespace vardkollen.Controllers
 
             return View("Index", viewModel);
         }
+
+
+
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePatient(PatientViewModel viewModel)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                // if using create or edit
+                if (viewModel.Id == 0)
+                {
+                    // CREATE Employee
+
+                    var patient = new Patient
+                    {
+                        FirstName = viewModel.FirstName,
+                        LastName = viewModel.LastName,
+                        PersonNumber = viewModel.PersonNumber,
+                        PhoneNumber = viewModel.PhoneNumber,
+                        Adress = viewModel.Adress,
+                        ZipCode = viewModel.ZipCode,
+                    };
+
+                    _context.Patients.Add(patient);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    // EDIT Employee
+
+                    var patientInDb = _context.Patients.Single(e => e.Id == viewModel.Id);
+
+                    patientInDb.FirstName = viewModel.FirstName;
+                    patientInDb.LastName = viewModel.LastName;
+                    patientInDb.PersonNumber = viewModel.PersonNumber;
+                    patientInDb.PhoneNumber = viewModel.PhoneNumber;
+                    patientInDb.Adress = viewModel.Adress;
+                    patientInDb.ZipCode = viewModel.ZipCode;
+                }
+
+
+
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+
+            // Temp send back when not valid
+            viewModel.Patients = _context.Patients.ToList();
+
+            return View("Index", viewModel);
+        }
+
+
+
+
+
+
+
+
+
 
 
 

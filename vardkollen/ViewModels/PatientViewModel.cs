@@ -12,6 +12,8 @@ namespace vardkollen.ViewModels
 
 
 
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Förnamn måste anges")]
         public string FirstName { get; set; }
 

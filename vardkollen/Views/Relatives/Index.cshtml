@@ -5,7 +5,7 @@
 
 <style>
    
-    .dropdown-name, h4 {
+    .dropdown-name, h4, .dropdownLabel {
         margin-left: 40px;
     } 
 
@@ -22,8 +22,9 @@
 
 <div class="col-md-12">
     <!-- Check if relatives "patients" is > 1, if so show dropdown with all it "patients" else show the only "patient" -->
-   
-        <h4>Välj Anhörig</h4>
+
+    <h4>Hej @Model.Relative.FirstName</h4>
+    <p class="dropdownLabel">Här kan du välja anhörig</p>
         <select name="myFormInputName" id="myFormInputName" class="form-control dropdown-name">
             @foreach (var link in Model.Relative.Patients)
             {
@@ -48,7 +49,7 @@
 
         function renderPatient(patientId) {
             /* Request the partial view with .get request. */
-            $.get('/Relatives/MyAction/' + patientId, function (data) {
+            $.get('/Relatives/RelativeInformation/' + patientId, function (data) {
 
                 /* data is the pure html returned from action method, load it to your page */
                 $('#partialPlaceHolder').html(data);
@@ -72,12 +73,6 @@
                 renderPatient(patientId);
 
             });
-
-
-
-           
-
-
         });
     </script>
 }

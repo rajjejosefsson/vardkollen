@@ -12,27 +12,24 @@ namespace vardkollen.Controllers
         private readonly CareCheckDbContext _context = new CareCheckDbContext();
 
 
-
+        // Index with employees table
         public ActionResult Index()
         {
-
             var viewModel = new EmployeeViewModel
             {
                 Employees = _context.Employees.ToList()
             };
-
             return View(viewModel);
         }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateEmployee(EmployeeViewModel viewModel)
         {
-
-
             if (ModelState.IsValid)
             {
-
                 // if using create or edit
                 if (viewModel.Id == 0)
                 {
@@ -65,16 +62,12 @@ namespace vardkollen.Controllers
                     employeeInDb.ZipCode = viewModel.ZipCode;
                 }
 
-
-
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-
-
             }
 
-
-            // Temp
+            // on failure - must get the list of employees from
+            // db to get fetched to the table again
             viewModel.Employees = _context.Employees.ToList();
 
             return View("Index", viewModel);
@@ -82,15 +75,16 @@ namespace vardkollen.Controllers
 
 
 
-
-
         [HttpPost]
         public ActionResult DeleteEmployee(int id)
         {
-            var employeeInDb = _context.Employees.Single(e => e.Id == id);
+            var employeeInDb = _context.Employees.SingleOrDefault(e => e.Id == id);
 
-            _context.Employees.Remove(employeeInDb);
-            _context.SaveChanges();
+            if (employeeInDb != null)
+            {
+                _context.Employees.Remove(employeeInDb);
+                _context.SaveChanges();
+            }
 
             return RedirectToAction("Index");
         }

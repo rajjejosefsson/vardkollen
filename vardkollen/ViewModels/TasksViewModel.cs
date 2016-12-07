@@ -8,9 +8,11 @@ namespace vardkollen.ViewModels
     {
 
 
+        public Employee Employee { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
 
         public Schedule Schedule { get; set; }
+
 
 
         public List<TasksModel> Tasks { get; set; }

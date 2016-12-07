@@ -21,11 +21,17 @@ namespace vardkollen.Controllers
             var schedulesAndPatient = _context.Schedules.Where(e => e.EmployeeId == 1)
                                                         .OrderByDescending(s => s.DateTime)
                                                         .Include(p => p.Patient)
+                                                        .Include(e => e.Employee)
                                                         .ToList();
+
+
+            var employee = _context.Employees.Single(e => e.Id == 1);
+
 
             var viewModel = new TasksViewModel
             {
-                Schedules = schedulesAndPatient
+                Schedules = schedulesAndPatient,
+                Employee = employee
             };
 
             return View(viewModel);
@@ -72,7 +78,7 @@ namespace vardkollen.Controllers
         public ActionResult UpdateTodoList(TasksViewModel viewModel)
         {
 
-      
+
             var dataEntries = _context.TodoList.Where(i => i.ScheduleId == viewModel.Schedule.Id).ToList();
 
 
