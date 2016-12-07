@@ -59,13 +59,14 @@
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
     .left-task-item {
-        background-color: white;
+       
         height: 180px;
         max-width: 400px;
         margin: 15px 10px 40px 10px;
         overflow: hidden;
         position: relative;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 100ms ease-in;
     }
 
         .task-item:hover {
@@ -130,15 +131,20 @@
 
 
 
-    .expand{
+    .right-task-expand{
         height: 310px;
     } 
     
-    .expanded {
+    .right-task-expanded {
         height: 600px;
     }
 
-
+    .left-task-expand {
+        height: 310px;
+    }
+    .left-task-expanded {
+        height:350px;
+    }
     @@media (max-width: 480px) {
         .item-left {
             min-height: 300px;
@@ -206,7 +212,7 @@
 
 
                     </div>
-                    <a class="btn-more-info moreButton text-center" name="moreButton" id="moreButton">Mer Info</a>
+                    <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
 
                 </div>
 
@@ -218,13 +224,13 @@
                         <p> </p>
                        
                     </div>
-                    <a class="btn-more-info moreButton text-center" name="moreButton" id="moreButton">Mer Info</a>
+                    <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
 
                 </div>
 
                 <div class="item-left left-task-item">
                     <h3>Anhöriga</h3>
-                    <a class="btn-more-info moreButton text-center" name="moreButton" id="moreButton">Mer Info</a>
+                    <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
                 </div>
            
 
@@ -287,7 +293,7 @@
 
 
 
-                        <a class="btn-more-info moreButton text-center"  name="moreButton" id="moreButton">Mer Info</a>
+                        <a class="btn-more-info moreButtonRight text-center"  name="moreButton" id="moreButton">Mer Info</a>
 
                     </div>
 
@@ -335,14 +341,25 @@
     $(document).ready(function () {
 
 
-        $('.moreButton').on('click', function () {
+        $('.moreButtonRight').on('click', function () {
 
           
            var taskItemDiv = $(this).parent('div');
-           taskItemDiv.toggleClass("expand expanded");
+           taskItemDiv.toggleClass("right-task-expand right-task-expanded");
           
 
         });
+
+        $('.moreButtonLeft').on('click', function () {
+
+
+            var taskItemDiv = $(this).parent('div');
+            taskItemDiv.toggleClass("left-task-expand left-task-expanded");
+
+
+        });
+
+
 
     });
    
