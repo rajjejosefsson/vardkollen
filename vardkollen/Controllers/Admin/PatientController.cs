@@ -1,5 +1,4 @@
 ﻿using CareCheck.DataAccess;
-using CareCheck.DomainClasses;
 using System.Linq;
 using System.Web.Mvc;
 using vardkollen.ViewModels;
@@ -14,7 +13,9 @@ namespace vardkollen.Controllers
         {
             var viewModel = new PatientViewModel
             {
-                Patients = _context.Patients.ToList()
+                Patients = _context.Patients.ToList(),
+                FirstName = null,
+                LastName = null,
             };
 
             return View(viewModel);
@@ -36,11 +37,12 @@ namespace vardkollen.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePatient(Patient patient)
+        public ActionResult CreatePatient(PatientViewModel viewModel)
         {
+
             if (ModelState.IsValid)
             {
-                _context.Patients.Add(patient);
+                //    _context.Patients.Add(patient);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }

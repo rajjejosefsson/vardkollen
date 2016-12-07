@@ -22,7 +22,6 @@ namespace vardkollen.Controllers
             var tasks = _context.Tasks.ToList();
 
 
-
             var taskItems = new List<TasksModel>();
             foreach (var task in tasks)
             {
@@ -51,43 +50,79 @@ namespace vardkollen.Controllers
 
 
 
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedule(CreateScheduleViewModel viewModel)
         {
 
-            // DateTime  PatientID   EmployeeId
-            Schedule schedule = new Schedule
+
+
+
+
+            if (ModelState.IsValid)
             {
-                DateTime = viewModel.DateTime,
-                PatientId = viewModel.PatientId,
-                EmployeeId = viewModel.EmployeeId
-            };
-
-            _context.Schedules.Add(schedule);
-            _context.SaveChanges();  // we do have schedule.Id from db now allready.
-
-
-
-
-            // Task_id     Schedule_id    isDone
-            foreach (var task in viewModel.Tasks)
-            {
-                if (task.IsChecked)
+                // DateTime  PatientID   EmployeeId
+                Schedule schedule = new Schedule
                 {
-                    var todoItem = new TodoList()
+                    DateTime = viewModel.DateTime,
+                    PatientId = viewModel.PatientId,
+                    EmployeeId = viewModel.EmployeeId
+                };
+
+                _context.Schedules.Add(schedule);
+                _context.SaveChanges();  // we do have schedule.Id from db now allready.
+
+
+
+
+                // Task_id     Schedule_id    isDone
+                foreach (var task in viewModel.Tasks)
+                {
+                    if (task.IsChecked)
                     {
-                        TaskId = task.Id,
-                        ScheduleId = schedule.Id,
-                        IsDone = false // init value
-                    };
-                    _context.TodoList.Add(todoItem);
+                        var todoItem = new TodoList()
+                        {
+                            TaskId = task.Id,
+                            ScheduleId = schedule.Id,
+                            IsDone = false // init value
+                        };
+                        _context.TodoList.Add(todoItem);
+                    }
                 }
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+
             }
-            _context.SaveChanges();
 
 
-            return RedirectToAction("Index");
+
+
+
+
+
+
+            /* Must be a better way!!! same code as in index... */
+            var tasks = _context.Tasks.ToList();
+            var taskItems = new List<TasksModel>();
+            foreach (var task in tasks)
+            {
+                taskItems.Add(new TasksModel()
+                {
+                    Id = task.Id,
+                    IsChecked = false,
+                    TaskName = task.Name
+                });
+            }
+
+            viewModel.Tasks = taskItems;
+            viewModel.Patients = _context.Patients.ToList();
+            viewModel.Employees = _context.Employees.ToList();
+
+
+
+            return View("Index", viewModel);
         }
 
 

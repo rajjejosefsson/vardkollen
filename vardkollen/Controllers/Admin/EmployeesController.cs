@@ -28,7 +28,7 @@ namespace vardkollen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateEmployee(Employee employee)
         {
-     
+
 
             if (employee.Id == 0)
             {
