@@ -289,14 +289,10 @@
     <Content Include="Views\Schedule\_Modal.cshtml" />
     <Content Include="Views\Relatives\_RelativePartialView - Copy.cshtml" />
     <Content Include="Views\Relatives\RelativeConnection.cshtml" />
-    <Content Include="Views\Relatives\_RelativePartialView - Copy %282%29.cshtml" />
-    <Content Include="Views\Relatives\_RelativePartialView - Copy %283%29.cshtml" />
-    <Content Include="Views\Relatives\_RelativePartialView - Copy %284%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\BackupSkit\" />
-    <Folder Include="Views\ConnectPatients\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

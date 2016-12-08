@@ -41,6 +41,7 @@ namespace vardkollen.Controllers
                 PatientId = 0,
                 EmployeeId = 0,
                 Tasks = taskItems,
+                Task = null
             };
 
 
@@ -56,9 +57,6 @@ namespace vardkollen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedule(CreateScheduleViewModel viewModel)
         {
-
-
-
 
 
             if (ModelState.IsValid)
@@ -98,11 +96,7 @@ namespace vardkollen.Controllers
 
 
 
-
-
-
-
-
+            // To show the validation we need to pass this shit again
             /* Must be a better way!!! same code as in index... */
             var tasks = _context.Tasks.ToList();
             var taskItems = new List<TasksModel>();
@@ -119,7 +113,6 @@ namespace vardkollen.Controllers
             viewModel.Tasks = taskItems;
             viewModel.Patients = _context.Patients.ToList();
             viewModel.Employees = _context.Employees.ToList();
-
 
 
             return View("Index", viewModel);
@@ -157,16 +150,6 @@ namespace vardkollen.Controllers
 
 
 
-
-        public ActionResult UpdateSchedule(string s)
-        {
-            throw new System.NotImplementedException();
-        }
-
-
-
-
-
         [HttpGet]
         public JsonResult GetJsonSchedule()
         {
@@ -187,6 +170,32 @@ namespace vardkollen.Controllers
 
 
 
+        [HttpPost]
+        public ActionResult CreateTask(CreateScheduleViewModel viewModel)
+        {
+
+            var newTask = new Task
+            {
+                Name = viewModel.Task.Name
+            };
+
+
+            // If it doesnt exist add the new item
+            if (!_context.Tasks.Any(t => t.Name == newTask.Name))
+            {
+                _context.Tasks.Add(newTask);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
 
 
         public ActionResult BootstrapModal(int? id)
@@ -194,7 +203,6 @@ namespace vardkollen.Controllers
             var schedule = _context.Schedules.Where(s => s.Id == id)
                                  .Include(p => p.Patient).Include(t => t.TodoList.Select(i => i.Task))
                                  .Single();
-
 
 
             var taskItems = new List<TasksModel>();
@@ -208,9 +216,6 @@ namespace vardkollen.Controllers
                 });
             }
 
-
-
-
             var viewModel = new ScheduleItemViewModel
             {
                 Patient = schedule.Patient,
@@ -218,7 +223,6 @@ namespace vardkollen.Controllers
                 Tasks = taskItems
 
             };
-
             return PartialView("_Modal", viewModel);
         }
 
@@ -226,6 +230,18 @@ namespace vardkollen.Controllers
 
 
 
+
+        // Not yet complete
+        public ActionResult EditSchedule(ScheduleItemViewModel viewModel)
+        {
+            var test = _context.Schedules.Where(s => s.Id == viewModel.ScheduleId)
+                                         .Include(e => e.Employee)
+                                         .Include(p => p.Patient)
+                                         .Include(t => t.TodoList)
+                                         .Single();
+
+            throw new System.NotImplementedException();
+        }
 
 
 

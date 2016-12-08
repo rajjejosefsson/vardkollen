@@ -28,6 +28,8 @@ namespace vardkollen.ViewModels
         public ICollection<Employee> Employees { get; set; }
         public List<TasksModel> Tasks { get; set; }
 
+        public Task Task { get; set; }
+
 
         public CreateScheduleViewModel()
         {

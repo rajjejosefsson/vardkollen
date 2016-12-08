@@ -99,5 +99,6 @@ namespace vardkollen.Controllers
             return RedirectToAction("Index");
         }
 
+
     }
 }

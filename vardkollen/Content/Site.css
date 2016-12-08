@@ -28,7 +28,9 @@ textarea {
     }
 
 
-
+  .text-danger {
+      color: #f71f1b;
+  }
 
 
   .start-banner {  

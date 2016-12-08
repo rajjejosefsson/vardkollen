@@ -36,6 +36,9 @@
                 color: #DDD;
             }
 
+
+
+
     #sub-floor {
         color: #AAA;
         background: black none repeat scroll 0% 0%;
@@ -44,10 +47,42 @@
 
 
     .fa-github-square {
-        font-size: 40px;
+        font-size: 80px;
         margin-right: 10px;
         color: #d0d0d0;
     }
+
+
+
+       a .fa-github-square:hover {
+
+        color: white;
+        -webkit-transition: color 0.2s;
+	    transition: color 0.2s;
+
+    }
+
+
+
+       blockquote {
+	padding: 2%;
+	font-style: italic;
+	line-height: 145%;
+	position: relative;
+	margin-top: 10px;
+    border-left: 0;
+    }
+
+
+       blockquote:before {
+	display: block;
+	content: "\201C";
+	font-size: 400%;
+	/* to be avsolute, its parrent needs to be relative */
+	position: absolute;
+	top:  5px;
+	left: -5px;
+}
 
 
      .social-media-icons {
@@ -65,51 +100,48 @@
 </style>
 
 <footer id="footer" class="clearfix">
-   
+
+    <div class="container">
+        <div id="footer-wrapper">
+            <div class="row">
+
+                <div class="col-xs-6 col-sm-4 col-md-4">
+                    <div class="left-side-block">
+                    </div>
+                </div>
+
+
+                <div class="col-xs-6 col-sm-4 col-md-4">
+                    <div id="" class="social-media-icons text-center">
+                        <a href="https://github.com/rajjejosefsson/vardkollen"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+                        <blockquote> It's a new carecheck everyday</blockquote>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-4 col-md-4">
+
+                    <div class="pull-right">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="sub-floor">
         <div class="container">
-            <div id="footer-wrapper">
-                <div class="row">
-
-                    <div class="col-xs-6 col-sm-4 col-md-4">
-                        <div class="left-side-block">
-                            <h4 class="footertitle">Länkar:</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa fa-home fa-fw"></i>Hem</a></li>
-                                <li><a href="#"><i class="fa fa-link"></i>Om oss</a></li>
-                                <li><a href="#"><i class="fa fa-envelope fa-fw"></i>Kontakta oss</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                    <div class="col-xs-6 col-sm-4 col-md-4">
-                        <div id="" class="social-media-icons text-center">
-                            <a href="https://github.com"><i class="fa fa-github-square" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-4 col-md-4">
-                        <!-- Empty for now -->
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div id="sub-floor">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 copyright">
-                        <p class="text-center">Copyright Team Vård © 2016</p>
-                    </div>
+            <div class="row">
+                <div class="col-md-12 copyright">
+                    <p class="text-center">Copyright Team Vård © 2016</p>
                 </div>
             </div>
         </div>
-  
+    </div>
+
 </footer>
 
 @section scripts

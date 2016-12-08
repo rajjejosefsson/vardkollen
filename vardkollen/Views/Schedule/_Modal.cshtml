@@ -1,5 +1,11 @@
 ﻿@model vardkollen.ViewModels.ScheduleItemViewModel
 
+<style>
+    .button-holder form {
+        display: inline-block;
+    }
+</style>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -10,48 +16,39 @@
             <div class="modal-body">
 
 
-                @using (Html.BeginForm("UpdateSchedule", "Schedule", "POST"))
+                @using (Html.BeginForm("EditSchedule", "Schedule", "POST"))
                 {
                     @Html.AntiForgeryToken()
-
-
-                    <!-- Select Tasks for todolist -->
-                    @Html.LabelFor(m => m.Tasks)
-                    <ul class="list-group todolist-ul">
-                        @for (var i = 0; i < @Model.Tasks.Count; i++)
-                        {
-                            <li class="list-group-item">
-                                @Html.HiddenFor(x => x.Tasks[i].Id)
-                                @Html.CheckBoxFor(x => x.Tasks[i].IsChecked, new { @class = "pull-left checkbox" })
-                                <p>@Model.Tasks[i].TaskName</p>
-                            </li>
-                        }
-                    </ul>
-                    <!-- Select Tasks END -->
+                    @Html.HiddenFor(s => s.ScheduleId, new { @id = "hiddenId" })
                 }
 
+                @Model.ScheduleId
+                <p> Här kan du ändra eller ta bort i schemat<strong> @Model.Patient.FirstName @Model.Patient.LastName</strong>
+                </p>
 
-
-                @using (Html.BeginForm("DeleteSchedule", "Schedule", "POST"))
-                {
-                    @Html.AntiForgeryToken()
-
-
-                    <p>
-                        Är du säker på att du vill ta bort <strong> @Model.Patient.FirstName @Model.Patient.LastName</strong> från schemat ?
-                    </p>
-                    <p style="color: red">Det går inte ångra sig</p>
-
-
-                    @Model.ScheduleId
-                    <div class="modal-footer">
-                        @Html.HiddenFor(s => s.ScheduleId, new { @id = "hiddenId" })
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="button-holder">
+                    @using (Html.BeginForm("DeleteSchedule", "Schedule", "POST"))
+                    {
+                        @Html.AntiForgeryToken()
                         <input type="submit" value="Ta bort Schemat" class="btn btn-danger create-save-btn" />
-                    </div>
-                }
-            </div>
+                            @Html.HiddenFor(s => s.ScheduleId, new { @id = "hiddenId" })
+                    }
+                    <button class="btn btn-info">Edit</button>
+                </div>
 
+
+
+                <br/>
+                <br/>
+
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
         </div>
     </div>
 </div>
