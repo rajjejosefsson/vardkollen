@@ -40,13 +40,12 @@ namespace vardkollen.Controllers
 
 
 
-        public ActionResult MyAction(int? id)
+        public ActionResult SelectSchedule(int? id)
         {
 
             var schedule = _context.Schedules.Where(s => s.Id == id)
                                              .Include(t => t.TodoList.Select(i => i.Task))
                                              .Single();
-
 
 
             var taskItems = new List<TasksModel>();

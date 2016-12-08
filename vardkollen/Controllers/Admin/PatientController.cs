@@ -32,53 +32,12 @@ namespace vardkollen.Controllers
 
 
 
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreatePatientOld(PatientViewModel viewModel)
-        {
-
-
-            if (ModelState.IsValid)
-            {
-
-                var patient = new Patient
-                {
-                    FirstName = viewModel.FirstName,
-                    LastName = viewModel.LastName,
-                    PersonNumber = viewModel.PersonNumber,
-                    PhoneNumber = viewModel.PhoneNumber,
-                    Adress = viewModel.Adress,
-                    ZipCode = viewModel.ZipCode,
-
-
-                };
-
-
-                _context.Patients.Add(patient);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View("Index", viewModel);
-        }
-
-
-
-
-
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreatePatient(PatientViewModel viewModel)
         {
-
-
             if (ModelState.IsValid)
             {
-
                 // if using create or edit
                 if (viewModel.Id == 0)
                 {
@@ -111,29 +70,14 @@ namespace vardkollen.Controllers
                     patientInDb.ZipCode = viewModel.ZipCode;
                 }
 
-
-
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-
             // Temp send back when not valid
             viewModel.Patients = _context.Patients.ToList();
-
             return View("Index", viewModel);
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -148,6 +92,47 @@ namespace vardkollen.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+
+
+
+
+
+
+
+
+        // OLD BACKUP
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePatientOld(PatientViewModel viewModel)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                var patient = new Patient
+                {
+                    FirstName = viewModel.FirstName,
+                    LastName = viewModel.LastName,
+                    PersonNumber = viewModel.PersonNumber,
+                    PhoneNumber = viewModel.PhoneNumber,
+                    Adress = viewModel.Adress,
+                    ZipCode = viewModel.ZipCode,
+
+
+                };
+
+
+                _context.Patients.Add(patient);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View("Index", viewModel);
+        }
+
 
 
 

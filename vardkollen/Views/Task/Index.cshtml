@@ -24,7 +24,6 @@
 </style>
 
 <div class="row">
-
     <div class="start-banner text-center">
         <h1 class="">Uppgifter</h1>
         <h4>Hej @Model.Employee.FirstName</h4>
@@ -60,8 +59,7 @@
 
         function renderPatient(patientId) {
             /* Request the partial view with .get request. */
-            $.get('/Task/MyAction/' + patientId, function (data) {
-
+            $.get('/Task/SelectSchedule/' + patientId, function (data) {
                 /* data is the pure html returned from action method, load it to your page */
                 $('#partialPlaceHolder').html(data);
                 /* little fade in effect */
@@ -70,13 +68,11 @@
         }
 
 
-
         $(document).ready(function () {
 
             // Initial patient to render
             var patientId = $("#myFormInputName").val();
             renderPatient(patientId);
-
 
 
             // Select patient to show
