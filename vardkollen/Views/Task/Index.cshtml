@@ -23,19 +23,21 @@
 }
 </style>
 
-<div class="row">
-    <div class="start-banner text-center">
-        <h1 class="">Uppgifter</h1>
-        <h4>Hej @Model.Employee.FirstName</h4>
-        <p>Här finns alla dina patienter som du har på ditt schema</p>
-        <div style="text-align: center">
-            <div class="dropdown form-group">
-                <select name="myFormInputName" id="myFormInputName" class="form-control">
-                    @foreach (var schedule in Model.Schedules)
-                    {
-                        <option value="@(schedule.Id)">@schedule.Patient.FirstName @schedule.DateTime</option>
-                    }
-                </select>
+
+    <div class="col-md-12">
+        <div class="start-banner text-center">
+            <h1 class="">Uppgifter</h1>
+            <h4>Hej @Model.Employee.FirstName</h4>
+            <p>Här finns alla dina patienter som du har på ditt schema</p>
+            <div style="text-align: center">
+                <div class="dropdown form-group">
+                    <select name="myFormInputName" id="myFormInputName" class="form-control">
+                        @foreach (var schedule in Model.Schedules)
+                        {
+                            <option value="@(schedule.Id)">@schedule.Patient.FirstName @schedule.DateTime</option>
+                        }
+                    </select>
+                </div>
             </div>
         </div>
     </div>
@@ -43,7 +45,6 @@
 
     <div id="partialPlaceHolder" style="display: none;"></div>
 
-</div>
 
 
 

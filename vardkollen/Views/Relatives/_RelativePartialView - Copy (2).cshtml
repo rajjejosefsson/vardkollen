@@ -5,7 +5,7 @@
 
 
 <style>
-    .left-side-holder {
+    .task-holder {
         /* background-color: gray; */
     }
 
@@ -29,20 +29,10 @@
             margin-top: 20px;
         }
 
+    .left-main-content {
+    }
 
 
-        .item-left h3 {
-            margin: 0;
-        }
-
-
-        .left-main-content {
-            margin-top: 10px;
-        }
-
-        .relative-holder {
-            height: 159px;
-        }
 
 
     /* Right Side Card Item (Tasks)  */
@@ -68,8 +58,9 @@
         position: relative;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     }
-
-    .left-task-items {
+    .left-task-item {
+       
+        height: 180px;
         max-width: 400px;
         margin: 15px 10px 40px 10px;
         overflow: hidden;
@@ -78,10 +69,10 @@
         transition: all 100ms ease-in;
     }
 
-    .task-item:hover {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        transition: all 100ms ease-in;
-    }
+        .task-item:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            transition: all 100ms ease-in;
+        }
 
 
     /* Center button using transform (new browesers supports this only) */
@@ -99,8 +90,8 @@
         left: 50%;
         width: 130px;
         bottom: 8px;
-        cursor: pointer;
-        font-weight: bold;
+        cursor:pointer;
+        font-weight:bold;
     }
 
 
@@ -140,10 +131,10 @@
 
 
 
-    .right-task-expand {
+    .right-task-expand{
         height: 310px;
-    }
-
+    } 
+    
     .right-task-expanded {
         height: 600px;
     }
@@ -151,23 +142,9 @@
     .left-task-expand {
         height: 310px;
     }
-
     .left-task-expanded {
-        height: 350px;
+        height:350px;
     }
-
-
-
-    .left-ul-item {
-        list-style: none;
-        padding: 0;
-    }
-
-
-    .relative-li-item {
-        margin-bottom: 40px;
-    }
-
     @@media (max-width: 480px) {
         .item-left {
             min-height: 300px;
@@ -185,16 +162,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
+<div class="row">
+    <div class="start-banner">
+    </div>
+</div>
 
 
 
@@ -206,75 +177,65 @@
 
         <!-- Left side of page-->
         <div class="col-xs-12 col-sm-6 col-md-5">
-            <div class="left-side-holder">      
-                <div class="item-left profile-holder">
+            <div class="task-holder">
+                <div class="item-left profile">
                     <div class="col-xs-4">
-                        <img src="~/Content/Images/user-female-picture.png" style="width: 110px" alt="" />
+                        <img src="~/Content/Images/user-female-picture.png" style="width: 110px" alt=""/>
                     </div>
                     <div class="col-xs-8">
                         <h3>@Model.Patient.FirstName @Model.Patient.LastName</h3>
+
                         <div class="left-main-content">
-                            <p> <strong>Persnr:</strong>@Model.Patient.PersonNumber</p>
-                            <p><strong>Telefon:</strong>@Model.Patient.PhoneNumber</p>
+
+                            <p>
+                                <strong>Persnr:</strong>@Model.Patient.PersonNumber
+                            </p>
+                            <p>
+                                <strong>Telefon:</strong>@Model.Patient.PhoneNumber
+                            </p>
                         </div>
                     </div>
                 </div>
 
-
-
-
-                <br/>
-                <br/>
-                <br/>
-
-
                 <h1 style="color: black; margin-left: 30px">Övrigt</h1>
                 <hr/>
-
-
-
-                <div class="item-left left-task-items medication-holder">
+                <div class="item-left left-task-item">
                     <h3>Medicin</h3>
                     <div class="left-main-content">
-                        <ul class="left-ul-item">
-                            @foreach (var medication in Model.Patient.Medications)
-                            {
-                                <li>
-                                    <p>
-                                        @medication.Name
-                                    </p>
-                                </li>
-                            }
-                        </ul>
+
+                        @foreach (var medication in Model.Patient.Medications)
+                        {
+                            <p>
+                                @medication.Name
+                            </p>
+                        }
+
+
                     </div>
                     <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
+
                 </div>
 
-
-                <div class="item-left left-task-items relative-holder">
-                    <h3>Anhöriga</h3>
+                <div class="item-left left-task-item">
+                    <h3>Allergier</h3>
                     <div class="left-main-content">
-                        <ul class="left-ul-item">
-                            @foreach (var relative in @Model.Patient.Relatives)
-                            {
-                                <li class="relative-li-item">
-                                    <p>@relative.FirstName @relative.LastName</p>
-                                    <p>@relative.Adress @relative.ZipCode</p>
-                                    <p>@relative.PhoneNumber</p>
-                                </li>
-
-                            }
-                        </ul>
+                        <p> </p>
+                        <p> </p>
+                        <p> </p>
+                       
                     </div>
                     <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
+
                 </div>
 
-
-     
-
-
+                <div class="item-left left-task-item">
+                    <h3>Anhöriga</h3>
+                    <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
+                </div>
+           
 
             </div>
+           
         </div>
 
 
@@ -332,7 +293,7 @@
 
 
 
-                        <a class="btn-more-info moreButtonRight text-center" name="moreButton" id="moreButton">Mer Info</a>
+                        <a class="btn-more-info moreButtonRight text-center"  name="moreButton" id="moreButton">Mer Info</a>
 
                     </div>
 
@@ -372,10 +333,6 @@
     <!-- Right Ends Here -->
 
 
-</div>
-
-
-
 
 
 
@@ -386,14 +343,16 @@
 
         $('.moreButtonRight').on('click', function () {
 
-
-            var taskItemDiv = $(this).parent('div');
-            taskItemDiv.toggleClass("right-task-expad right-task-expanded");
-
+          
+           var taskItemDiv = $(this).parent('div');
+           taskItemDiv.toggleClass("right-task-expand right-task-expanded");
+          
 
         });
 
         $('.moreButtonLeft').on('click', function () {
+
+
             var taskItemDiv = $(this).parent('div');
             taskItemDiv.toggleClass("left-task-expand left-task-expanded");
 
@@ -403,7 +362,7 @@
 
 
     });
-
+   
 
 </script>
 
@@ -415,11 +374,15 @@
 
 
 
+</div>
+
+
+
 @section scripts {
     <script>
 
-
-
+        
+       
 
 
     </script>

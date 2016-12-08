@@ -33,7 +33,10 @@ namespace vardkollen.Controllers
         // Partialview with all relative information
         public ActionResult RelativeInformation(int? id)
         {
-            var patient = _context.Patients.Where(p => p.Id == id).Include(m => m.Medications).Single();
+            var patient = _context.Patients.Where(p => p.Id == id)
+                                           .Include(m => m.Medications)
+                                           .Include(r => r.Relatives)
+                                           .Single();
 
             var schedule =
                 _context.Schedules.Where(p => p.PatientId == patient.Id)
@@ -44,7 +47,8 @@ namespace vardkollen.Controllers
             var viewModel = new PatientAndScheduleViewModel
             {
                 Patient = patient,
-                Schedules = schedule
+                Schedules = schedule,
+
             };
 
             return PartialView("_RelativePartialView", viewModel);

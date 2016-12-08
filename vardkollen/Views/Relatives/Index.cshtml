@@ -4,12 +4,9 @@
 }
 
 <style>
-   
     .dropdown-name, h4, .dropdownLabel {
-        margin-left: 40px;
-    } 
-
-   
+        margin-left: 13px;
+    }
 </style>
 
 
@@ -19,20 +16,24 @@
 </div>
 
 
-
 <div class="col-md-12">
-    <!-- Check if relatives "patients" is > 1, if so show dropdown with all it "patients" else show the only "patient" -->
+    <div class="col-md-6">
 
-    <h4>Hej @Model.Relative.FirstName</h4>
-    <p class="dropdownLabel">Här kan du välja anhörig</p>
+        <!-- Check if relatives "patients" is > 1, if so show dropdown with all it "patients" else show the only "patient" -->
+        <h4>Hej @Model.Relative.FirstName</h4>
+        <p class="dropdownLabel"><strong>Här kan du välja anhörig</strong></p>
         <select name="myFormInputName" id="myFormInputName" class="form-control dropdown-name">
             @foreach (var link in Model.Relative.Patients)
             {
                 <option value="@(link.Id)">@(link.FirstName)</option>
             }
         </select>
-    
+
+    </div>
+    <div class="col-md-6">
+    </div>
 </div>
+
 
 
 

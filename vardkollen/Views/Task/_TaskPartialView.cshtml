@@ -56,10 +56,11 @@
 
 
 <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <div class="task-list">
-            <div class="col-md-12">
+    <div class="col-md-12">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6">
+            <div class="task-list">
 
                 <div class="todoList-div">
                     @using (Html.BeginForm("UpdateTodoList", "Task", "POST"))
@@ -72,14 +73,14 @@
                             {
                                 <li class="list-group-item">
                                     @Html.HiddenFor(x => x.Tasks[i].Id)
-                                    @Html.CheckBoxFor(x => x.Tasks[i].IsChecked, new { @class = "pull-left checkbox" })
+                                    @Html.CheckBoxFor(x => x.Tasks[i].IsChecked, new {@class = "pull-left checkbox"})
                                     <p>@Model.Tasks[i].TaskName</p>
                                 </li>
                             }
                             <li class="list-group-item">
                                 @Html.HiddenFor(x => x.Schedule.Id)
 
-                                <input type="submit" value="Klar" class="btn btn-block btn-lg btn-success center-block" />
+                                <input type="submit" value="Klar" class="btn btn-block btn-lg btn-success center-block"/>
                             </li>
                         </ul>
                     }
@@ -101,14 +102,18 @@
 
 
                 <div class="emergencyNumbers-div list-group center-block">
-                    <p>07311312321</p>
-                    <p>112</p>
+                    <p><strong>Kommun nisse: </strong><a>073-1112321</a></p>
+                    <p><strong>Ambulans: </strong><a>112</a></p>
                 </div>
+
 
             </div>
         </div>
+
+
+
+        <div class="col-md-3"></div>
     </div>
-    <div class="col-md-3"></div>
 </div>
 
 
