@@ -45,7 +45,12 @@ namespace vardkollen.Controllers
 
             var schedule = _context.Schedules.Where(s => s.Id == id)
                                              .Include(t => t.TodoList.Select(i => i.Task))
+                                             .Include(p => p.Patient.Medications)
                                              .Single();
+
+
+
+
 
 
             var taskItems = new List<TasksModel>();
@@ -63,7 +68,8 @@ namespace vardkollen.Controllers
             var viewModel = new TasksViewModel
             {
                 Schedule = schedule,
-                Tasks = taskItems
+                Tasks = taskItems,
+                Medications = schedule.Patient.Medications.ToList()
             };
 
             return PartialView("_TaskPartialView", viewModel);

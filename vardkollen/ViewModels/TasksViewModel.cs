@@ -9,6 +9,7 @@ namespace vardkollen.ViewModels
 
 
         public Employee Employee { get; set; }
+        public Patient Patient { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
 
         public Schedule Schedule { get; set; }
@@ -16,6 +17,7 @@ namespace vardkollen.ViewModels
 
 
         public List<TasksModel> Tasks { get; set; }
+        public List<Medication> Medications { get; set; }
 
 
         public TasksViewModel()
