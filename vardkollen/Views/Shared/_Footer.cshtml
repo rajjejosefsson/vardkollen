@@ -2,7 +2,6 @@
     #footer {
         border-top: 5px solid #47a4da;
         background: #131313 none repeat scroll 0% 0%;
-        padding-top: 30px;
         margin-top: 60px;
         clear: both;
         color: #AAA;
@@ -65,23 +64,18 @@
 
 
        blockquote {
-	padding: 2%;
-	font-style: italic;
-	line-height: 145%;
-	position: relative;
-	margin-top: 10px;
-    border-left: 0;
+  border-left: 0;
+  padding: 0.5em 5px;
+  quotes: "\201C""\201D""\2018""\2019";
     }
 
 
        blockquote:before {
-	display: block;
-	content: "\201C";
-	font-size: 400%;
-	/* to be avsolute, its parrent needs to be relative */
-	position: absolute;
-	top:  5px;
-	left: -5px;
+ color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  vertical-align: -0.4em;
 }
 
 
@@ -94,7 +88,14 @@
      }
 
         
+   
 
+             @@media  (max-width: 480px) {
+         blockquote:before {
+             left: -30px;
+         }
+
+        }
 
      
 </style>
@@ -104,31 +105,21 @@
     <div class="container">
         <div id="footer-wrapper">
             <div class="row">
+                <div class="col-md-12">
+              
 
-                <div class="col-xs-6 col-sm-4 col-md-4">
-                    <div class="left-side-block">
+                    <div class="col-xs-12">
+                        <div id="" class="social-media-icons text-center">
+                            <a href="https://github.com/rajjejosefsson/vardkollen" target="_"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+                       
+                            <blockquote> It's a new carecheck everyday</blockquote>
+                        
+                        </div>
                     </div>
+
                 </div>
-
-
-                <div class="col-xs-6 col-sm-4 col-md-4">
-                    <div id="" class="social-media-icons text-center">
-                        <a href="https://github.com/rajjejosefsson/vardkollen"><i class="fa fa-github-square" aria-hidden="true"></i></a>
-                        <blockquote> It's a new carecheck everyday</blockquote>
-                    </div>
-                </div>
-
-
-                <div class="col-sm-4 col-md-4">
-
-                    <div class="pull-right">
-                    </div>
-                </div>
-
             </div>
-
         </div>
-
     </div>
 
 
