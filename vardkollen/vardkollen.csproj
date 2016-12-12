@@ -320,7 +320,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\BackupSkit\" />
-    <Folder Include="Controllers\Relatvies\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

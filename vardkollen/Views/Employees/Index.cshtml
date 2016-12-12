@@ -43,7 +43,7 @@
 
         <div class="col-md-4 form-holder">
             <h3>Lägg till anställd</h3>
-            @using (Html.BeginForm("CreateEmployee", "Employees", "POST"))
+            @using (Html.BeginForm("InsertUpdateEmployee", "Employees", "POST"))
             {
                 @Html.AntiForgeryToken()
 

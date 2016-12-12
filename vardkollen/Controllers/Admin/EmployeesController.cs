@@ -1,6 +1,4 @@
-﻿using CareCheck.DataAccess;
-using CareCheck.DomainClasses;
-using System.Data.Entity;
+﻿using CareCheck.DomainClasses;
 using System.Web.Mvc;
 using vardkollen.KommunWebservice;
 using vardkollen.ViewModels;
@@ -11,8 +9,6 @@ namespace vardkollen.Controllers
     {
 
 
-        // TODO IMPLEMENT WCF 
-        private readonly CareCheckDbContext _context = new CareCheckDbContext();
         private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
 
 
@@ -31,11 +27,10 @@ namespace vardkollen.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateEmployee(EmployeeViewModel viewModel)
+        public ActionResult InsertUpdateEmployee(EmployeeViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-
 
                 var newEmployee = new Employee
                 {
