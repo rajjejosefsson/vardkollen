@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -51,7 +59,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -115,12 +126,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -169,7 +174,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Other\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Other\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Admin\PatientController.cs" />
@@ -180,17 +184,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611302056017_initmig.cs" />
-    <Compile Include="Migrations\201611302056017_initmig.Designer.cs">
-      <DependentUpon>201611302056017_initmig.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TasksModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\KommunWebservice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateScheduleViewModel.cs" />
     <Compile Include="ViewModels\DeleteScheduleViewModel.cs" />
@@ -226,6 +230,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.Employee.datasource" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.Patient.datasource" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.Relative.datasource" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.Task.datasource" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.Schedule.datasource" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.TodoList.datasource" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -241,6 +251,13 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\KommunWebservice\KommunWebservice.disco" />
+    <None Include="Service References\KommunWebservice\configuration91.svcinfo" />
+    <None Include="Service References\KommunWebservice\configuration.svcinfo" />
+    <None Include="Service References\KommunWebservice\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -289,19 +306,25 @@
     <Content Include="Views\Schedule\_Modal.cshtml" />
     <Content Include="Views\Relatives\_RelativePartialView - Copy.cshtml" />
     <Content Include="Views\Relatives\RelativeConnection.cshtml" />
+    <None Include="Service References\KommunWebservice\KommunWebservice.wsdl" />
+    <None Include="Service References\KommunWebservice\KommunWebservice.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KommunWebservice\KommunWebservice1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\KommunWebservice\KommunWebservice2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\BackupSkit\" />
+    <Folder Include="Controllers\Relatvies\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611302056017_initmig.resx">
-      <DependentUpon>201611302056017_initmig.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CareCheck.DataAccess\CareCheck.DataAccess.csproj">
@@ -312,6 +335,16 @@
       <Project>{FCB826D6-252D-4B20-8832-EE43B59F3828}</Project>
       <Name>CareCheck.DomainClasses</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KommunWebservice\KommunWebservice.csproj">
+      <Project>{fda48038-98c8-4acd-98d9-9f8ff22e1498}</Project>
+      <Name>KommunWebservice</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\KommunWebservice\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

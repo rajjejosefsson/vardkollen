@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -56,6 +60,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -127,12 +133,29 @@
     <Compile Include="Migrations\201612011420394_SeedTodoListTable.Designer.cs">
       <DependentUpon>201612011420394_SeedTodoListTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612111415556_ApplyEmailAdressToRelative.cs" />
+    <Compile Include="Migrations\201612111415556_ApplyEmailAdressToRelative.Designer.cs">
+      <DependentUpon>201612111415556_ApplyEmailAdressToRelative.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IEmployeeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IMedicaionRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IPatientRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IRelativeRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IScheduleRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITaskRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ITodoListRepository.cs" />
+    <Compile Include="Repositories\MedicaionRepository.cs" />
+    <Compile Include="Repositories\PatientRepository.cs" />
+    <Compile Include="Repositories\RelativeRepository.cs" />
+    <Compile Include="Repositories\ScheduleRepository.cs" />
+    <Compile Include="Repositories\TaskRepository.cs" />
+    <Compile Include="Repositories\TodoListRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CareCheck.DomainClasses\CareCheck.DomainClasses.csproj">
       <Project>{fcb826d6-252d-4b20-8832-ee43b59f3828}</Project>
@@ -169,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612011420394_SeedTodoListTable.resx">
       <DependentUpon>201612011420394_SeedTodoListTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612111415556_ApplyEmailAdressToRelative.resx">
+      <DependentUpon>201612111415556_ApplyEmailAdressToRelative.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

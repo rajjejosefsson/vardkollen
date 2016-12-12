@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="KommunWebservice" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:49368/KommunWebservice.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:49368/KommunWebservice.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:49368/KommunWebservice.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CareCheck.DomainClasses" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IKommunWebservice_EmployeeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmployeeList" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_EmployeeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmployeeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeletEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeletEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_PatientList_InputMessage">
+    <wsdl:part name="parameters" element="tns:PatientList" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_PatientList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PatientListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatient" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdatePatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdatePatient" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdatePatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdatePatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeletePatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePatient" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeletePatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_PatientScheduleById_InputMessage">
+    <wsdl:part name="parameters" element="tns:PatientScheduleById" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_PatientScheduleById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PatientScheduleByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_RelativeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:RelativeList" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_RelativeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RelativeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetRelative_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelative" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetRelative_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateRelative_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateRelative" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateRelative_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateRelativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeleteRelative_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRelative" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeleteRelative_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRelativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetRelativesPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelativesPatient" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetRelativesPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelativesPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_ConnectRelativeAndPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectRelativeAndPatient" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_ConnectRelativeAndPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectRelativeAndPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_TaskList_InputMessage">
+    <wsdl:part name="parameters" element="tns:TaskList" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_TaskList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TaskListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTask" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_GetTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateTask" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeleteTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTask" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeleteTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_ScheduleList_InputMessage">
+    <wsdl:part name="parameters" element="tns:ScheduleList" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_ScheduleList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ScheduleListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateSchedule" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertOrUpdateSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrUpdateScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_Schedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:Schedule" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_Schedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeleteSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSchedule" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_DeleteSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_PatientsSchedules_InputMessage">
+    <wsdl:part name="parameters" element="tns:PatientsSchedules" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_PatientsSchedules_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PatientsSchedulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_SaveSchedule_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSchedule" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_SaveSchedule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertTodo_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTodo" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_InsertTodo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_Todos_InputMessage">
+    <wsdl:part name="parameters" element="tns:Todos" />
+  </wsdl:message>
+  <wsdl:message name="IKommunWebservice_Todos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TodosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IKommunWebservice">
+    <wsdl:operation name="EmployeeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/EmployeeList" message="tns:IKommunWebservice_EmployeeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/EmployeeListResponse" message="tns:IKommunWebservice_EmployeeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/GetEmployee" message="tns:IKommunWebservice_GetEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/GetEmployeeResponse" message="tns:IKommunWebservice_GetEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateEmployee" message="tns:IKommunWebservice_InsertOrUpdateEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateEmployeeResponse" message="tns:IKommunWebservice_InsertOrUpdateEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/DeletEmployee" message="tns:IKommunWebservice_DeletEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/DeletEmployeeResponse" message="tns:IKommunWebservice_DeletEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PatientList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/PatientList" message="tns:IKommunWebservice_PatientList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/PatientListResponse" message="tns:IKommunWebservice_PatientList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/GetPatient" message="tns:IKommunWebservice_GetPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/GetPatientResponse" message="tns:IKommunWebservice_GetPatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdatePatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdatePatient" message="tns:IKommunWebservice_InsertOrUpdatePatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdatePatientResponse" message="tns:IKommunWebservice_InsertOrUpdatePatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/DeletePatient" message="tns:IKommunWebservice_DeletePatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/DeletePatientResponse" message="tns:IKommunWebservice_DeletePatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PatientScheduleById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/PatientScheduleById" message="tns:IKommunWebservice_PatientScheduleById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/PatientScheduleByIdResponse" message="tns:IKommunWebservice_PatientScheduleById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RelativeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/RelativeList" message="tns:IKommunWebservice_RelativeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/RelativeListResponse" message="tns:IKommunWebservice_RelativeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelative">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/GetRelative" message="tns:IKommunWebservice_GetRelative_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/GetRelativeResponse" message="tns:IKommunWebservice_GetRelative_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateRelative">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateRelative" message="tns:IKommunWebservice_InsertOrUpdateRelative_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateRelativeResponse" message="tns:IKommunWebservice_InsertOrUpdateRelative_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRelative">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/DeleteRelative" message="tns:IKommunWebservice_DeleteRelative_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/DeleteRelativeResponse" message="tns:IKommunWebservice_DeleteRelative_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelativesPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/GetRelativesPatient" message="tns:IKommunWebservice_GetRelativesPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/GetRelativesPatientResponse" message="tns:IKommunWebservice_GetRelativesPatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConnectRelativeAndPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/ConnectRelativeAndPatient" message="tns:IKommunWebservice_ConnectRelativeAndPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/ConnectRelativeAndPatientResponse" message="tns:IKommunWebservice_ConnectRelativeAndPatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TaskList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/TaskList" message="tns:IKommunWebservice_TaskList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/TaskListResponse" message="tns:IKommunWebservice_TaskList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/GetTask" message="tns:IKommunWebservice_GetTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/GetTaskResponse" message="tns:IKommunWebservice_GetTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateTask" message="tns:IKommunWebservice_InsertOrUpdateTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateTaskResponse" message="tns:IKommunWebservice_InsertOrUpdateTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/DeleteTask" message="tns:IKommunWebservice_DeleteTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/DeleteTaskResponse" message="tns:IKommunWebservice_DeleteTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/ScheduleList" message="tns:IKommunWebservice_ScheduleList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/ScheduleListResponse" message="tns:IKommunWebservice_ScheduleList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateSchedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateSchedule" message="tns:IKommunWebservice_InsertOrUpdateSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateScheduleResponse" message="tns:IKommunWebservice_InsertOrUpdateSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Schedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/Schedule" message="tns:IKommunWebservice_Schedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/ScheduleResponse" message="tns:IKommunWebservice_Schedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/DeleteSchedule" message="tns:IKommunWebservice_DeleteSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/DeleteScheduleResponse" message="tns:IKommunWebservice_DeleteSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PatientsSchedules">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/PatientsSchedules" message="tns:IKommunWebservice_PatientsSchedules_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/PatientsSchedulesResponse" message="tns:IKommunWebservice_PatientsSchedules_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSchedule">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/SaveSchedule" message="tns:IKommunWebservice_SaveSchedule_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/SaveScheduleResponse" message="tns:IKommunWebservice_SaveSchedule_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTodo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/InsertTodo" message="tns:IKommunWebservice_InsertTodo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/InsertTodoResponse" message="tns:IKommunWebservice_InsertTodo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Todos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKommunWebservice/Todos" message="tns:IKommunWebservice_Todos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKommunWebservice/TodosResponse" message="tns:IKommunWebservice_Todos_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IKommunWebservice" type="tns:IKommunWebservice">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EmployeeList">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/EmployeeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/GetEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateEmployee">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/InsertOrUpdateEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletEmployee">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/DeletEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PatientList">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/PatientList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatient">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/GetPatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdatePatient">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/InsertOrUpdatePatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePatient">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/DeletePatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PatientScheduleById">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/PatientScheduleById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelativeList">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/RelativeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelative">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/GetRelative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateRelative">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/InsertOrUpdateRelative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRelative">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/DeleteRelative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelativesPatient">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/GetRelativesPatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConnectRelativeAndPatient">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/ConnectRelativeAndPatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TaskList">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/TaskList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/GetTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateTask">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/InsertOrUpdateTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/DeleteTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleList">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/ScheduleList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrUpdateSchedule">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/InsertOrUpdateSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Schedule">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/Schedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchedule">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/DeleteSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PatientsSchedules">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/PatientsSchedules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSchedule">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/SaveSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTodo">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/InsertTodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Todos">
+      <soap:operation soapAction="http://tempuri.org/IKommunWebservice/Todos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KommunWebservice">
+    <wsdl:port name="BasicHttpBinding_IKommunWebservice" binding="tns:BasicHttpBinding_IKommunWebservice">
+      <soap:address location="http://localhost:49368/KommunWebservice.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

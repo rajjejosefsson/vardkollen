@@ -1,9 +1,7 @@
-﻿using CareCheck.DataAccess;
-using CareCheck.DomainClasses;
+﻿using CareCheck.DomainClasses;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Web.Mvc;
+using vardkollen.KommunWebservice;
 using vardkollen.Models;
 using vardkollen.ViewModels;
 
@@ -12,27 +10,13 @@ namespace vardkollen.Controllers
     public class ScheduleController : Controller
     {
 
-        private readonly CareCheckDbContext _context = new CareCheckDbContext();
-
+        private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
         public ActionResult Index()
         {
 
-            var patients = _context.Patients.ToList();
-            var employees = _context.Employees.ToList();
-            var tasks = _context.Tasks.ToList();
-
-
-            var taskItems = new List<TasksModel>();
-            foreach (var task in tasks)
-            {
-                taskItems.Add(new TasksModel()
-                {
-                    Id = task.Id,
-                    IsChecked = false,
-                    TaskName = task.Name
-                });
-            }
-
+            var patients = _kommunWcfClient.PatientList();
+            var employees = _kommunWcfClient.EmployeeList();
+            var taskItems = GetTaskModelCheckboxes();
 
             var viewModel = new CreateScheduleViewModel
             {
@@ -44,11 +28,8 @@ namespace vardkollen.Controllers
                 Task = null
             };
 
-
             return View(viewModel);
         }
-
-
 
 
 
@@ -57,8 +38,6 @@ namespace vardkollen.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedule(CreateScheduleViewModel viewModel)
         {
-
-
             if (ModelState.IsValid)
             {
                 // DateTime  PatientID   EmployeeId
@@ -69,13 +48,10 @@ namespace vardkollen.Controllers
                     EmployeeId = viewModel.EmployeeId
                 };
 
-                _context.Schedules.Add(schedule);
-                _context.SaveChanges();  // we do have schedule.Id from db now allready.
+                var newSchedule = _kommunWcfClient.InsertOrUpdateSchedule(schedule);
 
 
-
-
-                // Task_id     Schedule_id    isDone
+                // Save checked boxes (tasks to db)
                 foreach (var task in viewModel.Tasks)
                 {
                     if (task.IsChecked)
@@ -83,23 +59,37 @@ namespace vardkollen.Controllers
                         var todoItem = new TodoList()
                         {
                             TaskId = task.Id,
-                            ScheduleId = schedule.Id,
+                            ScheduleId = newSchedule.Id,
                             IsDone = false // init value
                         };
-                        _context.TodoList.Add(todoItem);
+                        _kommunWcfClient.InsertTodo(todoItem);
                     }
                 }
-                _context.SaveChanges();
-                return RedirectToAction("Index");
 
+
+                ViewData["IsSuccess"] = true;
+                TempData["IsTrue"] = true;
+
+                return RedirectToAction("Index", "Schedule");
             }
-
-
 
             // To show the validation we need to pass this shit again
             /* Must be a better way!!! same code as in index... */
-            var tasks = _context.Tasks.ToList();
+            viewModel.Tasks = GetTaskModelCheckboxes();
+            viewModel.Patients = _kommunWcfClient.PatientList();
+            viewModel.Employees = _kommunWcfClient.EmployeeList();
+
+            return View("Index", viewModel);
+        }
+
+
+
+        // Generates the task checkboxes that we use to see if they are checked
+        public List<TasksModel> GetTaskModelCheckboxes()
+        {
+            var tasks = _kommunWcfClient.TaskList();
             var taskItems = new List<TasksModel>();
+
             foreach (var task in tasks)
             {
                 taskItems.Add(new TasksModel()
@@ -109,13 +99,7 @@ namespace vardkollen.Controllers
                     TaskName = task.Name
                 });
             }
-
-            viewModel.Tasks = taskItems;
-            viewModel.Patients = _context.Patients.ToList();
-            viewModel.Employees = _context.Employees.ToList();
-
-
-            return View("Index", viewModel);
+            return taskItems;
         }
 
 
@@ -123,30 +107,27 @@ namespace vardkollen.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteSchedule(int? scheduleId)
+        public ActionResult DeleteSchedule(int scheduleId)
         {
+            _kommunWcfClient.DeleteSchedule(scheduleId);
+            return RedirectToAction("Index");
+        }
 
 
-            // Check if schedule exists
-            var schedule = _context.Schedules.Single(e => e.Id == scheduleId);
 
-            // Get todolist items from the selected schedule
-            var todoList = _context.TodoList.Where(t => t.ScheduleId == schedule.Id).ToList();
-
-            // remove each item in the list
-            foreach (var item in todoList)
+        [HttpPost]
+        public ActionResult CreateTask(CreateScheduleViewModel viewModel)
+        {
+            var newTask = new Task
             {
-                _context.TodoList.Remove(item);
-            }
+                Name = viewModel.Task.Name
+            };
 
-
-            // remove the schedule from db
-            _context.Schedules.Remove(schedule);
-            _context.SaveChanges();
-
+            _kommunWcfClient.InsertOrUpdateTask(newTask);
 
             return RedirectToAction("Index");
         }
+
 
 
 
@@ -154,7 +135,7 @@ namespace vardkollen.Controllers
         public JsonResult GetJsonSchedule()
         {
             List<Event> events = new List<Event>();
-            var schedules = _context.Schedules.Include(p => p.Patient).Include(t => t.TodoList.Select(task => task.Task)).ToList();
+            var schedules = _kommunWcfClient.PatientsSchedules();
 
             foreach (var schedule in schedules)
             {
@@ -165,64 +146,23 @@ namespace vardkollen.Controllers
                     start = schedule.DateTime.ToString(),
                 });
             }
+
             return Json(events, JsonRequestBehavior.AllowGet);
         }
 
 
 
-        [HttpPost]
-        public ActionResult CreateTask(CreateScheduleViewModel viewModel)
+        public ActionResult BootstrapModal(int id)
         {
 
-            var newTask = new Task
-            {
-                Name = viewModel.Task.Name
-            };
-
-
-            // If it doesnt exist add the new item
-            if (!_context.Tasks.Any(t => t.Name == newTask.Name))
-            {
-                _context.Tasks.Add(newTask);
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("Index");
-        }
-
-
-
-
-
-
-
-
-
-        public ActionResult BootstrapModal(int? id)
-        {
-            var schedule = _context.Schedules.Where(s => s.Id == id)
-                                 .Include(p => p.Patient).Include(t => t.TodoList.Select(i => i.Task))
-                                 .Single();
-
-
-            var taskItems = new List<TasksModel>();
-            foreach (var listItem in schedule.TodoList)
-            {
-                taskItems.Add(new TasksModel()
-                {
-                    Id = listItem.Id,
-                    IsChecked = false,
-                    TaskName = listItem.Task.Name
-                });
-            }
+            var schedule = _kommunWcfClient.PatientScheduleById(id);
 
             var viewModel = new ScheduleItemViewModel
             {
                 Patient = schedule.Patient,
                 ScheduleId = schedule.Id,
-                Tasks = taskItems
-
             };
+
             return PartialView("_Modal", viewModel);
         }
 
@@ -231,17 +171,38 @@ namespace vardkollen.Controllers
 
 
 
+
+
+
+
+
+
+
+
+
         // Not yet complete
-        public ActionResult EditSchedule(ScheduleItemViewModel viewModel)
-        {
-            var test = _context.Schedules.Where(s => s.Id == viewModel.ScheduleId)
+
+        /* 
+         public ActionResult EditSchedule(ScheduleItemViewModel viewModel)
+         {
+
+             using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
+             {
+
+
+                 var test = context.Schedules.Where(s => s.Id == viewModel.ScheduleId)
                                          .Include(e => e.Employee)
                                          .Include(p => p.Patient)
                                          .Include(t => t.TodoList)
                                          .Single();
 
-            throw new System.NotImplementedException();
-        }
+                 throw new System.NotImplementedException();
+
+             }
+         }
+
+     */
+
 
 
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2a6d3c71-350f-4ee2-af7b-83610cb49a70" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49368/KommunWebservice.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="KommunWebservice.wsdl" MetadataType="Wsdl" ID="bec313ab-da1a-4aee-8a0d-03f826d38e9c" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?wsdl" />
+    <MetadataFile FileName="KommunWebservice.disco" MetadataType="Disco" ID="2297517c-e007-45ee-aa6e-8d1df20d23b6" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?disco" />
+    <MetadataFile FileName="KommunWebservice.xsd" MetadataType="Schema" ID="9c83a35f-badf-493f-b723-1b1f398b1b04" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd0" />
+    <MetadataFile FileName="KommunWebservice1.xsd" MetadataType="Schema" ID="a0e61f9e-6c89-4d7d-b7dd-74d79a0b4065" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd2" />
+    <MetadataFile FileName="KommunWebservice2.xsd" MetadataType="Schema" ID="5cd4a85f-7e62-450b-9e6f-e90ab6bc32e0" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -105,7 +105,7 @@
                     </div>
                     <!-- Select Employee END -->
                     <!-- Select Tasks for todolist -->
-                    <div class="form-group">
+                   <div class="form-group">
                         @Html.LabelFor(m => m.Tasks)
                         <ul class="list-group todolist-ul">
                             @for (var i = 0; i < @Model.Tasks.Count; i++)
@@ -183,70 +183,71 @@
 
 
             <script>
-                $(document).ready(function () {
 
 
-                    /* DatetimePicker*/
-                    $('#datetimepicker').datetimepicker({
-                        locale: 'sv'
-                    });
+                $(document)
+                    .ready(function() {
 
 
+                        var isSuccess = @Html.Raw(Json.Encode(TempData["IsTrue"]));
+                        toastr.options.positionClass = "toast-bottom-full-width";
 
-                    /* Get schedule with ajax */
-                    $.ajax({
-                        url: '/Schedule/GetJsonSchedule/',
-                        success: function (response) {
-                            renderCalendar(response);
-                        },
-                        error: function (response) {
-                            console.log(response);
+                        if (isSuccess) {
+                            toastr.success('Schemat sparat');
                         }
+
+
+                        /* DatetimePicker*/
+                        $('#datetimepicker')
+                            .datetimepicker({
+                                locale: 'sv'
+                            });
+
+
+                        /* Get schedule with ajax */
+                        $.ajax({
+                            url: '/Schedule/GetJsonSchedule/',
+                            success: function(response) {
+                                renderCalendar(response);
+                            },
+                            error: function(response) {
+                                console.log(response);
+                            }
+                        });
+
+
                     });
 
-
-
-
-
-                });
                 /* Document ready ends here*/
 
 
                 /* Global FUNCTIONS BELOW HERE */
                 function renderCalendar(data) {
-                    $('#calendar').fullCalendar({
-                        header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,basicWeek,basicDay'
-                        },
-                        locale: 'sv',
-                        navLinks: true, // can click day/week names to navigate views
-                        editable: true,
-                        eventLimit: true, // allow "more" link when too many events
-                        events: data,
-                        eventClick: function (calEvent, jsEvent, view) {
+                    $('#calendar')
+                        .fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,basicWeek,basicDay'
+                            },
+                            locale: 'sv',
+                            navLinks: true, // can click day/week names to navigate views
+                            editable: true,
+                            eventLimit: true, // allow "more" link when too many events
+                            events: data,
+                            eventClick: function(calEvent, jsEvent, view) {
 
-                            var scheduleId = calEvent.id;
-                            // Open Delete Modal and pass schedule id
-                            $.get('/Schedule/BootstrapModal/' + scheduleId, function (data) {
-                                $('#partialPlaceHolder').html(data);
-                                $('#partialPlaceHolder').fadeIn('slow');
-                                $('#exampleModal').modal('show');
-                            });
-                        }
-                    });
+                                var scheduleId = calEvent.id;
+                                // Open Delete Modal and pass schedule id
+                                $.get('/Schedule/BootstrapModal/' + scheduleId,
+                                    function(data) {
+                                        $('#partialPlaceHolder').html(data);
+                                        $('#partialPlaceHolder').fadeIn('slow');
+                                        $('#exampleModal').modal('show');
+                                    });
+                            }
+                        });
                 }
-
-
-
-
-
-
-
-
-
-
 
 
                 /* old append task item to checkbox list */

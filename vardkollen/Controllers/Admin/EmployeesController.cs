@@ -1,23 +1,28 @@
 ﻿using CareCheck.DataAccess;
 using CareCheck.DomainClasses;
 using System.Data.Entity;
-using System.Linq;
 using System.Web.Mvc;
+using vardkollen.KommunWebservice;
 using vardkollen.ViewModels;
 
 namespace vardkollen.Controllers
 {
     public class EmployeesController : Controller
     {
+
+
+        // TODO IMPLEMENT WCF 
         private readonly CareCheckDbContext _context = new CareCheckDbContext();
+        private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
 
 
         // Index with employees table
         public ActionResult Index()
         {
+
             var viewModel = new EmployeeViewModel
             {
-                Employees = _context.Employees.ToList()
+                Employees = _kommunWcfClient.EmployeeList()
             };
             return View(viewModel);
         }
@@ -30,45 +35,26 @@ namespace vardkollen.Controllers
         {
             if (ModelState.IsValid)
             {
-                // if using create or edit
-                if (viewModel.Id == 0)
+
+
+                var newEmployee = new Employee
                 {
-                    // CREATE Employee
+                    FirstName = viewModel.FirstName,
+                    LastName = viewModel.LastName,
+                    PersonNumber = viewModel.PersonNumber,
+                    PhoneNumber = viewModel.PhoneNumber,
+                    Adress = viewModel.Adress,
+                    ZipCode = viewModel.ZipCode,
+                };
 
-                    var employee = new Employee
-                    {
-                        FirstName = viewModel.FirstName,
-                        LastName = viewModel.LastName,
-                        PersonNumber = viewModel.PersonNumber,
-                        PhoneNumber = viewModel.PhoneNumber,
-                        Adress = viewModel.Adress,
-                        ZipCode = viewModel.ZipCode,
-                    };
+                _kommunWcfClient.InsertOrUpdateEmployee(newEmployee);
 
-                    _context.Employees.Add(employee);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    // EDIT Employee
-
-                    var employeeInDb = _context.Employees.Single(e => e.Id == viewModel.Id);
-
-                    employeeInDb.FirstName = viewModel.FirstName;
-                    employeeInDb.LastName = viewModel.LastName;
-                    employeeInDb.PersonNumber = viewModel.PersonNumber;
-                    employeeInDb.PhoneNumber = viewModel.PhoneNumber;
-                    employeeInDb.Adress = viewModel.Adress;
-                    employeeInDb.ZipCode = viewModel.ZipCode;
-                }
-
-                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             // on failure - must get the list of employees from
             // db to get fetched to the table again
-            viewModel.Employees = _context.Employees.ToList();
+            viewModel.Employees = _kommunWcfClient.EmployeeList();
 
             return View("Index", viewModel);
         }
@@ -78,14 +64,7 @@ namespace vardkollen.Controllers
         [HttpPost]
         public ActionResult DeleteEmployee(int id)
         {
-            var employeeInDb = _context.Employees.SingleOrDefault(e => e.Id == id);
-
-            if (employeeInDb != null)
-            {
-                _context.Employees.Remove(employeeInDb);
-                _context.SaveChanges();
-            }
-
+            _kommunWcfClient.DeletEmployee(id);
             return RedirectToAction("Index");
         }
 
@@ -104,25 +83,6 @@ namespace vardkollen.Controllers
 
 
 
-
-
-
-
-
-        /* WHEN TO USE FOLLOWING OR USE DTO ?? */
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditEmployee(Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Entry(employee).State = EntityState.Modified;
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return RedirectToAction("Index");
-        }
 
 
 

@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using vardkollen.KommunWebservice;
 using vardkollen.ViewModels;
 
 namespace vardkollen.Controllers
@@ -9,11 +10,18 @@ namespace vardkollen.Controllers
     public class RelativesController : Controller
     {
 
+
+        private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
+
+
         private readonly CareCheckDbContext _context = new CareCheckDbContext();
+
+        // TODO Move two first Actions to Relative Project (ASP.NET) and use wcf
 
 
         public ActionResult Index()
         {
+            // Change to get by email instead
             var relative = _context.Relatives.Where(r => r.PhoneNumber == "0734214122")
                                              .Include(p => p.Patients)
                                              .Single();
@@ -48,7 +56,6 @@ namespace vardkollen.Controllers
             {
                 Patient = patient,
                 Schedules = schedule,
-
             };
 
             return PartialView("_RelativePartialView", viewModel);
@@ -60,11 +67,11 @@ namespace vardkollen.Controllers
 
 
 
-        // Index
+        // Index FOR ADMIN to put somewhere
         public ActionResult RelativeConnection()
         {
-            var patients = _context.Patients.ToList();
-            var relatives = _context.Relatives.ToList();
+            var patients = _kommunWcfClient.PatientList();
+            var relatives = _kommunWcfClient.RelativeList();
 
             var viewModel = new PatientsAndRelativesViewModel
             {
@@ -79,15 +86,7 @@ namespace vardkollen.Controllers
         [HttpPost]
         public ActionResult CreateConnection(PatientsAndRelativesViewModel viewModel)
         {
-            // Get patient and relative object
-            var relative = _context.Relatives.Single(r => r.Id == viewModel.RelativeId);
-            var patient = _context.Patients.Single(p => p.Id == viewModel.PatientId);
-
-            // Connects the relative with patient using navigations (collection) in EF 
-            patient.Relatives.Add(relative);
-
-            _context.SaveChanges();
-
+            _kommunWcfClient.ConnectRelativeAndPatient(viewModel.PatientId, viewModel.RelativeId);
             return RedirectToAction("Index");
         }
     }
@@ -109,3 +108,40 @@ namespace vardkollen.Controllers
                 .Include(s => s.Schedules.Select(t => t.TodoList.Select(i => i.Task)))
                 .Single();     
 */
+
+
+
+/*
+
+
+
+
+    // Index FOR ADMIN to put somewhere
+    public ActionResult RelativeConnection()
+    {
+        var patients = _kommunWcfClient.PatientList();
+        var relatives = _kommunWcfClient.RelativeList();
+
+        var viewModel = new PatientsAndRelativesViewModel
+        {
+            Patients = patients,
+            Relatives = relatives,
+        };
+
+        return View(viewModel);
+    }
+
+
+    [HttpPost]
+    public ActionResult CreateConnection(PatientsAndRelativesViewModel viewModel)
+    {
+        var patient = _kommunWcfClient.GetPatient(viewModel.PatientId);
+        var relative = _kommunWcfClient.GetRelative(viewModel.RelativeId);
+
+        _kommunWcfClient.ConnectRelativeAndPatient(patient, relative);
+
+        return RedirectToAction("Index");
+    }
+
+
+ */
