@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Vårdkontrollen</title>
+
+    <script src="//use.fontawesome.com/11ab90a810.js"></script>
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+    <!-- Shared Contet css from site.css renders here-->
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+<!-- Imports the Navigation bar-->
+@Html.Partial("_NavBar")
+
+
+@RenderSection("outsideContainer", false)
+
+<!-- All pages are rendered inside this container-->
+<div class="container content" id="content">
+    @RenderBody()
+</div>
+
+
+<!-- Imports the Footer-->
+@Html.Partial("_Footer")
+
+
+<!-- Render script bundle from App_Start > BundleConfig.cs -->
+@Scripts.Render("~/bundles/lib")
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
+<!--Must be the last script file-->
+@RenderSection("scripts", false)
+</body>
+</html>

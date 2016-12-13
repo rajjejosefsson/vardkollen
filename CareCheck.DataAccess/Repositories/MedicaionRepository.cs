@@ -8,6 +8,7 @@ namespace CareCheck.DataAccess.Repositories
     public class MedicaionRepository : IMedicaionRepository
     {
 
+
         public ICollection<Medication> MedicationList()
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -15,6 +16,7 @@ namespace CareCheck.DataAccess.Repositories
                 return context.Medications.AsNoTracking().ToList();
             }
         }
+
 
         public void InsertOrUpdate(Medication medication)
         {
@@ -40,7 +42,6 @@ namespace CareCheck.DataAccess.Repositories
         }
 
 
-
         public ICollection<Medication> PatientsMedications(Patient patient)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -48,5 +49,7 @@ namespace CareCheck.DataAccess.Repositories
                 throw new System.NotImplementedException();
             }
         }
+
+
     }
 }

@@ -5,27 +5,6 @@ using System.Linq;
 
 namespace CareCheck.DataAccess.Repositories
 {
-
-
-
-
-
-    /*
-      
-        
-         DbSet.Add() 
-         attaches the entire entity graph
-         to the new context and automatically
-         applies Added entity state to all the entities.
-     
-         DbContext.Entry():
-         Entry method of DbContext returns DbEntityEntry instance for a specified entity.
-         DbEntityEntry can be used to change the state of an entity.
-         
-         
-    */
-
-
     public class EmployeeRepository : IEmployeeRepository
     {
 
@@ -38,6 +17,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public Employee FindById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -45,6 +25,7 @@ namespace CareCheck.DataAccess.Repositories
                 return context.Employees.AsNoTracking().SingleOrDefault(e => e.Id == id);
             }
         }
+
 
         public void InsertOrUpdate(Employee employee)
         {
@@ -72,6 +53,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public void DeleteById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -82,10 +64,6 @@ namespace CareCheck.DataAccess.Repositories
                 context.SaveChanges();
             }
         }
-
-
-
-
 
 
     }

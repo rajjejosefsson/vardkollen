@@ -1,0 +1,80 @@
+﻿@model CareCheck.MVC.Employee.ViewModels.TasksViewModel
+@{
+    ViewBag.Title = "About Page";
+}
+
+
+<style>
+    .dropdown {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+    }
+
+
+    .Push { height: 152px; }
+
+    @@media (min-width: 2560px) {
+        .Push { height: 477px; }
+    }
+</style>
+
+
+<div class="col-md-12">
+    <div class="start-banner text-center">
+        <h1 class="">Uppgifter</h1>
+        <h4>Hej @Model.Employee.FirstName</h4>
+        <p>Här finns alla dina patienter som du har på ditt schema</p>
+        <div style="text-align: center">
+            <div class="dropdown form-group">
+                <select name="myFormInputName" id="myFormInputName" class="form-control">
+                    @foreach (var schedule in Model.Schedules)
+                    {
+                        <option value="@(schedule.Id)">@schedule.Patient.FirstName @schedule.DateTime</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="partialPlaceHolder" style="display: none;"></div>
+
+
+<div class="Push"></div>
+
+
+@section scripts {
+    <script>
+
+        function renderPatient(scheduleId) {
+            /* Request the partial view with .get request. */
+            $.get('/Tasks/SelectSchedule/' + scheduleId,
+                function(data) {
+                    /* data is the pure html returned from action method, load it to your page */
+                    $('#partialPlaceHolder').html(data);
+                    /* little fade in effect */
+                    $('#partialPlaceHolder').hide().fadeIn(400);
+                });
+        }
+
+
+        $(document)
+            .ready(function() {
+
+                // Initial patient to render
+                var scheduleId = $("#myFormInputName").val();
+                renderPatient(scheduleId);
+
+
+                // Select patient to show
+                $("#myFormInputName")
+                    .on('change',
+                        function() {
+                            var scheduleId = $(this).val();
+                            renderPatient(scheduleId);
+                        });
+            });
+    </script>
+}

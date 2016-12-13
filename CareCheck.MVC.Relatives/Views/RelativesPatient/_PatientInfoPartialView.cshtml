@@ -1,0 +1,329 @@
+﻿@model CareCheck.MVC.Relatives.ViewModels.PatientAndScheduleViewModel
+@{
+    ViewBag.Title = "About Page";
+}
+
+
+<style>
+    /* Left side Card Item (Info) */
+    .item-left {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        height: 180px;
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .item-left.profile {
+        margin-bottom: 60px;
+        padding: 0;
+    }
+
+
+    .profile-text { margin-top: 30px; }
+
+    .item-left img { margin-top: 14px; }
+
+    .item-left h3 { margin: 0; }
+
+    .left-main-content { margin-top: 10px; }
+
+    .relative-holder { height: 159px; }
+
+
+    /* Right Side Card Item (Tasks)  */
+
+    .task-heading {
+        background-color: #229ee5;
+        border-bottom: 0.5px solid black;
+        color: white;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .task-heading p { font-weight: bold; }
+
+
+    .task-item {
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        height: 300px;
+        margin: 15px 10px 40px 10px;
+        max-width: 400px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .left-task-items {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        margin: 15px 10px 40px 10px;
+        max-width: 400px;
+        overflow: hidden;
+        position: relative;
+        transition: all 100ms ease-in;
+    }
+
+    .left-ul-item {
+        list-style: none;
+        padding: 0;
+    }
+
+
+    .task-item:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        transition: all 100ms ease-in;
+    }
+
+
+    /* Center button using transform (new browesers supports this only) */
+
+    .btn-more-info3 {
+        bottom: 0;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 130px;
+    }
+
+    .btn-more-info {
+        bottom: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        left: 50%;
+        margin-left: -71px;
+        position: absolute;
+        width: 130px;
+    }
+
+
+    /* Some random fixing */
+
+    .card-heading div { height: 100%; }
+
+    .task-heading p { margin: 0; }
+
+
+    .list-group { margin: 0; }
+
+    .list-group-item {
+        border-left: 0;
+        border-right: 0;
+    }
+
+    .list-special .list-group-item:first-child {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .list-special .list-group-item:last-child {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .pagination-holder { margin-left: 100px; }
+
+
+
+    .right-task-expand { height: 310px; }
+
+    .right-task-expanded { height: 600px; }
+
+    .left-task-expand { height: 310px; }
+
+    .left-task-expanded { height: 350px; }
+
+
+
+
+    .relative-li-item { margin-bottom: 40px; }
+
+    @@media (max-width: 480px) {
+        .item-left { min-height: 300px; }
+
+        .task-item { height: 330px; }
+
+        .pagination-holder { margin-left: 0; }
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Left side of page-->
+        <div class="col-xs-12 col-sm-6 col-md-5">
+            <div class="left-side-holder">
+                <div class="item-left profile-holder">
+                    <div class="col-xs-4">
+                        <img src="~/Content/Images/user-female-picture.png" style="width: 110px" alt=""/>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="profile-text">
+                            <h3>@Model.Patient.FirstName @Model.Patient.LastName</h3>
+                            <div class="left-main-content">
+                                <p>
+                                    <strong>Persnr:</strong>@Model.Patient.PersonNumber</p>
+                                <p>
+                                    <strong>Telefon:</strong>@Model.Patient.PhoneNumber</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br/> <br/> <br/>
+
+                <h1 style="color: black; margin-left: 30px">Övrigt</h1>
+                <hr/>
+                <div class="item-left left-task-items medication-holder">
+                    <h3>Medicin</h3>
+                    <div class="left-main-content">
+                        <ul class="left-ul-item">
+                            @foreach (var medication in Model.Patient.Medications)
+                            {
+                                <li>
+                                    <p>
+                                        @medication.Name
+                                    </p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
+                </div>
+
+                <div class="item-left left-task-items relative-holder">
+                    <h3>Anhöriga</h3>
+                    <div class="left-main-content">
+                        <ul class="left-ul-item">
+                            @foreach (var relative in Model.Patient.Relatives)
+                            {
+                                <li class="relative-li-item">
+                                    <p>@relative.FirstName @relative.LastName</p>
+                                    <p>@relative.Adress @relative.ZipCode</p>
+                                    <p>@relative.PhoneNumber</p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <a class="btn-more-info moreButtonLeft text-center" name="moreButton" id="moreButton">Mer Info</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side of page-->
+        <div class="col-xs-12 col-sm-6 col-md-7">
+            <div class="task-holder">
+                @foreach (var schedule in Model.Schedules)
+                {
+                    <!-- One Task Item -->
+                    <div class="task-item">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="task-heading">
+                                    <div class="col-xs-9">
+                                        <p>@schedule.DateTime</p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <p class="pull-right">Tid</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="task-list" id="task-list">
+                                    <!-- each task in one tasklist item -->
+                                    <ul class="list-group list-special">
+                                        @foreach (var todo in schedule.TodoList)
+                                        {
+                                            <li class="list-group-item  @(todo.IsDone ? "list-group-item-success" : "")">
+                                                <div class="row">
+                                                    <div class="col-xs-6">
+                                                        <p>@todo.Task.Name</p>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <p class="pull-right">15.00</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn-more-info moreButtonRight text-center" name="moreButton" id="moreButton">Mer Info</a>
+                    </div>
+                    <!-- One Task Item ENDS -->
+                }
+
+                <!-- Pagination -->
+                <div class="pagination-holder">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li>
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">5</a>
+                            </li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Pagination Ends -->
+
+            </div>
+        </div>
+        <!-- Right Ends Here -->
+    </div>
+</div>
+
+
+<script>
+    $(document)
+        .ready(function() {
+
+            $('.moreButtonRight')
+                .on('click',
+                    function() {
+                        var taskItemDiv = $(this).parent('div');
+                        taskItemDiv.toggleClass("right-task-expad right-task-expanded");
+                    });
+
+
+            $('.moreButtonLeft')
+                .on('click',
+                    function() {
+                        var taskItemDiv = $(this).parent('div');
+                        taskItemDiv.toggleClass("left-task-expand left-task-expanded");
+                    });
+
+        });
+</script>
+
+
+@section scripts {
+    <script>
+
+    
+    </script>
+}

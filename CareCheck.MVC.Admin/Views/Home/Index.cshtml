@@ -2,26 +2,25 @@
     ViewBag.Title = "Home Page";
 }
 
-
 <style>
     .login-form-holder {
         background-color: rgb(255, 255, 255);
-        margin-top: 100px;
-        margin-left: 60px;
-        padding: 15px;
-        max-width: 282px;
-        height: 300px;
-        box-shadow: 0 3px 3px -3px #777;
         border-radius: 10px;
+        box-shadow: 0 3px 3px -3px #777;
+        height: 300px;
         margin-bottom: 230px;
+        margin-left: 60px;
+        margin-top: 100px;
+        max-width: 282px;
+        padding: 15px;
     }
 
     h1 {
-        margin-top: 210px;
         color: white;
+        float: right;
         font-size: 60px;
         font-weight: 900;
-        float: right;
+        margin-top: 210px;
     }
 
     .center-block {
@@ -38,72 +37,56 @@
         margin-top: 15px;
     }
 
-
-
     body {
-       
         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../../Content/Images/happyman.jpg);
-        background-size: cover;
         background-repeat: no-repeat;
-
+        background-size: cover;
     }
 
-    .Push{
+    .Push {
         height: 41px;
     }
 
-    @@media  (min-width: 2560px) {
-    .Push {
-        height:361px;
+    @@media (min-width: 2560px) {
+        .Push {
+            height: 361px;
+        }
     }
-}
-    
-  
 
 
-   @@media (max-width: 1200px) {
-       
+    @@media (max-width: 1200px) {
         h1 {
-             margin-top: 60px;
-             font-size: 45px;
-             float: left;
-         }
+            float: left;
+            font-size: 45px;
+            margin-top: 60px;
+        }
 
-        
-          .login-form-holder {
-                margin-top: 0px;
-                margin-left: 0px;
-            }
+
+        .login-form-holder {
+            margin-left: 0px;
+            margin-top: 0px;
+        }
     }
- 
+
 
     @@media (max-width: 600px) {
-    
-
-        
-
-
     }
 
 
     @@media (max-width: 480px) {
-         h1 {
-      font-size: 35px;
+        h1 {
+            font-size: 35px;
+        }
     }
-
-    }
-
-
 </style>
 
 
 <div class="row">
     <div class="col-md-12">
-
+        <!-- Content Goes here  -->
         <div class="col-xs-12 col-md-6">
             <h1 class="">Vi gör skillnad</h1>
         </div>
-
         <div class="col-xs-12 col-md-6">
             <div class="login-form-holder">
                 <form>
@@ -126,12 +109,10 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Logga in</button>
                 </form>
             </div>
- 
+
         </div>
-    
-
-
+        <!-- Content Ends here  -->
     </div>
 </div>
 
-  <div class="Push"> </div>
+<div class="Push"> </div>

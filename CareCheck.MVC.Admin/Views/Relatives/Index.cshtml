@@ -14,35 +14,25 @@
     <div class="start-banner">
     </div>
 </div>
-
-
 <div class="col-md-12">
     <div class="col-md-6">
-
-        <!-- Check if relatives "patients" is > 1, if so show dropdown with all it "patients" else show the only "patient" -->
         <h4>Hej @Model.Relative.FirstName</h4>
-        <p class="dropdownLabel"><strong>Här kan du välja anhörig</strong></p>
+        <p class="dropdownLabel">
+            <strong>Här kan du välja anhörig</strong>
+        </p>
         <select name="myFormInputName" id="myFormInputName" class="form-control dropdown-name">
             @foreach (var link in Model.Relative.Patients)
             {
                 <option value="@(link.Id)">@(link.FirstName)</option>
             }
         </select>
-
     </div>
-    <div class="col-md-6">
-    </div>
+    <div class="col-md-6"></div>
 </div>
-
-
-
 
 <div class="col-md-12">
     <div id="partialPlaceHolder" style="display: none;"></div>
 </div>
-
-
-
 
 
 @section scripts {
@@ -61,19 +51,17 @@
         }
 
 
-
         $(document).ready(function () {
             // Initial patient to render
             var patientId = $("#myFormInputName").val();
             renderPatient(patientId);
 
-
             // Select patient to show
             $("#myFormInputName").on('change', function () {
                 var patientId = $(this).val();
                 renderPatient(patientId);
-
             });
         });
+
     </script>
 }

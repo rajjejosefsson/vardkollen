@@ -8,6 +8,7 @@ namespace CareCheck.DataAccess.Repositories
     public class PatientRepository : IPatientRepository
     {
 
+
         public ICollection<Patient> PatientList()
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -16,6 +17,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public Patient FindById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -23,6 +25,7 @@ namespace CareCheck.DataAccess.Repositories
                 return context.Patients.AsNoTracking().SingleOrDefault(p => p.Id == id);
             }
         }
+
 
         public void InsertOrUpdate(Patient patient)
         {
@@ -49,6 +52,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public void DeleteById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -58,13 +62,6 @@ namespace CareCheck.DataAccess.Repositories
                 context.SaveChanges();
             }
         }
-
-
-
-
-
-
-
 
 
     }

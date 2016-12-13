@@ -9,10 +9,7 @@ namespace CareCheck.DataAccess.Repositories.Interfaces
     {
         ICollection<Schedule> PatientsSchedules();
         Schedule FindById(int id);
-
         Schedule InsertOrUpdate(Schedule schedule);
-
         void DeleteById(int id);
-
     }
 }

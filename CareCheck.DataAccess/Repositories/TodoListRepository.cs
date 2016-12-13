@@ -17,6 +17,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public TodoList FindById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -24,6 +25,7 @@ namespace CareCheck.DataAccess.Repositories
                 return context.TodoList.AsNoTracking().SingleOrDefault(t => t.Id == id);
             }
         }
+
 
         public void InsertTodo(TodoList todoItem)
         {
@@ -35,14 +37,11 @@ namespace CareCheck.DataAccess.Repositories
         }
 
 
-
         public void UpdateTodoList(int scheduleId, bool[] checkBoxes)
         {
-
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
                 var dataEntries = context.TodoList.Where(i => i.ScheduleId == scheduleId).ToList();
-
 
                 // Updates the isDone Entries in db
                 for (var i = 0; i < dataEntries.Count; i++)
@@ -53,7 +52,6 @@ namespace CareCheck.DataAccess.Repositories
                 context.SaveChanges();
             }
         }
-
 
 
         public void DeleteById(int id)

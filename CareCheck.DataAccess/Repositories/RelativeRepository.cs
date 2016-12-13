@@ -10,6 +10,7 @@ namespace CareCheck.DataAccess.Repositories
     public class RelativeRepository : IRelativeRepository
     {
 
+
         public ICollection<Relative> RelativeList()
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -18,6 +19,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public Relative FindById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -25,6 +27,7 @@ namespace CareCheck.DataAccess.Repositories
                 return context.Relatives.AsNoTracking().SingleOrDefault(r => r.Id == id);
             }
         }
+
 
         public Relative InsertOrUpdate(Relative relative)
         {
@@ -35,6 +38,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public void DeleteById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -44,10 +48,6 @@ namespace CareCheck.DataAccess.Repositories
                 context.SaveChanges();
             }
         }
-
-
-
-
 
 
         public void ConnectRelativeAndPatient(int patientId, int relativeId)
@@ -66,7 +66,6 @@ namespace CareCheck.DataAccess.Repositories
         }
 
 
-
         public Relative RelativesPatientByEmail(string email)
         {
             using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
@@ -78,8 +77,6 @@ namespace CareCheck.DataAccess.Repositories
                                                  .SingleOrDefault();
             }
         }
-
-
 
 
         // Could be optimized 

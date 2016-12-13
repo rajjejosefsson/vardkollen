@@ -10,7 +10,6 @@ namespace CareCheck.DataAccess.Repositories
     {
 
 
-
         public ICollection<Schedule> PatientsSchedules()
         {
 
@@ -30,6 +29,7 @@ namespace CareCheck.DataAccess.Repositories
                 return context.Schedules.AsNoTracking().SingleOrDefault(p => p.Id == scheduleId);
             }
         }
+
 
         public Schedule InsertOrUpdate(Schedule schedule)
         {
@@ -67,11 +67,6 @@ namespace CareCheck.DataAccess.Repositories
         }
 
 
-
-
-
-
-
         public Schedule PatientScheduleById(int scheduleId)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -82,9 +77,6 @@ namespace CareCheck.DataAccess.Repositories
                                                .SingleOrDefault();
             }
         }
-
-
-
 
 
         public List<Schedule> EmployeeSchedules(int employeeId)

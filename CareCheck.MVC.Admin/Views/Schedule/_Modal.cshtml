@@ -13,42 +13,37 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Delete Entry In Db</h4>
             </div>
+            <!-- Modal Body -->
             <div class="modal-body">
 
-
-                @using (Html.BeginForm("EditSchedule", "Schedule", "POST"))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.HiddenFor(s => s.ScheduleId, new { @id = "hiddenId" })
-                }
-
+                @*@using (Html.BeginForm("EditSchedule", "Schedule", "POST"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(s => s.ScheduleId, new { @id = "hiddenId" })
+                    }*@
                 @Model.ScheduleId
-                <p> Här kan du ändra eller ta bort i schemat<strong> @Model.Patient.FirstName @Model.Patient.LastName</strong>
+                <p>
+                    Här kan du ändra eller ta bort i schemat
+                    <strong> @Model.Patient.FirstName @Model.Patient.LastName</strong>
                 </p>
 
                 <div class="button-holder">
                     @using (Html.BeginForm("DeleteSchedule", "Schedule", "POST"))
                     {
                         @Html.AntiForgeryToken()
-                        <input type="submit" value="Ta bort Schemat" class="btn btn-danger create-save-btn" />
-                            @Html.HiddenFor(s => s.ScheduleId, new { @id = "hiddenId" })
+                        <input type="submit" value="Ta bort Schemat" class="btn btn-danger create-save-btn"/>
+                        @Html.HiddenFor(s => s.ScheduleId, new {@id = "hiddenId"})
                     }
                     <button class="btn btn-info">Edit</button>
                 </div>
 
-
-
-                <br/>
-                <br/>
-
-
+                <br/> <br/>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-
-
             </div>
+            <!-- Modal Body End-->
         </div>
     </div>
 </div>

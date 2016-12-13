@@ -195,20 +195,19 @@
 <div class="Push"></div>
 
 @section scripts {
-
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.js"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
-    <script type="text/javascript" src="//cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+    <script src="//cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <script>
         $(document)
             .ready(function() {
 
-
-                $('#myTable').DataTable({
+                $('#myTable')
+                    .DataTable({
                         responsive: true,
                         "language": {
                             "lengthMenu": "Visar _MENU_ personer per sida",
@@ -228,178 +227,59 @@
                     });
 
 
-
-                $("#myTable").on("click", ".editButton", function () {
-                    var patient = $(this).data();
-                    console.log(patient);
-                    $("#hiddenId").val(patient.id);
-                    $("#firstName").val(patient.firstname);
-                    $("#lastName").val(patient.lastname);
-                    $("#personNumber").val(patient.personnumber);
-                    $("#phoneNumber").val(patient.phonenumber);
-                    $("#adress").val(patient.adress);
-                    $("#zipCode").val(patient.zipcode);
-                    $(".create-save-btn").attr("value", "Save/Create");
-                });
-
-
-
-                /* Delete recod */
-                $("#myTable").on("click", ".deleteButton", function () {
-                    var removeButton = $(this);
-                    var collapsedTr = removeButton.closest('tr');
-                    var partedTr = collapsedTr.prev('tr.parent');
-
-                    // Remove collapsed tr
-                    collapsedTr.remove();
-                    partedTr.remove();
-
-                    var patientId = $(this).data('id');
-                
-
-                    $.ajax({
-                        type: "post",
-                        url: "@Url.Action("DeletePatient", "Patient")",
-                        ajaxasync: true,
-                    data: { id: patientId },
-
-                    success: function () {
-                        alert("success");
-                    },
-                    error: function (data) {
-                        alert(data.x);
-                    }
-                });
-               });
-
-                /* Delete recod END*/
+                /* Add selected Patient values to the form */
+                $("#myTable")
+                    .on("click",
+                        ".editButton",
+                        function() {
+                            var patient = $(this).data();
+                            console.log(patient);
+                            $("#hiddenId").val(patient.id);
+                            $("#firstName").val(patient.firstname);
+                            $("#lastName").val(patient.lastname);
+                            $("#personNumber").val(patient.personnumber);
+                            $("#phoneNumber").val(patient.phonenumber);
+                            $("#adress").val(patient.adress);
+                            $("#zipCode").val(patient.zipcode);
+                            $(".create-save-btn").attr("value", "Save/Create");
+                        });
 
 
+                /* Delete record */
+                $("#myTable")
+                    .on("click",
+                        ".deleteButton",
+                        function() {
+                            var removeButton = $(this);
+                            var collapsedTr = removeButton.closest('tr');
+                            var partedTr = collapsedTr.prev('tr.parent');
+
+                            // Remove collapsed tr
+                            collapsedTr.remove();
+                            partedTr.remove();
+
+                            var patientId = $(this).data('id');
 
 
+                            $.ajax({
+                                type: "post",
+                                url: "@Url.Action("DeletePatient", "Patient")",
+                                ajaxasync: true,
+                                data: { id: patientId },
 
-
-
-
-
-
-
-                /*
-
-
-                var table = $("#patientTable")
-                    .DataTable({
-                        responsive: true,
-                        "language": {
-                            "lengthMenu": "Visar _MENU_ personer per sida",
-                            "zeroRecords": "Vi hittade tyvärr inget",
-                            "info": "Visar _PAGE_ av _PAGES_",
-                            "infoEmpty": "Inga uppgifter tillgängliga",
-                            "infoFiltered": "(filtered from _MAX_ total records)",
-                            "search": "Sök",
-                            "paginate": {
-                                "first": "Första",
-                                "last": "Sista",
-                                "next": "Nästa",
-                                "previous": "Föregående"
-                            },
-                            "processing": "Söker...",
-                        },
-
-
-
-                        ajax: {
-                                url: "/Patient/GetPatients",
-                                type: "GET",
-                                "dataType": "json"
-                            },
-                            columns: [
-                            { data: "Id" },
-                            { data: "FirstName" },
-                            { data: "LastName" },
-                            { data: "PersonNumber" },
-                            { data: "PhoneNumber" },
-                            { data: "Adress" },
-                            { data: "ZipCode" },
-                            { data: "Id",
-                                render: function (data) {
-                                    return "<button class='btn btn-danger js-delete' data-patient-id=" + data + ">Delete</button>" +
-                                          + " " + "<button class='btn btn-info js-edit' data-patient-id=" + data + ">Edit</button>";;
+                                success: function() {
+                                    alert("success");
+                                },
+                                error: function(data) {
+                                    alert(data.x);
                                 }
-                            }
-                ]
-               });
-
-
-                */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-             
-
-
-
-
-        });
-
-
-
-
-
-
-
- 
-
-
+                            });
+                        });
+                /* Delete recod END*/
+            });
 
     </script>
 }
 
 
 
-<!--
-
-
-
-
-                $("#patientTable").on("click", ".deleteButton", function () {
-                    var removeButton = $(this);
-
-                    // Get ref to  collapsed tr and colapsed tr to get remove when success
-                    var collapsedTr = removeButton.closest('tr');
-                    var partedTr = collapsedTr.prev('tr.parent');
-
-                
-                     var patientId = $(this).data('patient-id');
-
-                            $.ajax({
-                                url: "@Url.Action("DeletePatient", "Patient")",
-                                method: "POST",
-                                data: { id: patientId },
-                                success: function () {
-                                    collapsedTr.remove();
-                                    partedTr.remove();
-                                }
-                            });
-                });
-
-
--->

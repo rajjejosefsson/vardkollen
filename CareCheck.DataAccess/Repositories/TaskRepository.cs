@@ -8,6 +8,7 @@ namespace CareCheck.DataAccess.Repositories
     public class TaskRepository : ITaskRepository
     {
 
+
         public ICollection<Task> TaskList()
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -16,6 +17,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public Task FindById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -23,6 +25,7 @@ namespace CareCheck.DataAccess.Repositories
                 return context.Tasks.AsNoTracking().SingleOrDefault(t => t.Id == id);
             }
         }
+
 
         public void InsertOrUpdate(Task task)
         {
@@ -36,6 +39,7 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
         public void DeleteById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
@@ -45,5 +49,7 @@ namespace CareCheck.DataAccess.Repositories
                 context.SaveChanges();
             }
         }
+
+
     }
 }
