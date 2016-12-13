@@ -9,13 +9,17 @@ namespace CareCheck.DataAccess.Repositories
     public class ScheduleRepository : IScheduleRepository
     {
 
-        public ICollection<Schedule> ScheduleList()
+
+
+        public ICollection<Schedule> PatientsSchedules()
         {
+
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Schedules.ToList();
+                return context.Schedules.Include(p => p.Patient).Include(t => t.TodoList.Select(task => task.Task)).ToList();
             }
         }
+
 
         public Schedule FindById(int scheduleId)
         {
@@ -37,13 +41,13 @@ namespace CareCheck.DataAccess.Repositories
         }
 
 
-        public void DeleteById(int sheduleId)
+        public void DeleteById(int scheduleId)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
 
                 // Check if schedule exists
-                var schedule = context.Schedules.Single(s => s.Id == sheduleId);
+                var schedule = context.Schedules.Single(s => s.Id == scheduleId);
 
                 // Get todolist items from the selected schedule
                 var todoList = context.TodoList.Where(t => t.ScheduleId == schedule.Id).ToList();
@@ -63,24 +67,70 @@ namespace CareCheck.DataAccess.Repositories
 
 
 
-        public ICollection<Schedule> PatientsSchedules()
-        {
 
+
+
+
+        public Schedule PatientScheduleById(int scheduleId)
+        {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Schedules.Include(p => p.Patient).Include(t => t.TodoList.Select(task => task.Task)).ToList();
+                return context.Schedules.Where(s => s.Id == scheduleId)
+                                               .Include(t => t.TodoList.Select(i => i.Task))
+                                               .Include(p => p.Patient.Medications)
+                                               .Single();
             }
         }
 
 
 
-        public void Save()
+
+
+        public List<Schedule> EmployeeSchedules(int employeeId)
+        {
+
+            using (CareCheckDbContext context = new CareCheckDbContext())
+            {
+                // Employee is hardcoded with id 1 = Martin in Db
+                return context.Schedules.Where(e => e.EmployeeId == employeeId)
+                                                            .OrderByDescending(s => s.DateTime)
+                                                            .Include(p => p.Patient)
+                                                            .Include(e => e.Employee)
+                                                            .ToList();
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // for realatives view
+        public ICollection<Schedule> PatientDetailSchedules(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                context.SaveChanges();
+                return context.Schedules.Where(p => p.PatientId == id)
+                                 .Include(d => d.TodoList.Select(t => t.Task))
+                                 .OrderByDescending(s => s.DateTime)
+                                 .ToList();
+
             }
         }
+
+
 
     }
 

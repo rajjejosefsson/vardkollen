@@ -5,6 +5,12 @@ namespace CareCheck.DataAccess
 {
     public class CareCheckDbContext : DbContext
     {
+
+        public CareCheckDbContext() : base("CareCheckDb")
+        {
+
+        }
+
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Schedule> Schedules { get; set; }

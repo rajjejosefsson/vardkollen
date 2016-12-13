@@ -34,6 +34,33 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
+
+        public void UpdateTodoList(int scheduleId, bool[] checkBoxes)
+        {
+
+            using (CareCheckDbContext context = new CareCheckDbContext())
+            {
+                var dataEntries = context.TodoList.Where(i => i.ScheduleId == scheduleId).ToList();
+
+
+                // Updates the isDone Entries in db
+                for (var i = 0; i < dataEntries.Count; i++)
+                {
+                    dataEntries[i].IsDone = checkBoxes[i];
+                }
+
+                context.SaveChanges();
+            }
+        }
+
+
+
+
+
+
+
+
         public void DeleteById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())

@@ -47,15 +47,6 @@ namespace CareCheck.DataAccess.Repositories
 
 
 
-        public Relative RelativesPatient(string phone)
-        {
-            using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
-            {
-                return context.Relatives.Where(r => r.PhoneNumber == phone)
-                                                          .Include(p => p.Patients)
-                                                          .SingleOrDefault();
-            }
-        }
 
 
 
@@ -73,5 +64,40 @@ namespace CareCheck.DataAccess.Repositories
             }
 
         }
+
+
+
+        public Relative RelativesPatientByEmail(string email)
+        {
+            using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
+            {
+
+                // Change to get by email instead
+                return context.Relatives.Where(r => r.PhoneNumber == email)
+                                                 .Include(p => p.Patients)
+                                                 .Single();
+            }
+        }
+
+
+
+
+        public Patient PatientDetailInfoById(int id)
+        {
+            using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
+            {
+
+                return context.Patients.Where(p => p.Id == id)
+                                                           .Include(m => m.Medications)
+                                                           .Include(r => r.Relatives)
+                                                           .Single();
+            }
+        }
+
+
+
+
+
+
     }
 }

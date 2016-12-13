@@ -22,11 +22,12 @@
     <MetadataSource Address="http://localhost:49368/KommunWebservice.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="KommunWebservice.wsdl" MetadataType="Wsdl" ID="bec313ab-da1a-4aee-8a0d-03f826d38e9c" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?wsdl" />
-    <MetadataFile FileName="KommunWebservice.disco" MetadataType="Disco" ID="2297517c-e007-45ee-aa6e-8d1df20d23b6" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?disco" />
     <MetadataFile FileName="KommunWebservice.xsd" MetadataType="Schema" ID="9c83a35f-badf-493f-b723-1b1f398b1b04" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd0" />
-    <MetadataFile FileName="KommunWebservice1.xsd" MetadataType="Schema" ID="a0e61f9e-6c89-4d7d-b7dd-74d79a0b4065" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd2" />
+    <MetadataFile FileName="KommunWebservice.wsdl" MetadataType="Wsdl" ID="bec313ab-da1a-4aee-8a0d-03f826d38e9c" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?wsdl" />
+    <MetadataFile FileName="KommunWebservice3.xsd" MetadataType="Schema" ID="840d17bf-fd16-4e46-a0c9-7ea45e9fd928" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd3" />
     <MetadataFile FileName="KommunWebservice2.xsd" MetadataType="Schema" ID="5cd4a85f-7e62-450b-9e6f-e90ab6bc32e0" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd1" />
+    <MetadataFile FileName="KommunWebservice.disco" MetadataType="Disco" ID="2297517c-e007-45ee-aa6e-8d1df20d23b6" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?disco" />
+    <MetadataFile FileName="KommunWebservice1.xsd" MetadataType="Schema" ID="a0e61f9e-6c89-4d7d-b7dd-74d79a0b4065" SourceId="1" SourceUrl="http://localhost:49368/KommunWebservice.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

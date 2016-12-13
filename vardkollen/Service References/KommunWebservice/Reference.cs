@@ -15,17 +15,35 @@ namespace vardkollen.KommunWebservice {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="KommunWebservice.IKommunWebservice")]
     public interface IKommunWebservice {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/RelativesPatientByEmail", ReplyAction="http://tempuri.org/IKommunWebservice/RelativesPatientByEmailResponse")]
+        CareCheck.DomainClasses.Relative RelativesPatientByEmail(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/RelativesPatientByEmail", ReplyAction="http://tempuri.org/IKommunWebservice/RelativesPatientByEmailResponse")]
+        System.Threading.Tasks.Task<CareCheck.DomainClasses.Relative> RelativesPatientByEmailAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientDetailInfoById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientDetailInfoByIdResponse")]
+        CareCheck.DomainClasses.Patient PatientDetailInfoById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientDetailInfoById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientDetailInfoByIdResponse")]
+        System.Threading.Tasks.Task<CareCheck.DomainClasses.Patient> PatientDetailInfoByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientDetailSchedules", ReplyAction="http://tempuri.org/IKommunWebservice/PatientDetailSchedulesResponse")]
+        CareCheck.DomainClasses.Schedule[] PatientDetailSchedules(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientDetailSchedules", ReplyAction="http://tempuri.org/IKommunWebservice/PatientDetailSchedulesResponse")]
+        System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule[]> PatientDetailSchedulesAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/EmployeeList", ReplyAction="http://tempuri.org/IKommunWebservice/EmployeeListResponse")]
         CareCheck.DomainClasses.Employee[] EmployeeList();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/EmployeeList", ReplyAction="http://tempuri.org/IKommunWebservice/EmployeeListResponse")]
         System.Threading.Tasks.Task<CareCheck.DomainClasses.Employee[]> EmployeeListAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/GetEmployee", ReplyAction="http://tempuri.org/IKommunWebservice/GetEmployeeResponse")]
-        CareCheck.DomainClasses.Employee GetEmployee(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/EmployeeById", ReplyAction="http://tempuri.org/IKommunWebservice/EmployeeByIdResponse")]
+        CareCheck.DomainClasses.Employee EmployeeById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/GetEmployee", ReplyAction="http://tempuri.org/IKommunWebservice/GetEmployeeResponse")]
-        System.Threading.Tasks.Task<CareCheck.DomainClasses.Employee> GetEmployeeAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/EmployeeById", ReplyAction="http://tempuri.org/IKommunWebservice/EmployeeByIdResponse")]
+        System.Threading.Tasks.Task<CareCheck.DomainClasses.Employee> EmployeeByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateEmployee", ReplyAction="http://tempuri.org/IKommunWebservice/InsertOrUpdateEmployeeResponse")]
         void InsertOrUpdateEmployee(CareCheck.DomainClasses.Employee employee);
@@ -45,11 +63,11 @@ namespace vardkollen.KommunWebservice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientList", ReplyAction="http://tempuri.org/IKommunWebservice/PatientListResponse")]
         System.Threading.Tasks.Task<CareCheck.DomainClasses.Patient[]> PatientListAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/GetPatient", ReplyAction="http://tempuri.org/IKommunWebservice/GetPatientResponse")]
-        CareCheck.DomainClasses.Patient GetPatient(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientByIdResponse")]
+        CareCheck.DomainClasses.Patient PatientById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/GetPatient", ReplyAction="http://tempuri.org/IKommunWebservice/GetPatientResponse")]
-        System.Threading.Tasks.Task<CareCheck.DomainClasses.Patient> GetPatientAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientByIdResponse")]
+        System.Threading.Tasks.Task<CareCheck.DomainClasses.Patient> PatientByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/InsertOrUpdatePatient", ReplyAction="http://tempuri.org/IKommunWebservice/InsertOrUpdatePatientResponse")]
         void InsertOrUpdatePatient(CareCheck.DomainClasses.Patient patient);
@@ -62,12 +80,6 @@ namespace vardkollen.KommunWebservice {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/DeletePatient", ReplyAction="http://tempuri.org/IKommunWebservice/DeletePatientResponse")]
         System.Threading.Tasks.Task DeletePatientAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientScheduleById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientScheduleByIdResponse")]
-        CareCheck.DomainClasses.Schedule PatientScheduleById(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientScheduleById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientScheduleByIdResponse")]
-        System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule> PatientScheduleByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/RelativeList", ReplyAction="http://tempuri.org/IKommunWebservice/RelativeListResponse")]
         CareCheck.DomainClasses.Relative[] RelativeList();
@@ -129,17 +141,17 @@ namespace vardkollen.KommunWebservice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/DeleteTask", ReplyAction="http://tempuri.org/IKommunWebservice/DeleteTaskResponse")]
         System.Threading.Tasks.Task DeleteTaskAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/ScheduleList", ReplyAction="http://tempuri.org/IKommunWebservice/ScheduleListResponse")]
-        CareCheck.DomainClasses.Schedule[] ScheduleList();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/ScheduleList", ReplyAction="http://tempuri.org/IKommunWebservice/ScheduleListResponse")]
-        System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule[]> ScheduleListAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateSchedule", ReplyAction="http://tempuri.org/IKommunWebservice/InsertOrUpdateScheduleResponse")]
         CareCheck.DomainClasses.Schedule InsertOrUpdateSchedule(CareCheck.DomainClasses.Schedule schedule);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/InsertOrUpdateSchedule", ReplyAction="http://tempuri.org/IKommunWebservice/InsertOrUpdateScheduleResponse")]
         System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule> InsertOrUpdateScheduleAsync(CareCheck.DomainClasses.Schedule schedule);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientScheduleById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientScheduleByIdResponse")]
+        CareCheck.DomainClasses.Schedule PatientScheduleById(int scheduleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientScheduleById", ReplyAction="http://tempuri.org/IKommunWebservice/PatientScheduleByIdResponse")]
+        System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule> PatientScheduleByIdAsync(int scheduleId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/Schedule", ReplyAction="http://tempuri.org/IKommunWebservice/ScheduleResponse")]
         CareCheck.DomainClasses.Schedule Schedule(int id);
@@ -159,17 +171,23 @@ namespace vardkollen.KommunWebservice {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/PatientsSchedules", ReplyAction="http://tempuri.org/IKommunWebservice/PatientsSchedulesResponse")]
         System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule[]> PatientsSchedulesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/SaveSchedule", ReplyAction="http://tempuri.org/IKommunWebservice/SaveScheduleResponse")]
-        void SaveSchedule();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/EmployeeSchedule", ReplyAction="http://tempuri.org/IKommunWebservice/EmployeeScheduleResponse")]
+        CareCheck.DomainClasses.Schedule[] EmployeeSchedule(int employeeId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/SaveSchedule", ReplyAction="http://tempuri.org/IKommunWebservice/SaveScheduleResponse")]
-        System.Threading.Tasks.Task SaveScheduleAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/EmployeeSchedule", ReplyAction="http://tempuri.org/IKommunWebservice/EmployeeScheduleResponse")]
+        System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule[]> EmployeeScheduleAsync(int employeeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/InsertTodo", ReplyAction="http://tempuri.org/IKommunWebservice/InsertTodoResponse")]
         void InsertTodo(CareCheck.DomainClasses.TodoList todoItem);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/InsertTodo", ReplyAction="http://tempuri.org/IKommunWebservice/InsertTodoResponse")]
         System.Threading.Tasks.Task InsertTodoAsync(CareCheck.DomainClasses.TodoList todoItem);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/UpdateTodoList", ReplyAction="http://tempuri.org/IKommunWebservice/UpdateTodoListResponse")]
+        void UpdateTodoList(int scheduleId, bool[] checkBoxes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/UpdateTodoList", ReplyAction="http://tempuri.org/IKommunWebservice/UpdateTodoListResponse")]
+        System.Threading.Tasks.Task UpdateTodoListAsync(int scheduleId, bool[] checkBoxes);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKommunWebservice/Todos", ReplyAction="http://tempuri.org/IKommunWebservice/TodosResponse")]
         CareCheck.DomainClasses.TodoList[] Todos();
@@ -205,6 +223,30 @@ namespace vardkollen.KommunWebservice {
                 base(binding, remoteAddress) {
         }
         
+        public CareCheck.DomainClasses.Relative RelativesPatientByEmail(string email) {
+            return base.Channel.RelativesPatientByEmail(email);
+        }
+        
+        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Relative> RelativesPatientByEmailAsync(string email) {
+            return base.Channel.RelativesPatientByEmailAsync(email);
+        }
+        
+        public CareCheck.DomainClasses.Patient PatientDetailInfoById(int id) {
+            return base.Channel.PatientDetailInfoById(id);
+        }
+        
+        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Patient> PatientDetailInfoByIdAsync(int id) {
+            return base.Channel.PatientDetailInfoByIdAsync(id);
+        }
+        
+        public CareCheck.DomainClasses.Schedule[] PatientDetailSchedules(int id) {
+            return base.Channel.PatientDetailSchedules(id);
+        }
+        
+        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule[]> PatientDetailSchedulesAsync(int id) {
+            return base.Channel.PatientDetailSchedulesAsync(id);
+        }
+        
         public CareCheck.DomainClasses.Employee[] EmployeeList() {
             return base.Channel.EmployeeList();
         }
@@ -213,12 +255,12 @@ namespace vardkollen.KommunWebservice {
             return base.Channel.EmployeeListAsync();
         }
         
-        public CareCheck.DomainClasses.Employee GetEmployee(int id) {
-            return base.Channel.GetEmployee(id);
+        public CareCheck.DomainClasses.Employee EmployeeById(int id) {
+            return base.Channel.EmployeeById(id);
         }
         
-        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Employee> GetEmployeeAsync(int id) {
-            return base.Channel.GetEmployeeAsync(id);
+        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Employee> EmployeeByIdAsync(int id) {
+            return base.Channel.EmployeeByIdAsync(id);
         }
         
         public void InsertOrUpdateEmployee(CareCheck.DomainClasses.Employee employee) {
@@ -245,12 +287,12 @@ namespace vardkollen.KommunWebservice {
             return base.Channel.PatientListAsync();
         }
         
-        public CareCheck.DomainClasses.Patient GetPatient(int id) {
-            return base.Channel.GetPatient(id);
+        public CareCheck.DomainClasses.Patient PatientById(int id) {
+            return base.Channel.PatientById(id);
         }
         
-        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Patient> GetPatientAsync(int id) {
-            return base.Channel.GetPatientAsync(id);
+        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Patient> PatientByIdAsync(int id) {
+            return base.Channel.PatientByIdAsync(id);
         }
         
         public void InsertOrUpdatePatient(CareCheck.DomainClasses.Patient patient) {
@@ -267,14 +309,6 @@ namespace vardkollen.KommunWebservice {
         
         public System.Threading.Tasks.Task DeletePatientAsync(int id) {
             return base.Channel.DeletePatientAsync(id);
-        }
-        
-        public CareCheck.DomainClasses.Schedule PatientScheduleById(int id) {
-            return base.Channel.PatientScheduleById(id);
-        }
-        
-        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule> PatientScheduleByIdAsync(int id) {
-            return base.Channel.PatientScheduleByIdAsync(id);
         }
         
         public CareCheck.DomainClasses.Relative[] RelativeList() {
@@ -357,20 +391,20 @@ namespace vardkollen.KommunWebservice {
             return base.Channel.DeleteTaskAsync(id);
         }
         
-        public CareCheck.DomainClasses.Schedule[] ScheduleList() {
-            return base.Channel.ScheduleList();
-        }
-        
-        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule[]> ScheduleListAsync() {
-            return base.Channel.ScheduleListAsync();
-        }
-        
         public CareCheck.DomainClasses.Schedule InsertOrUpdateSchedule(CareCheck.DomainClasses.Schedule schedule) {
             return base.Channel.InsertOrUpdateSchedule(schedule);
         }
         
         public System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule> InsertOrUpdateScheduleAsync(CareCheck.DomainClasses.Schedule schedule) {
             return base.Channel.InsertOrUpdateScheduleAsync(schedule);
+        }
+        
+        public CareCheck.DomainClasses.Schedule PatientScheduleById(int scheduleId) {
+            return base.Channel.PatientScheduleById(scheduleId);
+        }
+        
+        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule> PatientScheduleByIdAsync(int scheduleId) {
+            return base.Channel.PatientScheduleByIdAsync(scheduleId);
         }
         
         public CareCheck.DomainClasses.Schedule Schedule(int id) {
@@ -397,12 +431,12 @@ namespace vardkollen.KommunWebservice {
             return base.Channel.PatientsSchedulesAsync();
         }
         
-        public void SaveSchedule() {
-            base.Channel.SaveSchedule();
+        public CareCheck.DomainClasses.Schedule[] EmployeeSchedule(int employeeId) {
+            return base.Channel.EmployeeSchedule(employeeId);
         }
         
-        public System.Threading.Tasks.Task SaveScheduleAsync() {
-            return base.Channel.SaveScheduleAsync();
+        public System.Threading.Tasks.Task<CareCheck.DomainClasses.Schedule[]> EmployeeScheduleAsync(int employeeId) {
+            return base.Channel.EmployeeScheduleAsync(employeeId);
         }
         
         public void InsertTodo(CareCheck.DomainClasses.TodoList todoItem) {
@@ -411,6 +445,14 @@ namespace vardkollen.KommunWebservice {
         
         public System.Threading.Tasks.Task InsertTodoAsync(CareCheck.DomainClasses.TodoList todoItem) {
             return base.Channel.InsertTodoAsync(todoItem);
+        }
+        
+        public void UpdateTodoList(int scheduleId, bool[] checkBoxes) {
+            base.Channel.UpdateTodoList(scheduleId, checkBoxes);
+        }
+        
+        public System.Threading.Tasks.Task UpdateTodoListAsync(int scheduleId, bool[] checkBoxes) {
+            return base.Channel.UpdateTodoListAsync(scheduleId, checkBoxes);
         }
         
         public CareCheck.DomainClasses.TodoList[] Todos() {

@@ -13,6 +13,7 @@
 
     /* Left side Card Item (Info) */
     .item-left {
+        border-radius: 5px;
         height: 180px;
         background-color: white;
         margin: 15px;
@@ -25,9 +26,17 @@
             margin-bottom: 60px;
         }
 
-        .item-left img {
-            margin-top: 20px;
+
+        .profile-text {
+                margin-top: 30px;
         }
+
+
+        .item-left img {
+            margin-top: 14px;
+        }
+
+      
 
 
 
@@ -36,13 +45,16 @@
         }
 
 
-        .left-main-content {
-            margin-top: 10px;
-        }
 
-        .relative-holder {
-            height: 159px;
-        }
+
+
+    .left-main-content {
+        margin-top: 10px;
+    }
+
+    .relative-holder {
+        height: 159px;
+    }
 
 
     /* Right Side Card Item (Tasks)  */
@@ -60,6 +72,7 @@
 
 
     .task-item {
+        border-radius: 5px;
         background-color: white;
         height: 300px;
         max-width: 400px;
@@ -168,6 +181,9 @@
         margin-bottom: 40px;
     }
 
+
+
+
     @@media (max-width: 480px) {
         .item-left {
             min-height: 300px;
@@ -206,30 +222,32 @@
 
         <!-- Left side of page-->
         <div class="col-xs-12 col-sm-6 col-md-5">
-            <div class="left-side-holder">      
+            <div class="left-side-holder">
                 <div class="item-left profile-holder">
                     <div class="col-xs-4">
                         <img src="~/Content/Images/user-female-picture.png" style="width: 110px" alt="" />
                     </div>
                     <div class="col-xs-8">
+                        <div class="profile-text">
                         <h3>@Model.Patient.FirstName @Model.Patient.LastName</h3>
-                        <div class="left-main-content">
-                            <p> <strong>Persnr:</strong>@Model.Patient.PersonNumber</p>
-                            <p><strong>Telefon:</strong>@Model.Patient.PhoneNumber</p>
-                        </div>
+                            <div class="left-main-content">
+                                <p> <strong>Persnr:</strong>@Model.Patient.PersonNumber</p>
+                                <p><strong>Telefon:</strong>@Model.Patient.PhoneNumber</p>
+                            </div>
+                            </div>
                     </div>
                 </div>
 
 
 
 
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
 
 
                 <h1 style="color: black; margin-left: 30px">Övrigt</h1>
-                <hr/>
+                <hr />
 
 
 
@@ -270,7 +288,7 @@
                 </div>
 
 
-     
+
 
 
 

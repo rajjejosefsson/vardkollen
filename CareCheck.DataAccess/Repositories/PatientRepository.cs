@@ -1,7 +1,6 @@
 ﻿using CareCheck.DataAccess.Repositories.Interfaces;
 using CareCheck.DomainClasses;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 
 namespace CareCheck.DataAccess.Repositories
@@ -62,15 +61,12 @@ namespace CareCheck.DataAccess.Repositories
         }
 
 
-        public Schedule PatientSchedulueById(int id)
-        {
-            using (CareCheckDbContext context = new CareCheckDbContext())
-            {
-                return context.Schedules.Where(s => s.Id == id)
-                                                .Include(p => p.Patient)
-                                                .Single();
-            }
-        }
+
+
+
+
+
+
 
     }
 }

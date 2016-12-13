@@ -60,9 +60,9 @@
 @section scripts {
     <script>
 
-        function renderPatient(patientId) {
+        function renderPatient(scheduleId) {
             /* Request the partial view with .get request. */
-            $.get('/Task/SelectSchedule/' + patientId, function (data) {
+            $.get('/Task/SelectSchedule/' + scheduleId, function (data) {
                 /* data is the pure html returned from action method, load it to your page */
                 $('#partialPlaceHolder').html(data);
                 /* little fade in effect */
@@ -74,14 +74,14 @@
         $(document).ready(function () {
 
             // Initial patient to render
-            var patientId = $("#myFormInputName").val();
-            renderPatient(patientId);
+            var scheduleId = $("#myFormInputName").val();
+            renderPatient(scheduleId);
 
 
             // Select patient to show
             $("#myFormInputName").on('change', function () {
-                var patientId = $(this).val();
-                renderPatient(patientId);
+                var scheduleId = $(this).val();
+                renderPatient(scheduleId);
             });
         });
     </script>

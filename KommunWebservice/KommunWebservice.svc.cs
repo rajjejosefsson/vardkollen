@@ -23,6 +23,31 @@ namespace KommunWebservice
 
 
 
+
+
+        // SHOULD BE MOVED LATER TO RELATIVE WCF
+        public Relative RelativesPatientByEmail(string email)
+        {
+            return _relativeRepository.RelativesPatientByEmail(email);
+        }
+
+
+        // For relatives
+        public ICollection<Schedule> PatientDetailSchedules(int id)
+        {
+            return _scheduleRepository.PatientDetailSchedules(id);
+        }
+
+        public Patient PatientDetailInfoById(int id)
+        {
+            return _relativeRepository.PatientDetailInfoById(id);
+        }
+
+
+
+
+
+
         // Employee
         public ICollection<Employee> EmployeeList()
         {
@@ -30,7 +55,7 @@ namespace KommunWebservice
         }
 
 
-        public Employee GetEmployee(int id)
+        public Employee EmployeeById(int id)
         {
             return _employeeRepository.FindById(id);
         }
@@ -50,6 +75,9 @@ namespace KommunWebservice
 
 
 
+
+
+
         // Patient
 
         public ICollection<Patient> PatientList()
@@ -57,7 +85,7 @@ namespace KommunWebservice
             return _patientRepository.PatientList();
         }
 
-        public Patient GetPatient(int id)
+        public Patient PatientById(int id)
         {
             return _patientRepository.FindById(id);
         }
@@ -72,10 +100,8 @@ namespace KommunWebservice
             _patientRepository.DeleteById(id);
         }
 
-        public Schedule PatientScheduleById(int id)
-        {
-            return _patientRepository.PatientSchedulueById(id);
-        }
+
+
 
 
 
@@ -124,6 +150,10 @@ namespace KommunWebservice
 
 
 
+
+
+
+
         // Tasks
         public ICollection<Task> TaskList()
         {
@@ -148,12 +178,46 @@ namespace KommunWebservice
 
 
 
+
+
+
+
+
         // Schedule
 
-        public ICollection<Schedule> ScheduleList()
+        public ICollection<Schedule> PatientsSchedules()
         {
-            return _scheduleRepository.ScheduleList();
+            return _scheduleRepository.PatientsSchedules();
         }
+
+
+
+        public Schedule PatientScheduleById(int id)
+        {
+            return _scheduleRepository.PatientScheduleById(id);
+        }
+
+        public ICollection<Schedule> EmployeeSchedule(int employeeId)
+        {
+            return _scheduleRepository.EmployeeSchedules(employeeId);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public Schedule InsertOrUpdateSchedule(Schedule schedule)
         {
@@ -170,15 +234,11 @@ namespace KommunWebservice
             _scheduleRepository.DeleteById(id);
         }
 
-        public ICollection<Schedule> PatientsSchedules()
-        {
-            return _scheduleRepository.PatientsSchedules();
-        }
 
-        public void SaveSchedule()
-        {
-            _scheduleRepository.Save();
-        }
+
+
+
+
 
 
 
@@ -188,9 +248,20 @@ namespace KommunWebservice
         {
             return _todoListRepository.TodoList();
         }
+
         public void InsertTodo(TodoList todoItem)
         {
             _todoListRepository.InsertTodo(todoItem);
         }
+
+
+        public void UpdateTodoList(int scheduleId, bool[] checkBoxes)
+        {
+            _todoListRepository.UpdateTodoList(scheduleId, checkBoxes);
+        }
+
+
+
+
     }
 }

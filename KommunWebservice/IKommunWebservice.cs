@@ -10,13 +10,32 @@ namespace KommunWebservice
     public interface IKommunWebservice
     {
 
+
+
+
+
+        // Should be moved to relative WCF
+        [OperationContract]
+        Relative RelativesPatientByEmail(string email);
+
+        [OperationContract]
+        Patient PatientDetailInfoById(int id);
+
+        // Relatives view
+        [OperationContract]
+        ICollection<Schedule> PatientDetailSchedules(int id);
+
+
+
+
+
         // Employees
 
         [OperationContract]
         ICollection<Employee> EmployeeList();
 
         [OperationContract]
-        Employee GetEmployee(int id);
+        Employee EmployeeById(int id);
 
         [OperationContract]
         void InsertOrUpdateEmployee(Employee employee);
@@ -30,19 +49,21 @@ namespace KommunWebservice
 
         // Patients
 
+
         [OperationContract]
         ICollection<Patient> PatientList();
 
+
         [OperationContract]
-        Patient GetPatient(int id);
+        Patient PatientById(int id);
 
         [OperationContract]
         void InsertOrUpdatePatient(Patient patient);
 
         [OperationContract]
         void DeletePatient(int id);
-        [OperationContract]
-        Schedule PatientScheduleById(int id);
+
+
 
 
 
@@ -86,11 +107,13 @@ namespace KommunWebservice
 
         // Schedule
 
-        [OperationContract]
-        ICollection<Schedule> ScheduleList();
 
         [OperationContract]
         Schedule InsertOrUpdateSchedule(Schedule schedule);
+
+        [OperationContract]
+        Schedule PatientScheduleById(int scheduleId);
+
 
         [OperationContract]
         Schedule Schedule(int id);
@@ -98,12 +121,20 @@ namespace KommunWebservice
         [OperationContract]
         void DeleteSchedule(int id);
 
+
+
+
+
         [OperationContract]
         ICollection<Schedule> PatientsSchedules();
 
-
         [OperationContract]
-        void SaveSchedule();
+        ICollection<Schedule> EmployeeSchedule(int employeeId);
+
+
+
+
+
 
 
 
@@ -111,6 +142,10 @@ namespace KommunWebservice
         // Todos
         [OperationContract]
         void InsertTodo(TodoList todoItem);
+
+        [OperationContract]
+        void UpdateTodoList(int scheduleId, bool[] checkBoxes);
+
 
         [OperationContract]
         ICollection<TodoList> Todos();
