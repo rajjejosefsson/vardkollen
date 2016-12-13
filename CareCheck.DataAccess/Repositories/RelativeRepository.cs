@@ -14,7 +14,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Relatives.ToList();
+                return context.Relatives.AsNoTracking().ToList();
             }
         }
 
@@ -22,7 +22,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Relatives.SingleOrDefault(r => r.Id == id);
+                return context.Relatives.AsNoTracking().SingleOrDefault(r => r.Id == id);
             }
         }
 
@@ -39,7 +39,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                var relativeInDb = context.Relatives.Single(e => e.Id == id);
+                var relativeInDb = context.Relatives.SingleOrDefault(e => e.Id == id);
                 context.Relatives.Remove(relativeInDb);
                 context.SaveChanges();
             }
@@ -73,24 +73,25 @@ namespace CareCheck.DataAccess.Repositories
             {
 
                 // Change to get by email instead
-                return context.Relatives.Where(r => r.PhoneNumber == email)
+                return context.Relatives.AsNoTracking().Where(r => r.PhoneNumber == email)
                                                  .Include(p => p.Patients)
-                                                 .Single();
+                                                 .SingleOrDefault();
             }
         }
 
 
 
 
+        // Could be optimized 
         public Patient PatientDetailInfoById(int id)
         {
-            using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
+            using (CareCheckDbContext context = new CareCheckDbContext())
             {
 
-                return context.Patients.Where(p => p.Id == id)
+                return context.Patients.AsNoTracking().Where(p => p.Id == id)
                                                            .Include(m => m.Medications)
                                                            .Include(r => r.Relatives)
-                                                           .Single();
+                                                           .SingleOrDefault();
             }
         }
 

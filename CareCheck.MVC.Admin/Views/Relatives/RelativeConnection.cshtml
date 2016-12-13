@@ -1,0 +1,84 @@
+﻿@model CareCheck.MVC.Admin.ViewModels.PatientsAndRelativesViewModel
+@{
+    ViewBag.Title = "About Page";
+}
+
+<style>
+    .dropdown-name, h4 {
+        margin-left: 40px;
+    }
+          .Push{
+        height: 450px;
+    }
+
+    @@media  (min-width: 2560px) {
+    .Push {
+        height:336px;
+    }
+}
+</style>
+
+
+<div class="row">
+    <div class="start-banner">
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+    <!-- Check if relatives "patients" is > 1, if so show dropdown with all it "patients" else show the only "patient" -->
+
+
+
+    <div class="col-md-6">
+        <h3>Koppla ihop anhörig med patient</h3>
+        @using (Html.BeginForm("CreateConnection", "Relatives", "POST"))
+        {
+            @Html.AntiForgeryToken()
+            <!-- Select Patient -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Patients)
+                @Html.DropDownListFor(model => model.PatientId, new SelectList(Model.Patients, "Id", "FirstName"), new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.PatientId, "", new {@class = "text-danger"})
+            </div>
+            <!-- Select Patient END -->
+
+            <!-- Select Relative -->
+            <div class="form-group">
+                @Html.LabelFor(model => model.Relatives)
+                @Html.DropDownListFor(model => model.RelativeId, new SelectList(Model.Relatives, "Id", "FirstName"), new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.RelativeId, "", new {@class = "text-danger"})
+            </div>
+            <!-- Select Relative END -->
+
+
+
+                <!-- Submit Form -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary create-save-btn" />
+            </div>
+                <!-- Submit Form END -->
+        }
+        </div>
+
+
+    </div>
+
+
+
+    <div class="col-md-12">
+        <div id="partialPlaceHolder" style="display: none;"></div>
+    </div>
+
+
+
+    <div style="height: 150px"></div>
+
+<div class="Push"></div>
+
+    @section scripts {
+        <script>
+
+        </script>
+    }

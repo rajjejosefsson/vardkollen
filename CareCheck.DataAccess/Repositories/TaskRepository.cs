@@ -10,23 +10,23 @@ namespace CareCheck.DataAccess.Repositories
 
         public ICollection<Task> TaskList()
         {
-            using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
+            using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Tasks.ToList();
+                return context.Tasks.AsNoTracking().ToList();
             }
         }
 
         public Task FindById(int id)
         {
-            using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
+            using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Tasks.SingleOrDefault(t => t.Id == id);
+                return context.Tasks.AsNoTracking().SingleOrDefault(t => t.Id == id);
             }
         }
 
         public void InsertOrUpdate(Task task)
         {
-            using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
+            using (CareCheckDbContext context = new CareCheckDbContext())
             {
                 if (!context.Tasks.Any(t => t.Name == task.Name))
                 {
@@ -40,7 +40,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
             {
-                var taskInDb = context.Tasks.Single(e => e.Id == id);
+                var taskInDb = context.Tasks.SingleOrDefault(e => e.Id == id);
                 context.Tasks.Remove(taskInDb);
                 context.SaveChanges();
             }

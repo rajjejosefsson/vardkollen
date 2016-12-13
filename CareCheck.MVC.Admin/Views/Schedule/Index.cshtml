@@ -1,0 +1,298 @@
+﻿@model CareCheck.MVC.Admin.ViewModels.CreateScheduleViewModel
+@{
+    ViewBag.Title = "About Page";
+}
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+<style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .todolist-ul {
+        max-width: 250px;
+    }
+
+    .createTask-holder {
+        margin-top: 60px;
+    }
+
+        .createTask-holder input {
+            display: inline-block;
+        }
+
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+        width: 20px; /*Desired width*/
+        height: 20px; /*Desired height*/
+    }
+
+
+    .fc-view-container {
+        background-color: white;
+    }
+    /*dessa ska bort*/
+    .input-group-addon {
+        border-radius: 3px !important;
+        background-color: white;
+    }
+
+
+    
+  .text-danger {
+      color: #f71f1b;
+  }
+
+    .Push {
+        height: 150px;
+    }
+
+    @@media (min-width: 2560px) {
+        .Push {
+            height: 361px;
+        }
+    }
+</style>
+
+
+
+
+<div class="row">
+    <div class="start-banner">
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="col-md-4">
+            <h3>Lägg till i schema</h3>
+
+            @using (Html.BeginForm("CreateSchedule", "Schedule", "POST"))
+            {
+                @Html.AntiForgeryToken()
+                <!-- Select DateTime -->
+                <div class="form-group has-feedback has-feedback-right">
+                    <div class="input-group date" id="datetimepicker">
+                        @Html.LabelFor(model => model.DateTime)
+                        @Html.TextBoxFor(model => model.DateTime, new { @class = "form-control form-control input-group-addon" })
+                        <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+                        <div class="error-holder">
+                            @Html.ValidationMessageFor(model => model.DateTime, "", new { @class = "text-danger" })
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Select DateTime END -->
+                    <!-- Select Patient -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Patients)
+                        @Html.DropDownListFor(model => model.PatientId, new SelectList(Model.Patients, "Id", "FirstName"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PatientId, "", new { @class = "text-danger" })
+                    </div>
+                    <!-- Select Patient END -->
+                    <!-- Select Employee -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Employees)
+                        @Html.DropDownListFor(model => model.EmployeeId, new SelectList(Model.Employees, "Id", "FirstName"), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+                    </div>
+                    <!-- Select Employee END -->
+                    <!-- Select Tasks for todolist -->
+                   <div class="form-group">
+                        @Html.LabelFor(m => m.Tasks)
+                        <ul class="list-group todolist-ul">
+                            @for (var i = 0; i < @Model.Tasks.Count; i++)
+                            {
+                                <li class="list-group-item">
+                                    @Html.HiddenFor(x => x.Tasks[i].Id)
+                                    @Html.CheckBoxFor(x => x.Tasks[i].IsChecked, new { @class = "pull-left checkbox" })
+                                    <p>@Model.Tasks[i].TaskName</p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <!-- Select Tasks END -->
+                    <!-- Submit Form -->
+                    <div class="form-group">
+                        <input type="submit" value="Lägg till" class="btn btn-primary create-save-btn" />
+                    </div>
+                    <!-- Submit Form END -->
+                    }
+                </div>
+
+                <div id="partialPlaceHolder" style="display: none;"></div>
+
+                <div class="col-md-8">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="calendar"></div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="createTask-holder">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Task, "Lägg till ny uppgift")
+
+
+                                    @using (Html.BeginForm("CreateTask", "Schedule", "POST"))
+                                    {
+                                        @Html.TextBoxFor(m => m.Task.Name, new { @class = "form-control" })
+                                        <button type="submit" class="btn btn-primary createTaskButton" value="Save">Lägg till</button>
+                                    }
+                                </div>
+                                <p>OBS: ej async och nollställer ifyllda fält</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+        <div class="Push"></div>
+
+        @section scripts {
+
+            <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/locale-all.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+
+
+
+            <script>
+
+
+                $(document)
+                    .ready(function() {
+
+
+                        var isSuccess = @Html.Raw(Json.Encode(TempData["IsTrue"]));
+                        toastr.options.positionClass = "toast-bottom-full-width";
+
+                        if (isSuccess) {
+                            toastr.success('Schemat sparat');
+                        }
+
+
+                        /* DatetimePicker*/
+                        $('#datetimepicker')
+                            .datetimepicker({
+                                locale: 'sv'
+                            });
+
+
+                        /* Get schedule with ajax */
+                        $.ajax({
+                            url: '/Schedule/GetJsonSchedule/',
+                            success: function(response) {
+                                renderCalendar(response);
+                            },
+                            error: function(response) {
+                                console.log(response);
+                            }
+                        });
+
+
+                    });
+
+                /* Document ready ends here*/
+
+
+                /* Global FUNCTIONS BELOW HERE */
+                function renderCalendar(data) {
+                    $('#calendar')
+                        .fullCalendar({
+                            header: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'month,basicWeek,basicDay'
+                            },
+                            locale: 'sv',
+                            navLinks: true, // can click day/week names to navigate views
+                            editable: true,
+                            eventLimit: true, // allow "more" link when too many events
+                            events: data,
+                            eventClick: function(calEvent, jsEvent, view) {
+
+                                var scheduleId = calEvent.id;
+                                // Open Delete Modal and pass schedule id
+                                $.get('/Schedule/BootstrapModal/' + scheduleId,
+                                    function(data) {
+                                        $('#partialPlaceHolder').html(data);
+                                        $('#partialPlaceHolder').fadeIn('slow');
+                                        $('#exampleModal').modal('show');
+                                    });
+                            }
+                        });
+                }
+
+
+                /* old append task item to checkbox list */
+                /*
+                $("#newTask").on('click', function () {
+
+                    var task = $("#taskInput").val();
+
+                    $.ajax({
+                        url: '/Schedule/CreateTask2',
+                        type: 'POST',
+                        data: { name: task },
+                        success: function (response) {
+
+
+                            $(".list-group").children('li:last-child').append("" +
+                                "<li class='list-group-item'>" +
+                                "<input class='pull-left checkbox' type='checkbox' value='' />" +
+                                "<p>" + task + "</p>" +
+                                "</li>");
+
+
+
+                        },
+                        error: function (response) {
+                            console.log(response);
+                        }
+                    });
+
+
+                });
+
+                */
+            </script>
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+

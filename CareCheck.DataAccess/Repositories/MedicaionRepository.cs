@@ -33,7 +33,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                var medicationInDb = context.Medications.Single(e => e.Id == id);
+                var medicationInDb = context.Medications.SingleOrDefault(e => e.Id == id);
                 context.Medications.Remove(medicationInDb);
                 context.SaveChanges();
             }

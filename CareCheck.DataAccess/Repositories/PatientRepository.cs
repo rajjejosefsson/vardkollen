@@ -12,7 +12,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Patients.ToList();
+                return context.Patients.AsNoTracking().ToList();
             }
         }
 
@@ -20,7 +20,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Patients.SingleOrDefault(p => p.Id == id);
+                return context.Patients.AsNoTracking().SingleOrDefault(p => p.Id == id);
             }
         }
 
@@ -32,7 +32,6 @@ namespace CareCheck.DataAccess.Repositories
                 if (patient.Id == 0)
                 {
                     context.Patients.Add(patient);
-                    context.SaveChanges();
                 }
                 else
                 {
@@ -54,7 +53,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                var patientInDb = context.Patients.Single(e => e.Id == id);
+                var patientInDb = context.Patients.SingleOrDefault(e => e.Id == id);
                 context.Patients.Remove(patientInDb);
                 context.SaveChanges();
             }

@@ -5,6 +5,27 @@ using System.Linq;
 
 namespace CareCheck.DataAccess.Repositories
 {
+
+
+
+
+
+    /*
+      
+        
+         DbSet.Add() 
+         attaches the entire entity graph
+         to the new context and automatically
+         applies Added entity state to all the entities.
+     
+         DbContext.Entry():
+         Entry method of DbContext returns DbEntityEntry instance for a specified entity.
+         DbEntityEntry can be used to change the state of an entity.
+         
+         
+    */
+
+
     public class EmployeeRepository : IEmployeeRepository
     {
 
@@ -13,7 +34,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Employees.ToList();
+                return context.Employees.AsNoTracking().ToList();
             }
         }
 
@@ -21,7 +42,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Employees.SingleOrDefault(e => e.Id == id);
+                return context.Employees.AsNoTracking().SingleOrDefault(e => e.Id == id);
             }
         }
 
@@ -33,13 +54,12 @@ namespace CareCheck.DataAccess.Repositories
                 if (employee.Id == 0)
                 {
                     // CREATE Employee
-
                     context.Employees.Add(employee);
                 }
                 else
                 {
                     // EDIT Employee
-                    var employeeInDb = context.Employees.Single(e => e.Id == employee.Id);
+                    var employeeInDb = context.Employees.SingleOrDefault(e => e.Id == employee.Id);
                     employeeInDb.FirstName = employee.FirstName;
                     employeeInDb.LastName = employee.LastName;
                     employeeInDb.PersonNumber = employee.PersonNumber;
@@ -56,6 +76,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
+                // Get employee by id
                 var employeeInDb = context.Employees.SingleOrDefault(e => e.Id == id);
                 context.Employees.Remove(employeeInDb);
                 context.SaveChanges();

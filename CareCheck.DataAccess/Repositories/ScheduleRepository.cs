@@ -14,9 +14,11 @@ namespace CareCheck.DataAccess.Repositories
         public ICollection<Schedule> PatientsSchedules()
         {
 
+            // could be more optimized
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Schedules.Include(p => p.Patient).Include(t => t.TodoList.Select(task => task.Task)).ToList();
+                return context.Schedules.AsNoTracking().Include(p => p.Patient).Include(t => t.TodoList.Select(task => task.Task)).ToList();
+
             }
         }
 
@@ -25,7 +27,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Schedules.SingleOrDefault(p => p.Id == scheduleId);
+                return context.Schedules.AsNoTracking().SingleOrDefault(p => p.Id == scheduleId);
             }
         }
 
@@ -35,8 +37,7 @@ namespace CareCheck.DataAccess.Repositories
             {
                 context.Schedules.Add(schedule);
                 context.SaveChanges();
-
-                return schedule; // need to return  schedule and id for adding todolist items after
+                return schedule; // need to return schedule object and the id for adding todolist items after
             }
         }
 
@@ -46,19 +47,19 @@ namespace CareCheck.DataAccess.Repositories
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
 
-                // Check if schedule exists
-                var schedule = context.Schedules.Single(s => s.Id == scheduleId);
+                // Get the schedule
+                var schedule = context.Schedules.SingleOrDefault(s => s.Id == scheduleId);
 
-                // Get todolist items from the selected schedule
+                // Get the todolist of the schedule
                 var todoList = context.TodoList.Where(t => t.ScheduleId == schedule.Id).ToList();
 
-                // remove each item in the list
-                foreach (var item in todoList)
+                // remove each item in the todolist
+                foreach (var task in todoList)
                 {
-                    context.TodoList.Remove(item);
+                    context.TodoList.Remove(task);
+
                 }
 
-                // remove the schedule from db
                 context.Schedules.Remove(schedule);
 
                 context.SaveChanges();
@@ -75,10 +76,10 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Schedules.Where(s => s.Id == scheduleId)
+                return context.Schedules.AsNoTracking().Where(s => s.Id == scheduleId)
                                                .Include(t => t.TodoList.Select(i => i.Task))
                                                .Include(p => p.Patient.Medications)
-                                               .Single();
+                                               .SingleOrDefault();
             }
         }
 
@@ -92,7 +93,7 @@ namespace CareCheck.DataAccess.Repositories
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
                 // Employee is hardcoded with id 1 = Martin in Db
-                return context.Schedules.Where(e => e.EmployeeId == employeeId)
+                return context.Schedules.AsNoTracking().Where(e => e.EmployeeId == employeeId)
                                                             .OrderByDescending(s => s.DateTime)
                                                             .Include(p => p.Patient)
                                                             .Include(e => e.Employee)

@@ -13,7 +13,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.TodoList.ToList();
+                return context.TodoList.AsNoTracking().ToList();
             }
         }
 
@@ -21,7 +21,7 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.TodoList.SingleOrDefault(t => t.Id == id);
+                return context.TodoList.AsNoTracking().SingleOrDefault(t => t.Id == id);
             }
         }
 
@@ -53,11 +53,6 @@ namespace CareCheck.DataAccess.Repositories
                 context.SaveChanges();
             }
         }
-
-
-
-
-
 
 
 
