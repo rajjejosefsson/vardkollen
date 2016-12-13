@@ -12,23 +12,6 @@ namespace KommunWebservice
 
 
 
-
-
-        // Should be moved to relative WCF
-        [OperationContract]
-        Relative RelativesPatientByEmail(string email);
-
-        [OperationContract]
-        Patient PatientDetailInfoById(int id);
-
-        // Relatives view
-        [OperationContract]
-        ICollection<Schedule> PatientDetailSchedules(int id);
-
-
-
-
-
         // Employees
 
         [OperationContract]
@@ -80,8 +63,6 @@ namespace KommunWebservice
         [OperationContract]
         void DeleteRelative(int id);
 
-        [OperationContract]
-        Relative GetRelativesPatient(string number);
 
         [OperationContract]
         void ConnectRelativeAndPatient(int patientId, int relativeId);
@@ -136,19 +117,15 @@ namespace KommunWebservice
 
 
 
-
-
-
         // Todos
         [OperationContract]
         void InsertTodo(TodoList todoItem);
 
         [OperationContract]
-        void UpdateTodoList(int scheduleId, bool[] checkBoxes);
-
-
-        [OperationContract]
         ICollection<TodoList> Todos();
+
+
+
 
 
 

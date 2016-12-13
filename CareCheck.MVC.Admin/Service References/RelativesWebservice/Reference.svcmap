@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="638ab379-b59c-4678-89d5-7086bfa228e2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:57520/RelativesWebservice.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RelativesWebservice.wsdl" MetadataType="Wsdl" ID="0750c9c7-cc10-44cd-b33d-76321421d013" SourceId="1" SourceUrl="http://localhost:57520/RelativesWebservice.svc?wsdl" />
+    <MetadataFile FileName="RelativesWebservice.xsd" MetadataType="Schema" ID="05b6d91d-06f4-4a5c-9a05-a9ee485db78c" SourceId="1" SourceUrl="http://localhost:57520/RelativesWebservice.svc?xsd=xsd0" />
+    <MetadataFile FileName="RelativesWebservice1.xsd" MetadataType="Schema" ID="a061235e-892f-4220-8ef8-5946a137f843" SourceId="1" SourceUrl="http://localhost:57520/RelativesWebservice.svc?xsd=xsd1" />
+    <MetadataFile FileName="RelativesWebservice.disco" MetadataType="Disco" ID="82ccc0ce-b41d-4967-ac0a-1375523af3ab" SourceId="1" SourceUrl="http://localhost:57520/RelativesWebservice.svc?disco" />
+    <MetadataFile FileName="RelativesWebservice2.xsd" MetadataType="Schema" ID="cbddf1cb-4cc2-4584-a3a2-1e3be2991035" SourceId="1" SourceUrl="http://localhost:57520/RelativesWebservice.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

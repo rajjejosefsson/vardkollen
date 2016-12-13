@@ -5,6 +5,9 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 {
+
+
+    /* Contains the Patient Form and the Patient Table */
     public class PatientController : Controller
     {
         private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
@@ -47,6 +50,8 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         }
 
 
+
+
         [HttpPost]
         public ActionResult DeletePatient(int id)
         {
@@ -57,18 +62,27 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
 
 
-
-
-
-        /* BACKUP */
-        /* Used to get patients to the jquery datatables instead of render it with razor*/
-        /*
-        public ActionResult GetPatients()
+        public ActionResult RelativeConnection()
         {
-            var data = _kommunWcfClient.PatientList(); ;
-            return Json(new { data = data }, JsonRequestBehavior.AllowGet);
+            var patients = _kommunWcfClient.PatientList();
+            var relatives = _kommunWcfClient.RelativeList();
+
+            var viewModel = new PatientsAndRelativesViewModel
+            {
+                Patients = patients,
+                Relatives = relatives,
+            };
+
+            return View(viewModel);
         }
-        */
+
+
+        [HttpPost]
+        public ActionResult CreateConnection(PatientsAndRelativesViewModel viewModel)
+        {
+            _kommunWcfClient.ConnectRelativeAndPatient(viewModel.PatientId, viewModel.RelativeId);
+            return RedirectToAction("RelativeConnection");
+        }
 
 
     }

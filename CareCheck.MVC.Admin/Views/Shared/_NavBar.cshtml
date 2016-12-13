@@ -82,8 +82,8 @@
                         <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Employees" ? "active" : "")">
                             @Html.ActionLink("Skapa Anställd", "Index", "Employees")
                         </li>
-                        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Relatives/RelativeConnection" ? "active" : "")">
-                            @Html.ActionLink("Förbindelse till annhöriga", "RelativeConnection", "Relatives")
+                        <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient/RelativeConnection" ? "active" : "")">
+                            @Html.ActionLink("Förbindelse till annhöriga", "RelativeConnection", "Patient")
                         </li>
                     </ul>
                 </li>

@@ -7,6 +7,8 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 {
+
+    /* Contains the Employees schedule and Form to add schedule entries */
     public class ScheduleController : Controller
     {
 
@@ -48,10 +50,11 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
                     EmployeeId = viewModel.EmployeeId
                 };
 
+                // First we create or update the schedule
                 var newSchedule = _kommunWcfClient.InsertOrUpdateSchedule(schedule);
 
 
-                // Save checked boxes (tasks to db)
+                // Then we updates its todolist 
                 foreach (var task in viewModel.Tasks)
                 {
                     if (task.IsChecked)
@@ -65,8 +68,6 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
                         _kommunWcfClient.InsertTodo(todoItem);
                     }
                 }
-
-
                 ViewData["IsSuccess"] = true;
                 TempData["IsTrue"] = true;
 
@@ -81,6 +82,8 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
             return View("Index", viewModel);
         }
+
+
 
 
 
@@ -151,18 +154,15 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         }
 
 
-        // Must be named ID!
+        // Must be named Id!
         public ActionResult BootstrapModal(int id)
         {
-
             var schedule = _kommunWcfClient.PatientScheduleById(id);
-
             var viewModel = new ScheduleItemViewModel
             {
                 Patient = schedule.Patient,
                 ScheduleId = schedule.Id,
             };
-
             return PartialView("_Modal", viewModel);
         }
 

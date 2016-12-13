@@ -22,32 +22,6 @@ namespace KommunWebservice
 
 
 
-
-
-
-        // SHOULD BE MOVED LATER TO RELATIVE WCF
-        public Relative RelativesPatientByEmail(string email)
-        {
-            return _relativeRepository.RelativesPatientByEmail(email);
-        }
-
-
-        // For relatives
-        public ICollection<Schedule> PatientDetailSchedules(int id)
-        {
-            return _scheduleRepository.PatientDetailSchedules(id);
-        }
-
-        public Patient PatientDetailInfoById(int id)
-        {
-            return _relativeRepository.PatientDetailInfoById(id);
-        }
-
-
-
-
-
-
         // Employee
         public ICollection<Employee> EmployeeList()
         {
@@ -121,7 +95,6 @@ namespace KommunWebservice
         }
 
 
-
         public void InsertOrUpdateRelative(Relative relative)
         {
             throw new System.NotImplementedException();
@@ -134,11 +107,7 @@ namespace KommunWebservice
         }
 
 
-        //  "0734214122" change all to email instead
-        public Relative GetRelativesPatient(string number)
-        {
-            return null;
-        }
+
 
 
         public void ConnectRelativeAndPatient(int patientId, int relativeId)
@@ -190,8 +159,6 @@ namespace KommunWebservice
             return _scheduleRepository.PatientsSchedules();
         }
 
-
-
         public Schedule PatientScheduleById(int id)
         {
             return _scheduleRepository.PatientScheduleById(id);
@@ -208,6 +175,7 @@ namespace KommunWebservice
 
 
 
+        // UpdateTodoList   EmployeeSchedule(1)         EmployeeById(1)    PatientScheduleById(id);
 
 
 
@@ -255,10 +223,6 @@ namespace KommunWebservice
         }
 
 
-        public void UpdateTodoList(int scheduleId, bool[] checkBoxes)
-        {
-            _todoListRepository.UpdateTodoList(scheduleId, checkBoxes);
-        }
 
 
 

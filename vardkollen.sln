@@ -4,12 +4,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareCheck.MVC.Admin", "CareCheck.MVC.Admin\CareCheck.MVC.Admin.csproj", "{EAB1471A-48CE-41CD-96DE-D72E168479AF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5092BFB4-7B8E-4285-A6AA-E603169E1018} = {5092BFB4-7B8E-4285-A6AA-E603169E1018}
+		{3FF3F4BB-6A78-4A44-9EAD-EAD0206AEC4B} = {3FF3F4BB-6A78-4A44-9EAD-EAD0206AEC4B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareCheck.DomainClasses", "CareCheck.DomainClasses\CareCheck.DomainClasses.csproj", "{FCB826D6-252D-4B20-8832-EE43B59F3828}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareCheck.DataAccess", "CareCheck.DataAccess\CareCheck.DataAccess.csproj", "{DED366AC-A1C7-404C-9B28-209F773D00CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KommunWebservice", "KommunWebservice\KommunWebservice.csproj", "{FDA48038-98C8-4ACD-98D9-9F8FF22E1498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelativesWebservice", "RelativesWebservice\RelativesWebservice.csproj", "{5092BFB4-7B8E-4285-A6AA-E603169E1018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesWebservice", "EmployeeWebservice\EmployeesWebservice.csproj", "{3FF3F4BB-6A78-4A44-9EAD-EAD0206AEC4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,14 @@ Global
 		{FDA48038-98C8-4ACD-98D9-9F8FF22E1498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDA48038-98C8-4ACD-98D9-9F8FF22E1498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDA48038-98C8-4ACD-98D9-9F8FF22E1498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5092BFB4-7B8E-4285-A6AA-E603169E1018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5092BFB4-7B8E-4285-A6AA-E603169E1018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5092BFB4-7B8E-4285-A6AA-E603169E1018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5092BFB4-7B8E-4285-A6AA-E603169E1018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF3F4BB-6A78-4A44-9EAD-EAD0206AEC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF3F4BB-6A78-4A44-9EAD-EAD0206AEC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF3F4BB-6A78-4A44-9EAD-EAD0206AEC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF3F4BB-6A78-4A44-9EAD-EAD0206AEC4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

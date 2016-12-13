@@ -1,4 +1,4 @@
-﻿using CareCheck.MVC.Admin.KommunWebservice;
+﻿using CareCheck.MVC.Admin.EmployeesWebservice;
 using CareCheck.MVC.Admin.Models.CareCheckModels;
 using CareCheck.MVC.Admin.ViewModels;
 using System.Collections.Generic;
@@ -7,39 +7,32 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Employees_Controllers
 {
+
+    /* View of an employees schedule and the patients tasks (Should be restricted for employees) */
     public class TaskController : Controller
     {
-
-        private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
+        private readonly EmployeesWebserviceClient _employeesWcfClient = new EmployeesWebserviceClient();
 
         public ActionResult Index()
         {
-
             // Employee is hardcoded with id 1 = Martin in Db
-            var employeeSchedule = _kommunWcfClient.EmployeeSchedule(1);
-
-
-            var employee = _kommunWcfClient.EmployeeById(1);
-
+            var employeeSchedule = _employeesWcfClient.EmployeeSchedule(1);
+            var employee = _employeesWcfClient.EmployeeById(1);
 
             var viewModel = new TasksViewModel
             {
                 Schedules = employeeSchedule,
                 Employee = employee
             };
-
             return View(viewModel);
         }
-
 
 
         // parameter must be called id for some reason..
         public ActionResult SelectSchedule(int id)
         {
 
-            var schedule = _kommunWcfClient.PatientScheduleById(id);
-
-
+            var schedule = _employeesWcfClient.PatientScheduleById(id);
 
             var taskItems = new List<TasksModel>();
             foreach (var todoListItem in schedule.TodoList)
@@ -51,7 +44,6 @@ namespace CareCheck.MVC.Admin.Controllers.Employees_Controllers
                     TaskName = todoListItem.Task.Name
                 });
             }
-
 
             var viewModel = new TasksViewModel
             {
@@ -70,11 +62,10 @@ namespace CareCheck.MVC.Admin.Controllers.Employees_Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UpdateTodoList(TasksViewModel viewModel)
         {
-
             var scheduleId = viewModel.Schedule.Id;
             // send status of what boxes are selected
             var checkboxes = viewModel.Tasks.Select(t => t.IsChecked).ToArray();
-            _kommunWcfClient.UpdateTodoList(scheduleId, checkboxes);
+            _employeesWcfClient.UpdateTodoList(scheduleId, checkboxes);
 
             return RedirectToAction("Index");
         }

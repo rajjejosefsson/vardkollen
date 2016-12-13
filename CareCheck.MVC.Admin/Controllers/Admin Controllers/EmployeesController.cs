@@ -5,17 +5,13 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 {
+    /* Contains the Employee Form and the employee Table */
     public class EmployeesController : Controller
     {
-
-
         private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
 
-
-        // Index with employees table
         public ActionResult Index()
         {
-
             var viewModel = new EmployeeViewModel
             {
                 Employees = _kommunWcfClient.EmployeeList()
@@ -24,14 +20,12 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         }
 
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult InsertUpdateEmployee(EmployeeViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-
                 var newEmployee = new Employee
                 {
                     Id = viewModel.Id,
@@ -63,27 +57,6 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
             _kommunWcfClient.DeletEmployee(id);
             return RedirectToAction("Index");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

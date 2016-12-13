@@ -1,24 +1,23 @@
-﻿using CareCheck.MVC.Admin.KommunWebservice;
+﻿using CareCheck.MVC.Admin.RelativesWebservice;
 using CareCheck.MVC.Admin.ViewModels;
 using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Relatives_Controllers
 {
+
+    /* View of the relatives patient (Should be restricted for relatives) */
     public class RelativesController : Controller
     {
 
 
-        private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
+        private readonly RelativesWebserviceClient _relativesWcfClient = new RelativesWebserviceClient();
 
-
-
-        // TODO Move two first Actions to Relative Project (ASP.NET) and use wcf
 
 
         public ActionResult Index()
         {
             // Change to get by email instead
-            var relative = _kommunWcfClient.RelativesPatientByEmail("0734214122");
+            var relative = _relativesWcfClient.RelativesPatientByEmail("0734214122");
 
 
             var viewModel = new PatientAndScheduleViewModel
@@ -35,52 +34,17 @@ namespace CareCheck.MVC.Admin.Controllers.Relatives_Controllers
         // Partialview with all relative information
         public ActionResult RelativeInformation(int id)
         {
-
-
-
-            var patient = _kommunWcfClient.PatientDetailInfoById(id);
-
-            var schedule = _kommunWcfClient.PatientDetailSchedules(id);
-
-
+            var patient = _relativesWcfClient.PatientDetailInfoById(id);
+            var schedule = _relativesWcfClient.PatientDetailSchedules(id);
 
             var viewModel = new PatientAndScheduleViewModel
             {
                 Patient = patient,
                 Schedules = schedule,
             };
-
             return PartialView("_RelativePartialView", viewModel);
         }
 
-
-
-
-
-
-
-        // Index FOR ADMIN to put somewhere
-        public ActionResult RelativeConnection()
-        {
-            var patients = _kommunWcfClient.PatientList();
-            var relatives = _kommunWcfClient.RelativeList();
-
-            var viewModel = new PatientsAndRelativesViewModel
-            {
-                Patients = patients,
-                Relatives = relatives,
-            };
-
-            return View(viewModel);
-        }
-
-
-        [HttpPost]
-        public ActionResult CreateConnection(PatientsAndRelativesViewModel viewModel)
-        {
-            _kommunWcfClient.ConnectRelativeAndPatient(viewModel.PatientId, viewModel.RelativeId);
-            return RedirectToAction("Index");
-        }
     }
 }
 
