@@ -32,10 +32,8 @@ namespace KommunWebservice
 
         // Patients
 
-
         [OperationContract]
         ICollection<Patient> PatientList();
-
 
         [OperationContract]
         Patient PatientById(int id);
@@ -51,6 +49,7 @@ namespace KommunWebservice
 
 
         // Relatives
+
         [OperationContract]
         ICollection<Relative> RelativeList();
 
@@ -63,14 +62,15 @@ namespace KommunWebservice
         [OperationContract]
         void DeleteRelative(int id);
 
-
         [OperationContract]
         void ConnectRelativeAndPatient(int patientId, int relativeId);
 
 
 
 
+
         // Tasks
+
         [OperationContract]
         ICollection<Task> TaskList();
 
@@ -86,8 +86,8 @@ namespace KommunWebservice
 
 
 
-        // Schedule
 
+        // Schedule
 
         [OperationContract]
         Schedule InsertOrUpdateSchedule(Schedule schedule);
@@ -95,16 +95,11 @@ namespace KommunWebservice
         [OperationContract]
         Schedule PatientScheduleById(int scheduleId);
 
-
         [OperationContract]
         Schedule Schedule(int id);
 
         [OperationContract]
         void DeleteSchedule(int id);
-
-
-
-
 
         [OperationContract]
         ICollection<Schedule> PatientsSchedules();
@@ -116,19 +111,13 @@ namespace KommunWebservice
 
 
 
-
         // Todos
+
         [OperationContract]
         void InsertTodo(TodoList todoItem);
 
         [OperationContract]
         ICollection<TodoList> Todos();
-
-
-
-
-
-
     }
 }
 

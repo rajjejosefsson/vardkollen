@@ -10,12 +10,12 @@ namespace RelativesWebservice
         [OperationContract]
         Relative RelativesPatientByEmail(string email);
 
+
         [OperationContract]
         ICollection<Schedule> PatientDetailSchedules(int id);
 
+
         [OperationContract]
         Patient PatientDetailInfoById(int id);
-
-
     }
 }

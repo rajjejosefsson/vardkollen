@@ -7,7 +7,6 @@ namespace EmployeeWebservice
     [ServiceContract]
     public interface IEmployeesWebservice
     {
-
         [OperationContract]
         Employee EmployeeById(int id);
 
@@ -22,8 +21,5 @@ namespace EmployeeWebservice
 
         [OperationContract]
         Schedule PatientScheduleById(int id);
-
-
-
     }
 }
