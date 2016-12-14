@@ -5,8 +5,6 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 {
-
-
     /* Contains the Patient Form and the Patient Table */
     public class PatientController : Controller
     {
@@ -51,16 +49,12 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         }
 
 
-
-
         [HttpPost]
         public ActionResult DeletePatient(int id)
         {
             _kommunWcfClient.DeletePatient(id);
             return RedirectToAction("Index");
         }
-
-
 
 
         public ActionResult RelativeConnection()
@@ -84,7 +78,5 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
             _kommunWcfClient.ConnectRelativeAndPatient(viewModel.PatientId, viewModel.RelativeId);
             return RedirectToAction("RelativeConnection");
         }
-
-
     }
 }

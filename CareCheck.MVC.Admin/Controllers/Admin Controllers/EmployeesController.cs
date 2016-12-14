@@ -39,18 +39,14 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
                 _kommunWcfClient.InsertOrUpdateEmployee(newEmployee);
 
-
                 TempData["IsSuccess"] = true;
                 return RedirectToAction("Index");
             }
-
             // on failure - must get the list of employees from
             // db to get fetched to the table again
             viewModel.Employees = _kommunWcfClient.EmployeeList();
-
             return View("Index", viewModel);
         }
-
 
 
         [HttpPost]
@@ -59,7 +55,6 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
             _kommunWcfClient.DeletEmployee(id);
             return RedirectToAction("Index");
         }
-
     }
 }
 

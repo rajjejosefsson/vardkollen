@@ -4,21 +4,16 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Relatives_Controllers
 {
-
     /* View of the relatives patient (Should be restricted for relatives) */
     public class RelativesController : Controller
     {
-
-
         private readonly RelativesWebserviceClient _relativesWcfClient = new RelativesWebserviceClient();
-
 
 
         public ActionResult Index()
         {
             // Change to get by email instead
             var relative = _relativesWcfClient.RelativesPatientByEmail("ballan@gmail.com");
-
 
             var viewModel = new PatientAndScheduleViewModel
             {
@@ -28,7 +23,6 @@ namespace CareCheck.MVC.Admin.Controllers.Relatives_Controllers
 
             return View(viewModel);
         }
-
 
 
         // Partialview with all relative information
@@ -44,7 +38,6 @@ namespace CareCheck.MVC.Admin.Controllers.Relatives_Controllers
             };
             return PartialView("_RelativePartialView", viewModel);
         }
-
     }
 }
 

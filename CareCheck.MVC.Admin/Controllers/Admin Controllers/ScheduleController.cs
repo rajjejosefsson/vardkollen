@@ -7,15 +7,12 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 {
-
     /* Contains the Employees schedule and Form to add schedule entries */
     public class ScheduleController : Controller
     {
-
         private readonly KommunWebserviceClient _kommunWcfClient = new KommunWebserviceClient();
         public ActionResult Index()
         {
-
             var patients = _kommunWcfClient.PatientList();
             var employees = _kommunWcfClient.EmployeeList();
             var taskItems = GetTaskModelCheckboxes();
@@ -34,27 +31,23 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         }
 
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateSchedule(CreateScheduleViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                // DateTime  PatientID   EmployeeId
-                Schedule schedule = new Schedule
+                var schedule = new Schedule
                 {
                     DateTime = viewModel.DateTime,
                     PatientId = viewModel.PatientId,
                     EmployeeId = viewModel.EmployeeId
                 };
 
-                // First we create or update the schedule
+                // First we either create or update the schedule
                 var newSchedule = _kommunWcfClient.InsertOrUpdateSchedule(schedule);
 
-
-                // Then we updates its todolist 
+                // Then we either create or updates its todolist 
                 foreach (var task in viewModel.Tasks)
                 {
                     if (task.IsChecked)
@@ -68,22 +61,16 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
                         _kommunWcfClient.InsertTodo(todoItem);
                     }
                 }
-
                 TempData["IsSuccess"] = true;
                 return RedirectToAction("Index", "Schedule");
             }
-
             // To show the validation we need to pass this shit again
-            /* Must be a better way!!! same code as in index... */
             viewModel.Tasks = GetTaskModelCheckboxes();
             viewModel.Patients = _kommunWcfClient.PatientList();
             viewModel.Employees = _kommunWcfClient.EmployeeList();
 
             return View("Index", viewModel);
         }
-
-
-
 
 
         // Generates the task checkboxes that we use to see if they are checked
@@ -105,8 +92,6 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         }
 
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSchedule(int scheduleId)
@@ -114,7 +99,6 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
             _kommunWcfClient.DeleteSchedule(scheduleId);
             return RedirectToAction("Index");
         }
-
 
 
         [HttpPost]
@@ -129,8 +113,6 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
             return RedirectToAction("Index");
         }
-
-
 
 
         [HttpGet]
@@ -148,7 +130,6 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
                     start = schedule.DateTime.ToString(),
                 });
             }
-
             return Json(events, JsonRequestBehavior.AllowGet);
         }
 
@@ -164,47 +145,5 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
             };
             return PartialView("_Modal", viewModel);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Not yet complete
-
-        /* 
-         public ActionResult EditSchedule(ScheduleItemViewModel viewModel)
-         {
-
-             using (CareCheckDbContext context = new CareCheckDbContext()) // Use concrete context type
-             {
-
-
-                 var test = context.Schedules.Where(s => s.Id == viewModel.ScheduleId)
-                                         .Include(e => e.Employee)
-                                         .Include(p => p.Patient)
-                                         .Include(t => t.TodoList)
-                                         .Single();
-
-                 throw new System.NotImplementedException();
-
-             }
-         }
-
-     */
-
-
-
-
-
     }
 }

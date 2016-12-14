@@ -7,15 +7,15 @@ using System.Web.Mvc;
 
 namespace CareCheck.MVC.Admin.Controllers.Employees_Controllers
 {
-
     /* View of an employees schedule and the patients tasks (Should be restricted for employees) */
     public class TaskController : Controller
     {
         private readonly EmployeesWebserviceClient _employeesWcfClient = new EmployeesWebserviceClient();
 
+
         public ActionResult Index()
         {
-            // Employee is hardcoded with id 1 = Martin in Db
+            //  id 1 = Martin in Db
             var employeeSchedule = _employeesWcfClient.EmployeeSchedule(1);
             var employee = _employeesWcfClient.EmployeeById(1);
 
@@ -31,7 +31,6 @@ namespace CareCheck.MVC.Admin.Controllers.Employees_Controllers
         // parameter must be called id for some reason..
         public ActionResult SelectSchedule(int id)
         {
-
             var schedule = _employeesWcfClient.PatientScheduleById(id);
 
             var taskItems = new List<TasksModel>();
@@ -51,25 +50,23 @@ namespace CareCheck.MVC.Admin.Controllers.Employees_Controllers
                 Tasks = taskItems,
                 Patient = schedule.Patient
             };
-
             return PartialView("_TaskPartialView", viewModel);
         }
-
-
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UpdateTodoList(TasksViewModel viewModel)
         {
+            // Get Schedule to update
             var scheduleId = viewModel.Schedule.Id;
-            // send status of what boxes are selected
+
+            // Send an array of ture/false (checkboxes that are selected or not)
             var checkboxes = viewModel.Tasks.Select(t => t.IsChecked).ToArray();
+
             _employeesWcfClient.UpdateTodoList(scheduleId, checkboxes);
 
             return RedirectToAction("Index");
         }
-
-
     }
 }
