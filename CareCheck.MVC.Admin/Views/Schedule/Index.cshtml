@@ -189,7 +189,7 @@
 
         $(document)
             .ready(function() {
-                var isSuccess = @Html.Raw(Json.Encode(TempData["IsTrue"]));
+                var isSuccess = @Html.Raw(Json.Encode(TempData["IsSuccess"]));
                 toastr.options.positionClass = "toast-bottom-full-width";
 
                 if (isSuccess) {

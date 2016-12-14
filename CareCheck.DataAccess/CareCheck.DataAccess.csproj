@@ -93,49 +93,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CareCheckDbContext.cs" />
-    <Compile Include="Migrations\201612011402274_InitMigration.cs" />
-    <Compile Include="Migrations\201612011402274_InitMigration.Designer.cs">
-      <DependentUpon>201612011402274_InitMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201611302344020_InitMigration.cs" />
+    <Compile Include="Migrations\201611302344020_InitMigration.Designer.cs">
+      <DependentUpon>201611302344020_InitMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011405063_SeedPatientsTable.cs" />
-    <Compile Include="Migrations\201612011405063_SeedPatientsTable.Designer.cs">
-      <DependentUpon>201612011405063_SeedPatientsTable.cs</DependentUpon>
+    <Compile Include="Migrations\201612132349020_SeedPatientsTable.cs" />
+    <Compile Include="Migrations\201612132349020_SeedPatientsTable.Designer.cs">
+      <DependentUpon>201612132349020_SeedPatientsTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011405406_SeedEmployeesTable.cs" />
-    <Compile Include="Migrations\201612011405406_SeedEmployeesTable.Designer.cs">
-      <DependentUpon>201612011405406_SeedEmployeesTable.cs</DependentUpon>
+    <Compile Include="Migrations\201612132349570_SeedEmployeesTable.cs" />
+    <Compile Include="Migrations\201612132349570_SeedEmployeesTable.Designer.cs">
+      <DependentUpon>201612132349570_SeedEmployeesTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011406149_SeedRelativesTable.cs" />
-    <Compile Include="Migrations\201612011406149_SeedRelativesTable.Designer.cs">
-      <DependentUpon>201612011406149_SeedRelativesTable.cs</DependentUpon>
+    <Compile Include="Migrations\201612132350422_SeedRelativesTable.cs" />
+    <Compile Include="Migrations\201612132350422_SeedRelativesTable.Designer.cs">
+      <DependentUpon>201612132350422_SeedRelativesTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011408481_SeedTasksTable.cs" />
-    <Compile Include="Migrations\201612011408481_SeedTasksTable.Designer.cs">
-      <DependentUpon>201612011408481_SeedTasksTable.cs</DependentUpon>
+    <Compile Include="Migrations\201612132351248_SeedTaskTable.cs" />
+    <Compile Include="Migrations\201612132351248_SeedTaskTable.Designer.cs">
+      <DependentUpon>201612132351248_SeedTaskTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011415323_SeedMedicationsTable.cs" />
-    <Compile Include="Migrations\201612011415323_SeedMedicationsTable.Designer.cs">
-      <DependentUpon>201612011415323_SeedMedicationsTable.cs</DependentUpon>
+    <Compile Include="Migrations\201612132352062_SeedMedicationsTable.cs" />
+    <Compile Include="Migrations\201612132352062_SeedMedicationsTable.Designer.cs">
+      <DependentUpon>201612132352062_SeedMedicationsTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011417051_SeedRelativesPatientTable.cs" />
-    <Compile Include="Migrations\201612011417051_SeedRelativesPatientTable.Designer.cs">
-      <DependentUpon>201612011417051_SeedRelativesPatientTable.cs</DependentUpon>
+    <Compile Include="Migrations\201612132352526_SeedRelativesPatientTable.cs" />
+    <Compile Include="Migrations\201612132352526_SeedRelativesPatientTable.Designer.cs">
+      <DependentUpon>201612132352526_SeedRelativesPatientTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011417456_SeedPatientMedication.cs" />
-    <Compile Include="Migrations\201612011417456_SeedPatientMedication.Designer.cs">
-      <DependentUpon>201612011417456_SeedPatientMedication.cs</DependentUpon>
+    <Compile Include="Migrations\201612132353599_SeedPatientMedicationTable.cs" />
+    <Compile Include="Migrations\201612132353599_SeedPatientMedicationTable.Designer.cs">
+      <DependentUpon>201612132353599_SeedPatientMedicationTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011419318_SeedScheduleTable.cs" />
-    <Compile Include="Migrations\201612011419318_SeedScheduleTable.Designer.cs">
-      <DependentUpon>201612011419318_SeedScheduleTable.cs</DependentUpon>
+    <Compile Include="Migrations\201612132354444_SeedScheduleTable.cs" />
+    <Compile Include="Migrations\201612132354444_SeedScheduleTable.Designer.cs">
+      <DependentUpon>201612132354444_SeedScheduleTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612011420394_SeedTodoListTable.cs" />
-    <Compile Include="Migrations\201612011420394_SeedTodoListTable.Designer.cs">
-      <DependentUpon>201612011420394_SeedTodoListTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612111415556_ApplyEmailAdressToRelative.cs" />
-    <Compile Include="Migrations\201612111415556_ApplyEmailAdressToRelative.Designer.cs">
-      <DependentUpon>201612111415556_ApplyEmailAdressToRelative.cs</DependentUpon>
+    <Compile Include="Migrations\201612132355393_SeedTodoListTable.cs" />
+    <Compile Include="Migrations\201612132355393_SeedTodoListTable.Designer.cs">
+      <DependentUpon>201612132355393_SeedTodoListTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,47 +150,43 @@
     <Compile Include="Repositories\TaskRepository.cs" />
     <Compile Include="Repositories\TodoListRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611302344020_InitMigration.resx">
+      <DependentUpon>201611302344020_InitMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132349020_SeedPatientsTable.resx">
+      <DependentUpon>201612132349020_SeedPatientsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132349570_SeedEmployeesTable.resx">
+      <DependentUpon>201612132349570_SeedEmployeesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132350422_SeedRelativesTable.resx">
+      <DependentUpon>201612132350422_SeedRelativesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132351248_SeedTaskTable.resx">
+      <DependentUpon>201612132351248_SeedTaskTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132352062_SeedMedicationsTable.resx">
+      <DependentUpon>201612132352062_SeedMedicationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132352526_SeedRelativesPatientTable.resx">
+      <DependentUpon>201612132352526_SeedRelativesPatientTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132353599_SeedPatientMedicationTable.resx">
+      <DependentUpon>201612132353599_SeedPatientMedicationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132354444_SeedScheduleTable.resx">
+      <DependentUpon>201612132354444_SeedScheduleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612132355393_SeedTodoListTable.resx">
+      <DependentUpon>201612132355393_SeedTodoListTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CareCheck.DomainClasses\CareCheck.DomainClasses.csproj">
       <Project>{fcb826d6-252d-4b20-8832-ee43b59f3828}</Project>
       <Name>CareCheck.DomainClasses</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612011402274_InitMigration.resx">
-      <DependentUpon>201612011402274_InitMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011405063_SeedPatientsTable.resx">
-      <DependentUpon>201612011405063_SeedPatientsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011405406_SeedEmployeesTable.resx">
-      <DependentUpon>201612011405406_SeedEmployeesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011406149_SeedRelativesTable.resx">
-      <DependentUpon>201612011406149_SeedRelativesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011408481_SeedTasksTable.resx">
-      <DependentUpon>201612011408481_SeedTasksTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011415323_SeedMedicationsTable.resx">
-      <DependentUpon>201612011415323_SeedMedicationsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011417051_SeedRelativesPatientTable.resx">
-      <DependentUpon>201612011417051_SeedRelativesPatientTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011417456_SeedPatientMedication.resx">
-      <DependentUpon>201612011417456_SeedPatientMedication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011419318_SeedScheduleTable.resx">
-      <DependentUpon>201612011419318_SeedScheduleTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612011420394_SeedTodoListTable.resx">
-      <DependentUpon>201612011420394_SeedTodoListTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612111415556_ApplyEmailAdressToRelative.resx">
-      <DependentUpon>201612111415556_ApplyEmailAdressToRelative.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

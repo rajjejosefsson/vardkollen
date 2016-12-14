@@ -1,10 +1,10 @@
-﻿@model CareCheck.MVC.Admin.ViewModels.EmployeeViewModel
+﻿@model CareCheck.MVC.Admin.ViewModels.CreateEmployeeViewModel
 @{
     ViewBag.Title = "Personal";
 }
 
-<link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-<link href="//cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+<link href="//cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet"/>
 
 <style>
     .panel-default { margin-top: 20px; }
@@ -26,7 +26,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <!-- Left Side  -->
+        <!-- Left Side -->
         <div class="col-md-4 form-holder">
             <h3>Lägg till anställd</h3>
             @using (Html.BeginForm("InsertUpdateEmployee", "Employees", "POST"))
@@ -70,9 +70,9 @@
                 </div>
             }
         </div>
-        <!-- Left Side Ends here  -->
+        <!-- Left Side Ends here -->
 
-        <!-- Right Side  -->
+        <!-- Right Side -->
         <div class="col-md-8">
             <h1>Anställda</h1>
             <!-- Table -->
@@ -134,7 +134,7 @@
                 </tbody>
             </table>
         </div>
-        <!-- Right Side Ends  -->
+        <!-- Right Side Ends -->
     </div>
 </div>
 
@@ -151,6 +151,13 @@
     <script>
         $(document)
             .ready(function() {
+                var isSuccess = @Html.Raw(Json.Encode(TempData["IsSuccess"]));
+                toastr.options.positionClass = "toast-bottom-full-width";
+
+                if (isSuccess) {
+                    toastr.success('Anställd sparad');
+                }
+
 
                 var globalTable = $('#myTable')
                     .DataTable({
@@ -223,5 +230,3 @@
             });
     </script>
 }
-
-

@@ -15,7 +15,7 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
         public ActionResult Index()
         {
-            var viewModel = new PatientViewModel
+            var viewModel = new CreatePatientViewModel
             {
                 Patients = _kommunWcfClient.PatientList()
             };
@@ -25,7 +25,7 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePatient(PatientViewModel viewModel)
+        public ActionResult CreatePatient(CreatePatientViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -42,6 +42,7 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
                 _kommunWcfClient.InsertOrUpdatePatient(patient);
 
+                TempData["IsSuccess"] = true;
                 return RedirectToAction("Index");
             }
             // Temp: Redirect with patients

@@ -36,7 +36,6 @@ namespace CareCheck.MVC.Admin.ViewModels
             Tasks = new List<TasksModel>();
             Employees = new List<Employee>();
             Patients = new List<Patient>();
-
         }
 
 

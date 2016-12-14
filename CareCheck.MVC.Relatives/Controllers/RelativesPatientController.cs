@@ -17,7 +17,7 @@ namespace CareCheck.MVC.Relatives.Controllers
         public ActionResult Index()
         {
             // Change to get by email instead
-            var relative = _relativesWcfClient.RelativesPatientByEmail("0734214122");
+            var relative = _relativesWcfClient.RelativesPatientByEmail("ballan@gmail.com");
 
 
             var viewModel = new PatientAndScheduleViewModel

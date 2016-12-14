@@ -8,11 +8,6 @@ namespace CareCheck.MVC.Admin.ViewModels
     {
         public Patient Patient { get; set; }
         public int ScheduleId { get; set; }
-
-
-
-
-
         public List<TasksModel> Tasks { get; set; }
 
         public ScheduleItemViewModel()

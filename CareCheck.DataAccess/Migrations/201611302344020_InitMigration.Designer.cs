@@ -7,13 +7,13 @@ namespace CareCheck.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SeedTodoListTable : IMigrationMetadata
+    public sealed partial class InitMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedTodoListTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201612011420394_SeedTodoListTable"; }
+            get { return "201612132344020_InitMigration"; }
         }
         
         string IMigrationMetadata.Source

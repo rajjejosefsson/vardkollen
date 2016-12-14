@@ -68,9 +68,8 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
                         _kommunWcfClient.InsertTodo(todoItem);
                     }
                 }
-                ViewData["IsSuccess"] = true;
-                TempData["IsTrue"] = true;
 
+                TempData["IsSuccess"] = true;
                 return RedirectToAction("Index", "Schedule");
             }
 

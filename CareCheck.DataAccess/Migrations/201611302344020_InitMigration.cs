@@ -1,8 +1,7 @@
 namespace CareCheck.DataAccess.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class InitMigration : DbMigration
     {
         public override void Up()
@@ -10,121 +9,122 @@ namespace CareCheck.DataAccess.Migrations
             CreateTable(
                 "dbo.Employees",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        PersonNumber = c.String(),
-                        PhoneNumber = c.String(),
-                        Adress = c.String(),
-                        ZipCode = c.String(),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    FirstName = c.String(),
+                    LastName = c.String(),
+                    PersonNumber = c.String(),
+                    PhoneNumber = c.String(),
+                    Adress = c.String(),
+                    ZipCode = c.String(),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Medications",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        ArticleNumber = c.String(),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Name = c.String(),
+                    ArticleNumber = c.String(),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Patients",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(maxLength: 30),
-                        LastName = c.String(maxLength: 50),
-                        PersonNumber = c.String(),
-                        PhoneNumber = c.String(),
-                        Adress = c.String(maxLength: 30),
-                        ZipCode = c.String(maxLength: 15),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    FirstName = c.String(maxLength: 30),
+                    LastName = c.String(maxLength: 50),
+                    PersonNumber = c.String(),
+                    PhoneNumber = c.String(),
+                    Adress = c.String(maxLength: 30),
+                    ZipCode = c.String(maxLength: 15),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Relatives",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        PhoneNumber = c.String(),
-                        Adress = c.String(),
-                        ZipCode = c.String(),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    FirstName = c.String(),
+                    LastName = c.String(),
+                    Email = c.String(),
+                    PhoneNumber = c.String(),
+                    Adress = c.String(),
+                    ZipCode = c.String(),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Schedules",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        DateTime = c.DateTime(nullable: false),
-                        PatientId = c.Int(nullable: false),
-                        EmployeeId = c.Int(nullable: false),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    DateTime = c.DateTime(nullable: false),
+                    PatientId = c.Int(nullable: false),
+                    EmployeeId = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
                 .ForeignKey("dbo.Patients", t => t.PatientId, cascadeDelete: true)
                 .Index(t => t.PatientId)
                 .Index(t => t.EmployeeId);
-            
+
             CreateTable(
                 "dbo.TodoList",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        TaskId = c.Int(nullable: false),
-                        ScheduleId = c.Int(nullable: false),
-                        IsDone = c.Boolean(nullable: false),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    TaskId = c.Int(nullable: false),
+                    ScheduleId = c.Int(nullable: false),
+                    IsDone = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Schedules", t => t.ScheduleId, cascadeDelete: true)
                 .ForeignKey("dbo.Tasks", t => t.TaskId, cascadeDelete: true)
                 .Index(t => t.TaskId)
                 .Index(t => t.ScheduleId);
-            
+
             CreateTable(
                 "dbo.Tasks",
                 c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    Name = c.String(),
+                })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.PatientMedications",
                 c => new
-                    {
-                        Patient_Id = c.Int(nullable: false),
-                        Medication_Id = c.Int(nullable: false),
-                    })
+                {
+                    Patient_Id = c.Int(nullable: false),
+                    Medication_Id = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => new { t.Patient_Id, t.Medication_Id })
                 .ForeignKey("dbo.Patients", t => t.Patient_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Medications", t => t.Medication_Id, cascadeDelete: true)
                 .Index(t => t.Patient_Id)
                 .Index(t => t.Medication_Id);
-            
+
             CreateTable(
                 "dbo.RelativePatients",
                 c => new
-                    {
-                        Relative_Id = c.Int(nullable: false),
-                        Patient_Id = c.Int(nullable: false),
-                    })
+                {
+                    Relative_Id = c.Int(nullable: false),
+                    Patient_Id = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => new { t.Relative_Id, t.Patient_Id })
                 .ForeignKey("dbo.Relatives", t => t.Relative_Id, cascadeDelete: true)
                 .ForeignKey("dbo.Patients", t => t.Patient_Id, cascadeDelete: true)
                 .Index(t => t.Relative_Id)
                 .Index(t => t.Patient_Id);
-            
+
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.TodoList", "TaskId", "dbo.Tasks");

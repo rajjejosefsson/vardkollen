@@ -207,14 +207,14 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\RegexValidation.cs" />
     <Compile Include="ViewModels\CreateScheduleViewModel.cs" />
-    <Compile Include="ViewModels\DeleteScheduleViewModel.cs" />
     <Compile Include="ViewModels\PatientAndScheduleViewModel.cs" />
     <Compile Include="ViewModels\PatientsAndRelativesViewModel.cs" />
     <Compile Include="ViewModels\ScheduleItemViewModel.cs" />
     <Compile Include="ViewModels\TasksViewModel.cs" />
-    <Compile Include="ViewModels\EmployeeViewModel.cs" />
-    <Compile Include="ViewModels\PatientViewModel.cs" />
+    <Compile Include="ViewModels\CreateEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\CreatePatientViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-cerulean.css" />

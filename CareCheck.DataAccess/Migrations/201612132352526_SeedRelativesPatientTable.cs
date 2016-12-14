@@ -11,6 +11,7 @@ namespace CareCheck.DataAccess.Migrations
                 INSERT INTO RelativePatients(Relative_Id, Patient_Id) VALUES (1,1);
                 INSERT INTO RelativePatients(Relative_Id, Patient_Id) VALUES (2,2);
                 INSERT INTO RelativePatients(Relative_Id, Patient_Id) VALUES (3,3);
+                INSERT INTO RelativePatients(Relative_Id, Patient_Id) VALUES (3,5);
                 INSERT INTO RelativePatients(Relative_Id, Patient_Id) VALUES (4,4);
         
     ");

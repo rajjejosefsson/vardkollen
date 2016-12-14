@@ -2,7 +2,7 @@ namespace CareCheck.DataAccess.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    public partial class SeedPatientMedication : DbMigration
+    public partial class SeedPatientMedicationTable : DbMigration
     {
         public override void Up()
         {
@@ -17,6 +17,11 @@ namespace CareCheck.DataAccess.Migrations
                 INSERT INTO PatientMedications(Patient_Id, Medication_Id) VALUES (2,2);
                 INSERT INTO PatientMedications(Patient_Id, Medication_Id) VALUES (3,4);
                 INSERT INTO PatientMedications(Patient_Id, Medication_Id) VALUES (3,5);
+                INSERT INTO PatientMedications(Patient_Id, Medication_Id) VALUES (4,1);
+                INSERT INTO PatientMedications(Patient_Id, Medication_Id) VALUES (4,2);
+                INSERT INTO PatientMedications(Patient_Id, Medication_Id) VALUES (5,1);
+                INSERT INTO PatientMedications(Patient_Id, Medication_Id) VALUES (5,3);
+
 
     ");
         }

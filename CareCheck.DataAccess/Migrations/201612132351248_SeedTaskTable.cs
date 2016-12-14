@@ -1,9 +1,8 @@
 namespace CareCheck.DataAccess.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
-    public partial class SeedTasksTable : DbMigration
+
+    public partial class SeedTaskTable : DbMigration
     {
         public override void Up()
         {

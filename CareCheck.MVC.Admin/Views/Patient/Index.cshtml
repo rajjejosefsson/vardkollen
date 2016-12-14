@@ -1,37 +1,27 @@
-﻿@model CareCheck.MVC.Admin.ViewModels.PatientViewModel
+﻿@model CareCheck.MVC.Admin.ViewModels.CreatePatientViewModel
 @{
     ViewBag.Title = "Personal";
 }
 
 
 <link href="//cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
-<link href="//cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet"/>
 
 
-
-<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
 
 <style>
-    .panel-default {
-        margin-top: 20px;
-    }
+    .panel-default { margin-top: 20px; }
 
-    h3 {
-       margin-top: 30px;
-    }
+    h3 { margin-top: 30px; }
 
-      .Push{
-        height: 150px;
-    }
+    .Push { height: 150px; }
 
-    @@media  (min-width: 2560px) {
-    .Push {
-        height:361px;
+    @@media (min-width: 2560px) {
+        .Push { height: 361px; }
     }
-}
 
 </style>
-
 
 
 <div class="row">
@@ -53,49 +43,43 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.FirstName, "Förnamn")
-                    @Html.TextBoxFor(model => model.FirstName, new {@class = "form-control", @id = "firstName"})
+                    @Html.TextBoxFor(model => model.FirstName, new {@class = "form-control", id = "firstName"})
                     @Html.ValidationMessageFor(model => model.FirstName, "", new {@class = "text-danger"})
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.LastName, "Efternamn")
-                    @Html.TextBoxFor(model => model.LastName, new {@class = "form-control", @id = "lastName"})
+                    @Html.TextBoxFor(model => model.LastName, new {@class = "form-control", id = "lastName"})
                     @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.PersonNumber, "Personnummer")
-                    @Html.TextBoxFor(model => model.PersonNumber, new {@class = "form-control", @id = "personNumber"})
+                    @Html.TextBoxFor(model => model.PersonNumber, new {@class = "form-control", id = "personNumber"})
                     @Html.ValidationMessageFor(model => model.PersonNumber, "", new {@class = "text-danger"})
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.PhoneNumber, "Telefonnummer")
-                    @Html.TextBoxFor(model => model.PhoneNumber, new {@class = "form-control", @id = "phoneNumber"})
+                    @Html.TextBoxFor(model => model.PhoneNumber, new {@class = "form-control", id = "phoneNumber"})
                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new {@class = "text-danger"})
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Adress, "Adress")
-                    @Html.TextBoxFor(model => model.Adress, new {@class = "form-control", @id = "adress"})
+                    @Html.TextBoxFor(model => model.Adress, new {@class = "form-control", id = "adress"})
                     @Html.ValidationMessageFor(model => model.Adress, "", new {@class = "text-danger"})
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.ZipCode, "Postnummer")
-                    @Html.TextBoxFor(model => model.ZipCode, new {@class = "form-control", @id = "zipCode"})
+                    @Html.TextBoxFor(model => model.ZipCode, new {@class = "form-control", id = "zipCode"})
                     @Html.ValidationMessageFor(model => model.ZipCode, "", new {@class = "text-danger"})
                 </div>
 
 
                 <div class="form-group">
-                    @Html.HiddenFor(model => model.Id, new {@id = "hiddenId"})
-                    <input type="submit" value="Lägg till" class="btn btn-primary create-save-btn" />
+                    @Html.HiddenFor(model => model.Id, new {id = "hiddenId"})
+                    <input type="submit" value="Lägg till" class="btn btn-primary create-save-btn"/>
                 </div>
             }
         </div>
-
-
-
-
-
-
 
 
         <div class="col-md-8">
@@ -104,92 +88,90 @@
             <!-- Table -->
             <table id="myTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Förnamn</th>
-                        <th>Efternamn</th>
-                        <th>Personnummer</th>
-                        <th>Telefonnummer</th>
-                        <th>Adress</th>
-                        <th>Postnummer</th>
-                        <th>Edit</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Förnamn</th>
+                    <th>Efternamn</th>
+                    <th>Personnummer</th>
+                    <th>Telefonnummer</th>
+                    <th>Adress</th>
+                    <th>Postnummer</th>
+                    <th>Edit</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (var patient in Model.Patients)
-                    {
-                        <tr class="tr-id">
-                            <td>@patient.Id</td>
-                            <td><p id="">@patient.FirstName</p></td>
-                            <td><p id="">@patient.LastName</p></td>
-                            <td><p id="">@patient.PersonNumber</p></td>
-                            <td><p id="">@patient.PhoneNumber</p></td>
-                            <td><p id="">@patient.Adress</p></td>
-                            <td><p id="">@patient.ZipCode</p></td>
-                            <td>
-                                <button class="btn btn-primary editButton"
-                                        data-id="@patient.Id"
-                                        data-firstname="@patient.FirstName"
-                                        data-lastname="@patient.LastName" data-firstName="@patient.FirstName"
-                                        data-personnumber="@patient.PersonNumber"
-                                        data-phonenumber="@patient.PhoneNumber"
-                                        data-adress="@patient.Adress"
-                                        data-zipcode="@patient.ZipCode">
-                                    Edit
-                                </button>
-                                <button class="btn btn-danger deleteButton"
-                                        data-id="@patient.Id">
-                                    Delete
-                                </button>
-                            </td>
+                @foreach (var patient in Model.Patients)
+                {
+                    <tr class="tr-id">
+                        <td>@patient.Id</td>
+                        <td>
+                            <p id="">@patient.FirstName</p>
+                        </td>
+                        <td>
+                            <p id="">@patient.LastName</p>
+                        </td>
+                        <td>
+                            <p id="">@patient.PersonNumber</p>
+                        </td>
+                        <td>
+                            <p id="">@patient.PhoneNumber</p>
+                        </td>
+                        <td>
+                            <p id="">@patient.Adress</p>
+                        </td>
+                        <td>
+                            <p id="">@patient.ZipCode</p>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary editButton"
+                                    data-id="@patient.Id"
+                                    data-firstname="@patient.FirstName"
+                                    data-lastname="@patient.LastName" data-firstName="@patient.FirstName"
+                                    data-personnumber="@patient.PersonNumber"
+                                    data-phonenumber="@patient.PhoneNumber"
+                                    data-adress="@patient.Adress"
+                                    data-zipcode="@patient.ZipCode">
+                                Edit
+                            </button>
+                            <button class="btn btn-danger deleteButton"
+                                    data-id="@patient.Id">
+                                Delete
+                            </button>
+                        </td>
 
-                        </tr>
-                    }
+                    </tr>
+                }
 
                 </tbody>
             </table>
         </div>
 
 
+        <!-- TABLE USING Jquery -->
 
+        <!--
+        <div class="col-md-8">
+            <table id="patientTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Förnamn</th>
+                    <th>Efternamn</th>
+                    <th>Personnummer</th>
+                    <th>Telefonnummer</th>
+                    <th>Adress</th>
+                    <th>Postnummer</th>
+                    <th>Edit/Delete</th>
+                </tr>
+                </thead>
+                <tbody>
 
-
-
-
-
-
-    <!-- TABLE USING Jquery -->
-
-    <!--
-    <div class="col-md-8">
-        <table id="patientTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Förnamn</th>
-                <th>Efternamn</th>
-                <th>Personnummer</th>
-                <th>Telefonnummer</th>
-                <th>Adress</th>
-                <th>Postnummer</th>
-                <th>Edit/Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
         -->
     </div>
 </div>
-
-
-
-
-
-
-
 
 
 <div class="Push"></div>
@@ -205,6 +187,13 @@
     <script>
         $(document)
             .ready(function() {
+                var isSuccess = @Html.Raw(Json.Encode(TempData["IsSuccess"]));
+                toastr.options.positionClass = "toast-bottom-full-width";
+
+                if (isSuccess) {
+                    toastr.success('Patient sparad');
+                }
+
 
                 $('#myTable')
                     .DataTable({
@@ -280,6 +269,3 @@
 
     </script>
 }
-
-
-

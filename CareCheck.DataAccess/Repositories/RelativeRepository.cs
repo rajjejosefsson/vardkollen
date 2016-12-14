@@ -72,7 +72,7 @@ namespace CareCheck.DataAccess.Repositories
             {
 
                 // Change to get by email instead
-                return context.Relatives.AsNoTracking().Where(r => r.PhoneNumber == email)
+                return context.Relatives.AsNoTracking().Where(r => r.Email == email)
                                                  .Include(p => p.Patients)
                                                  .SingleOrDefault();
             }

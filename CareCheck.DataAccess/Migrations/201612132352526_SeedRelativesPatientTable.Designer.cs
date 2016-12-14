@@ -7,13 +7,13 @@ namespace CareCheck.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class SeedPatientMedication : IMigrationMetadata
+    public sealed partial class SeedRelativesPatientTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedPatientMedication));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeedRelativesPatientTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201612011417456_SeedPatientMedication"; }
+            get { return "201612132352526_SeedRelativesPatientTable"; }
         }
         
         string IMigrationMetadata.Source

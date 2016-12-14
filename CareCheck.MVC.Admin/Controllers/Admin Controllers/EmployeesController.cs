@@ -12,7 +12,7 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
         public ActionResult Index()
         {
-            var viewModel = new EmployeeViewModel
+            var viewModel = new CreateEmployeeViewModel
             {
                 Employees = _kommunWcfClient.EmployeeList()
             };
@@ -22,7 +22,7 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertUpdateEmployee(EmployeeViewModel viewModel)
+        public ActionResult InsertUpdateEmployee(CreateEmployeeViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -39,6 +39,8 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
 
                 _kommunWcfClient.InsertOrUpdateEmployee(newEmployee);
 
+
+                TempData["IsSuccess"] = true;
                 return RedirectToAction("Index");
             }
 

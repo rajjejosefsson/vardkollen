@@ -13,7 +13,7 @@ namespace CareCheck.DataAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201612011405406_SeedEmployeesTable"; }
+            get { return "201612132349570_SeedEmployeesTable"; }
         }
         
         string IMigrationMetadata.Source
