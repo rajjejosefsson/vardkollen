@@ -17,7 +17,6 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
-
         public Employee FindById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -41,6 +40,7 @@ namespace CareCheck.DataAccess.Repositories
                 {
                     // EDIT Employee
                     var employeeInDb = context.Employees.SingleOrDefault(e => e.Id == employee.Id);
+
                     employeeInDb.FirstName = employee.FirstName;
                     employeeInDb.LastName = employee.LastName;
                     employeeInDb.PersonNumber = employee.PersonNumber;
@@ -48,7 +48,6 @@ namespace CareCheck.DataAccess.Repositories
                     employeeInDb.Adress = employee.Adress;
                     employeeInDb.ZipCode = employee.ZipCode;
                 }
-
                 context.SaveChanges();
             }
         }
@@ -64,7 +63,5 @@ namespace CareCheck.DataAccess.Repositories
                 context.SaveChanges();
             }
         }
-
-
     }
 }

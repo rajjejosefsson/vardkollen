@@ -49,7 +49,7 @@ namespace CareCheck.MVC.Admin.Controllers.Employees_Controllers
             {
                 Schedule = schedule,
                 Tasks = taskItems,
-                Medications = schedule.Patient.Medications.ToList()
+                Patient = schedule.Patient
             };
 
             return PartialView("_TaskPartialView", viewModel);

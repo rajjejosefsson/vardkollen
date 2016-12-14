@@ -92,10 +92,5 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
-
-
-
-
-
     }
 }

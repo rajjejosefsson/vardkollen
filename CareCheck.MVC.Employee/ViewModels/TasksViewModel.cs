@@ -6,8 +6,8 @@ namespace CareCheck.MVC.Employee.ViewModels
 {
     public class TasksViewModel
     {
-       
-         
+
+
         public DomainClasses.Employee Employee { get; set; }
         public Patient Patient { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
@@ -17,7 +17,6 @@ namespace CareCheck.MVC.Employee.ViewModels
 
 
         public List<TasksModel> Tasks { get; set; }
-        public List<Medication> Medications { get; set; }
 
 
         public TasksViewModel()
@@ -25,8 +24,8 @@ namespace CareCheck.MVC.Employee.ViewModels
             Tasks = new List<TasksModel>();
 
         }
-         
-      
-           
+
+
+
     }
 }

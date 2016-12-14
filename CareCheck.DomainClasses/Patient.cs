@@ -34,15 +34,13 @@ namespace CareCheck.DomainClasses
         [MinLength(2), MaxLength(15)]
         public string ZipCode { get; set; }
 
+
+
+        /* Navigation Properties*/
+
+
         [DataMember]
         public ICollection<Relative> Relatives { get; set; }
-
-
-        public Patient()
-        {
-            Relatives = new Collection<Relative>();
-        }
-
 
         [DataMember]
         public ICollection<Schedule> Schedules { get; set; }
@@ -50,10 +48,12 @@ namespace CareCheck.DomainClasses
         [DataMember]
         public ICollection<Medication> Medications { get; set; }
 
-
-
-
-
+        public Patient()
+        {
+            Relatives = new Collection<Relative>();
+            Schedules = new Collection<Schedule>();
+            Medications = new Collection<Medication>();
+        }
 
     }
 }

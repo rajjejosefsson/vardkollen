@@ -29,9 +29,12 @@ namespace CareCheck.DomainClasses
         [DataMember]
         public string ZipCode { get; set; }
 
+
+        /* Navigation Properties */
+
+
         [DataMember]
         public ICollection<Patient> Patients { get; set; }
-
 
         public Relative()
         {

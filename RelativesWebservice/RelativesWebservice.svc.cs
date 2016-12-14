@@ -9,7 +9,6 @@ namespace RelativesWebservice
         private readonly RelativeRepository _relativeRepository = new RelativeRepository();
         private readonly ScheduleRepository _scheduleRepository = new ScheduleRepository();
 
-
         public Relative RelativesPatientByEmail(string email)
         {
             return _relativeRepository.RelativesPatientByEmail(email);

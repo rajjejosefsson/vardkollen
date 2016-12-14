@@ -6,7 +6,6 @@ namespace CareCheck.DomainClasses
     [DataContract(IsReference = true)]
     public class Employee
     {
-
         [DataMember]
         public int Id { get; set; }
 
@@ -27,8 +26,5 @@ namespace CareCheck.DomainClasses
 
         [DataMember]
         public string ZipCode { get; set; }
-
-
-
     }
 }

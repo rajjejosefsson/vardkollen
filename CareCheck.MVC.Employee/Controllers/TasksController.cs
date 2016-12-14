@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CareCheck.MVC.Employee.EmployeesWebservice;
-using System.Web.Mvc;
+﻿using CareCheck.MVC.Employee.EmployeesWebservice;
 using CareCheck.MVC.Employee.Models;
 using CareCheck.MVC.Employee.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace CareCheck.MVC.Employee.Controllers
 {
@@ -48,7 +48,7 @@ namespace CareCheck.MVC.Employee.Controllers
             {
                 Schedule = schedule,
                 Tasks = taskItems,
-                Medications = schedule.Patient.Medications.ToList()
+                Patient = schedule.Patient
             };
 
             return PartialView("_TaskPartialView", viewModel);

@@ -30,6 +30,10 @@
         display: block;
     }
 
+    .task-tabs li a {
+        font-weight: bold;
+        
+    }
     .other-info-div,
     .emergencyNumbers-div {
         height: 300px;
@@ -46,7 +50,7 @@
 
 <div class="row">
     <div class="center-block nav-tab-holder">
-        <ul class="nav nav-tabs nav-justified">
+        <ul class="nav nav-tabs nav-justified task-tabs">
             <li role="presentation" id="todoList" class="active"><a href="#">Uppgifter</a></li>
             <li role="presentation" id="otherInfo"><a href="#">Övrig Info</a></li>
             <li role="presentation" id="emergencyNumbers"><a href="#">Akuta nummer</a></li>
@@ -88,13 +92,14 @@
 
 
                 <div class="other-info-div list-group center-block">
-                    <p>Other info here</p>
-                    <br/>
+                    <p><strong>Adress:</strong> @Model.Patient.Adress - @Model.Patient.ZipCode</p>
+                    <hr />
+                    <p><strong>Telefon:</strong> @Model.Patient.PhoneNumber</p>
+                    <hr />
+                    <p><strong>Medicin @Model.Patient.Medications.Count()st:</strong></p>
 
-                    <p><strong>Medicaions:</strong> @Model.Medications.Count()</p>
 
-
-                    @foreach (var item in @Model.Medications)
+                    @foreach (var item in @Model.Patient.Medications)
                     {
                         <p>@item.Name</p>
                     }

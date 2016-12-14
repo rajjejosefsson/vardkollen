@@ -19,6 +19,8 @@ namespace CareCheck.DomainClasses
         [DataMember]
         public bool IsDone { get; set; }
 
+
+
         [DataMember]
         [ForeignKey("TaskId")]
         public Task Task { get; set; }
