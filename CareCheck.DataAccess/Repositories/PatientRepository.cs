@@ -31,15 +31,17 @@ namespace CareCheck.DataAccess.Repositories
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                // if using create or edit
+                // Create or Edit
                 if (patient.Id == 0)
                 {
+                    // Create
                     context.Patients.Add(patient);
                 }
                 else
                 {
-                    // EDIT Employee (Could use dto)
+                    // Edit
                     var patientInDb = context.Patients.SingleOrDefault(p => p.Id == patient.Id);
+
                     patientInDb.FirstName = patient.FirstName;
                     patientInDb.LastName = patient.LastName;
                     patientInDb.PersonNumber = patient.PersonNumber;
@@ -47,7 +49,6 @@ namespace CareCheck.DataAccess.Repositories
                     patientInDb.Adress = patient.Adress;
                     patientInDb.ZipCode = patient.ZipCode;
                 }
-
                 context.SaveChanges();
             }
         }

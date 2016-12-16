@@ -1,11 +1,8 @@
 ﻿<style>
-   
-
-       .navbar-default {
+    .navbar-default {
         background-color: #ffffff;
         box-shadow: 0 1px 2px #585858;
-        
-        }
+    }
 
         .navbar-default li a {
             color: white;
@@ -15,24 +12,24 @@
         .navbar-default .navbar-nav li a:hover {
             transition: background-color 0.8s ease;
         }
-       
-
-        .navbar-brand {
-            padding: 5px 10px;
-        }
-        .navbar-header img {
-            width: 60px;
-        }
 
 
-        .adminDropdownUl {
-            background-color: #54b4eb;
-        }
+    .navbar-brand {
+        padding: 5px 10px;
+    }
 
-        .navbar-center {
-            margin-left: 140px;
-        }
+    .navbar-header img {
+        width: 60px;
+    }
 
+
+    .adminDropdownUl {
+        background-color: #54b4eb;
+    }
+
+    .navbar-center {
+        margin-left: 140px;
+    }
 </style>
 
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
@@ -47,6 +44,48 @@
 
         </div>
         <div class="navbar-collapse collapse">
+
+
+
+            <!-- TEMP FOR SHOW -->
+            <ul class="nav navbar-nav">
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")">
+                    @Html.ActionLink("Hem", "Index", "Home")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Schedule" ? "active" : "")">
+                    @Html.ActionLink("Schema hantering", "Index", "Schedule")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient" ? "active" : "")">
+                    @Html.ActionLink("Patienter", "Index", "Patient")
+                </li>
+
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Employees" ? "active" : "")">
+                    @Html.ActionLink("Anställda", "Index", "Employees")
+                </li>
+                <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient/RelativeConnection" ? "active" : "")">
+                    @Html.ActionLink("Förbindelse till annhöriga", "RelativeConnection", "Patient")
+                </li>
+            </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- When showing all functionallity of whole CareCheck in one MVC Client
+               
+
+
             <ul class="nav navbar-nav">
                 <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")">
                     @Html.ActionLink("Hem", "Index", "Home")
@@ -56,12 +95,10 @@
                     @Html.ActionLink("Om oss", "Index", "About")
                 </li>
 
-              
+
                 <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Relatives" ? "active" : "")">
                     @Html.ActionLink("Anhörig", "Index", "Relatives")
                 </li>
-
-
             </ul>
 
 
@@ -72,15 +109,15 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin funktioner<span class="caret"></span></a>
                     <ul class="dropdown-menu adminDropdownUl">
                         <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Schedule" ? "active" : "")">
-                            @Html.ActionLink("Patientschema", "Index", "Schedule")
+                            @Html.ActionLink("Schema hantering", "Index", "Schedule")
                         </li>
 
                         <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient" ? "active" : "")">
-                            @Html.ActionLink("Skapa Patient", "Index", "Patient")
+                            @Html.ActionLink("Patienter", "Index", "Patient")
                         </li>
 
                         <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Employees" ? "active" : "")">
-                            @Html.ActionLink("Skapa Anställd", "Index", "Employees")
+                            @Html.ActionLink("Anställda", "Index", "Employees")
                         </li>
                         <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Patient/RelativeConnection" ? "active" : "")">
                             @Html.ActionLink("Förbindelse till annhöriga", "RelativeConnection", "Patient")
@@ -92,10 +129,11 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Task" ? "active" : "")">
-                    @Html.ActionLink("Schema uppgifter", "Index", "Task")
+                    @Html.ActionLink("Ditt schema", "Index", "Task")
                 </li>
             </ul>
-
+          
+              -->
 
         </div>
     </div>

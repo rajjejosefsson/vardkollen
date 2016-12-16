@@ -1,4 +1,5 @@
-﻿using CareCheck.DomainClasses;
+﻿using AutoMapper;
+using CareCheck.DomainClasses;
 using CareCheck.MVC.Admin.KommunWebservice;
 using CareCheck.MVC.Admin.ViewModels;
 using System.Web.Mvc;
@@ -27,16 +28,8 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         {
             if (ModelState.IsValid)
             {
-                var patient = new Patient
-                {
-                    Id = viewModel.Id,
-                    FirstName = viewModel.FirstName,
-                    LastName = viewModel.LastName,
-                    PersonNumber = viewModel.PersonNumber,
-                    PhoneNumber = viewModel.PhoneNumber,
-                    Adress = viewModel.Adress,
-                    ZipCode = viewModel.ZipCode,
-                };
+                /* Auto maps eg. FirstName = viewModel.FirstName ect, */
+                var patient = Mapper.Map<CreatePatientViewModel, Patient>(viewModel);
 
                 _kommunWcfClient.InsertOrUpdatePatient(patient);
 

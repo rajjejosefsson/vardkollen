@@ -43,7 +43,7 @@ namespace CareCheck.DataAccess.Repositories
             {
                 var dataEntries = context.TodoList.Where(i => i.ScheduleId == scheduleId).ToList();
 
-                // Updates the isDone Entries in db
+                // Updates the isDone Entries in db for selected Schedule
                 for (var i = 0; i < dataEntries.Count; i++)
                 {
                     dataEntries[i].IsDone = checkBoxes[i];
