@@ -249,6 +249,10 @@
     <Content Include="Properties\DataSources\CareCheck.DomainClasses.Schedule.datasource" />
     <Content Include="Properties\DataSources\CareCheck.DomainClasses.Patient.datasource" />
     <Content Include="Properties\DataSources\CareCheck.DomainClasses.Employee.datasource" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.Task.datasource" />
+    <Content Include="Properties\DataSources\CareCheck.DomainClasses.TodoList.datasource" />
+    <None Include="Properties\PublishProfiles\carecheck - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\carecheck - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -280,9 +284,6 @@
     <None Include="Service References\KommunWebservice\KommunWebservice.disco" />
     <None Include="Service References\KommunWebservice\configuration91.svcinfo" />
     <None Include="Service References\KommunWebservice\configuration.svcinfo" />
-    <None Include="Service References\KommunWebservice\KommunWebservice3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\KommunWebservice\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

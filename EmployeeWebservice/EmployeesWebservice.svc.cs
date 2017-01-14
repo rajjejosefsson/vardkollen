@@ -10,6 +10,8 @@ namespace EmployeeWebservice
         private readonly EmployeeRepository _employeeRepository = new EmployeeRepository();
         private readonly TodoListRepository _todoListRepository = new TodoListRepository();
 
+
+
         public Employee EmployeeById(int id)
         {
             return _employeeRepository.FindById(id);
@@ -24,7 +26,7 @@ namespace EmployeeWebservice
 
         public ICollection<Schedule> EmployeeSchedule(int employeeId)
         {
-            return _scheduleRepository.EmployeeSchedules(employeeId);
+            return _scheduleRepository.EmployeeSchedulesById(employeeId);
         }
 
 

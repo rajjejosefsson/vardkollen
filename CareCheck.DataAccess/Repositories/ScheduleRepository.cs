@@ -79,7 +79,7 @@ namespace CareCheck.DataAccess.Repositories
         }
 
 
-        public List<Schedule> EmployeeSchedules(int employeeId)
+        public List<Schedule> EmployeeSchedulesById(int employeeId)
         {
 
             using (CareCheckDbContext context = new CareCheckDbContext())
@@ -96,26 +96,12 @@ namespace CareCheck.DataAccess.Repositories
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // for realatives view
-        public ICollection<Schedule> PatientDetailSchedules(int id)
+        public ICollection<Schedule> PatientDetailSchedulesById(int patientId)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
-                return context.Schedules.Where(p => p.PatientId == id)
+                return context.Schedules.Where(p => p.PatientId == patientId)
                                  .Include(d => d.TodoList.Select(t => t.Task))
                                  .OrderByDescending(s => s.DateTime)
                                  .ToList();

@@ -80,12 +80,12 @@ namespace CareCheck.DataAccess.Repositories
 
 
         // Could be optimized 
-        public Patient PatientDetailInfoById(int id)
+        public Patient PatientDetailInfoById(int patientId)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())
             {
 
-                return context.Patients.AsNoTracking().Where(p => p.Id == id)
+                return context.Patients.AsNoTracking().Where(p => p.Id == patientId)
                                                            .Include(m => m.Medications)
                                                            .Include(r => r.Relatives)
                                                            .SingleOrDefault();

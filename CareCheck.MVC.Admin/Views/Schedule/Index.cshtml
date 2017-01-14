@@ -123,13 +123,13 @@
                 <div class="col-md-12">
                     <div class="createTask-holder">
                         <div class="form-group">
-                            @Html.LabelFor(m => m.Task, "Lägg till ny uppgift")
+                            @Html.LabelFor(m => m.Task, "Skapa en ny uppgift")
 
 
                             @using (Html.BeginForm("CreateTask", "Schedule", "POST"))
                             {
                                 @Html.TextBoxFor(m => m.Task.Name, new {@class = "form-control"})
-                                <button type="submit" class="btn btn-primary createTaskButton" value="Save">Lägg till</button>
+                                <button type="submit" class="btn btn-primary createTaskButton" value="Save">Skapa</button>
                             }
                         </div>
                         <p>OBS: ej async och nollställer ifyllda fält</p>

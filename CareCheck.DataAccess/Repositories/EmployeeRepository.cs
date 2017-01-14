@@ -17,6 +17,8 @@ namespace CareCheck.DataAccess.Repositories
             }
         }
 
+
+
         public Employee FindById(int id)
         {
             using (CareCheckDbContext context = new CareCheckDbContext())

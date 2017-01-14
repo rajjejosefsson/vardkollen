@@ -96,7 +96,7 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteSchedule(int scheduleId)
         {
-            _kommunWcfClient.DeleteSchedule(scheduleId);
+            _kommunWcfClient.DeleteScheduleById(scheduleId);
             return RedirectToAction("Index");
         }
 

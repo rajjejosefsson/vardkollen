@@ -15,6 +15,8 @@ namespace KommunWebservice
 
 
 
+
+
         // Employee
         public ICollection<Employee> EmployeeList()
         {
@@ -22,9 +24,9 @@ namespace KommunWebservice
         }
 
 
-        public Employee EmployeeById(int id)
+        public Employee EmployeeById(int employeeId)
         {
-            return _employeeRepository.FindById(id);
+            return _employeeRepository.FindById(employeeId);
         }
 
 
@@ -34,10 +36,11 @@ namespace KommunWebservice
         }
 
 
-        public void DeletEmployee(int id)
+        public void DeletEmployeeById(int employeeId)
         {
-            _employeeRepository.DeleteById(id);
+            _employeeRepository.DeleteById(employeeId);
         }
+
 
 
 
@@ -49,9 +52,9 @@ namespace KommunWebservice
         }
 
 
-        public Patient PatientById(int id)
+        public Patient PatientById(int patientId)
         {
-            return _patientRepository.FindById(id);
+            return _patientRepository.FindById(patientId);
         }
 
 
@@ -61,10 +64,11 @@ namespace KommunWebservice
         }
 
 
-        public void DeletePatient(int id)
+        public void DeletePatientById(int patientId)
         {
-            _patientRepository.DeleteById(id);
+            _patientRepository.DeleteById(patientId);
         }
+
 
 
 
@@ -75,10 +79,9 @@ namespace KommunWebservice
             return _relativeRepository.RelativeList();
         }
 
-
-        public Relative GetRelative(int id)
+        public Relative RelativeById(int relativeId)
         {
-            return _relativeRepository.FindById(id);
+            return _relativeRepository.FindById(relativeId);
         }
 
 
@@ -88,7 +91,7 @@ namespace KommunWebservice
         }
 
 
-        public void DeleteRelative(int id)
+        public void DeleteRelativeById(int relativeId)
         {
             throw new System.NotImplementedException();
         }
@@ -110,9 +113,9 @@ namespace KommunWebservice
         }
 
 
-        public Task GetTask(int id)
+        public Task TaskById(int taskId)
         {
-            return _taskRepository.FindById(id);
+            return _taskRepository.FindById(taskId);
         }
 
 
@@ -122,10 +125,11 @@ namespace KommunWebservice
         }
 
 
-        public void DeleteTask(int id)
+        public void DeleteTaskById(int taskId)
         {
-            _taskRepository.DeleteById(id);
+            _taskRepository.DeleteById(taskId);
         }
+
 
 
 
@@ -137,15 +141,16 @@ namespace KommunWebservice
         }
 
 
-        public Schedule PatientScheduleById(int id)
+        public Schedule PatientScheduleById(int patientId)
         {
-            return _scheduleRepository.PatientScheduleById(id);
+            return _scheduleRepository.PatientScheduleById(patientId);
         }
 
 
-        public ICollection<Schedule> EmployeeSchedule(int employeeId)
+
+        public ICollection<Schedule> EmployeeSchedulesById(int employeeId)
         {
-            return _scheduleRepository.EmployeeSchedules(employeeId);
+            return _scheduleRepository.EmployeeSchedulesById(employeeId);
         }
 
 
@@ -155,20 +160,21 @@ namespace KommunWebservice
         }
 
 
-        public Schedule Schedule(int id)
+        public Schedule ScheduleById(int scheduleId)
         {
-            return _scheduleRepository.FindById(id);
+            return _scheduleRepository.FindById(scheduleId);
         }
 
 
-        public void DeleteSchedule(int id)
+        public void DeleteScheduleById(int scheduleId)
         {
-            _scheduleRepository.DeleteById(id);
+            _scheduleRepository.DeleteById(scheduleId);
         }
 
 
 
 
+  
         // Todos
         public ICollection<TodoList> Todos()
         {

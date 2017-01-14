@@ -10,21 +10,24 @@ namespace RelativesWebservice
         private readonly ScheduleRepository _scheduleRepository = new ScheduleRepository();
 
 
-        public Relative RelativesPatientByEmail(string email)
+
+        public Relative RelativesPatientByEmail(string relativeEmail)
         {
-            return _relativeRepository.RelativesPatientByEmail(email);
+            return _relativeRepository.RelativesPatientByEmail(relativeEmail);
         }
 
 
-        public ICollection<Schedule> PatientDetailSchedules(int id)
+
+        public ICollection<Schedule> PatientDetailSchedules(int patientId)
         {
-            return _scheduleRepository.PatientDetailSchedules(id);
+            return _scheduleRepository.PatientDetailSchedulesById(patientId);
         }
 
 
-        public Patient PatientDetailInfoById(int id)
+
+        public Patient PatientDetailInfoById(int patientId)
         {
-            return _relativeRepository.PatientDetailInfoById(id);
+            return _relativeRepository.PatientDetailInfoById(patientId);
         }
 
     }

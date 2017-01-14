@@ -11,21 +11,19 @@ namespace KommunWebservice
     {
 
 
-
         // Employees
 
         [OperationContract]
         ICollection<Employee> EmployeeList();
 
         [OperationContract]
-        Employee EmployeeById(int id);
+        Employee EmployeeById(int employeeId);
 
         [OperationContract]
         void InsertOrUpdateEmployee(Employee employee);
 
         [OperationContract]
-        void DeletEmployee(int id);
-
+        void DeletEmployeeById(int employeeId);
 
 
 
@@ -36,14 +34,13 @@ namespace KommunWebservice
         ICollection<Patient> PatientList();
 
         [OperationContract]
-        Patient PatientById(int id);
+        Patient PatientById(int patientId);
 
         [OperationContract]
         void InsertOrUpdatePatient(Patient patient);
 
         [OperationContract]
-        void DeletePatient(int id);
-
+        void DeletePatientById(int patientId);
 
 
 
@@ -54,17 +51,16 @@ namespace KommunWebservice
         ICollection<Relative> RelativeList();
 
         [OperationContract]
-        Relative GetRelative(int id);
+        Relative RelativeById(int relativeId);
 
         [OperationContract]
         void InsertOrUpdateRelative(Relative relative);
 
         [OperationContract]
-        void DeleteRelative(int id);
+        void DeleteRelativeById(int relativeId);
 
         [OperationContract]
         void ConnectRelativeAndPatient(int patientId, int relativeId);
-
 
 
 
@@ -75,14 +71,13 @@ namespace KommunWebservice
         ICollection<Task> TaskList();
 
         [OperationContract]
-        Task GetTask(int id);
+        Task TaskById(int taskId);
 
         [OperationContract]
         void InsertOrUpdateTask(Task task);
 
         [OperationContract]
-        void DeleteTask(int id);
-
+        void DeleteTaskById(int taskId);
 
 
 
@@ -96,17 +91,16 @@ namespace KommunWebservice
         Schedule PatientScheduleById(int scheduleId);
 
         [OperationContract]
-        Schedule Schedule(int id);
+        Schedule ScheduleById(int sheduleId);
 
         [OperationContract]
-        void DeleteSchedule(int id);
+        void DeleteScheduleById(int sheduleId);
 
         [OperationContract]
         ICollection<Schedule> PatientsSchedules();
 
         [OperationContract]
-        ICollection<Schedule> EmployeeSchedule(int employeeId);
-
+        ICollection<Schedule> EmployeeSchedulesById(int employeeId);
 
 
 

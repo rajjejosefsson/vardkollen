@@ -45,7 +45,7 @@ namespace CareCheck.MVC.Admin.Controllers.Admin_Controllers
         [HttpPost]
         public ActionResult DeleteEmployee(int id)
         {
-            _kommunWcfClient.DeletEmployee(id);
+            _kommunWcfClient.DeletEmployeeById(id);
             return RedirectToAction("Index");
         }
     }

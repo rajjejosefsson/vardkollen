@@ -8,14 +8,14 @@ namespace RelativesWebservice
     public interface IRelativesWebservice
     {
         [OperationContract]
-        Relative RelativesPatientByEmail(string email);
+        Relative RelativesPatientByEmail(string relativeEmail);
 
 
         [OperationContract]
-        ICollection<Schedule> PatientDetailSchedules(int id);
+        ICollection<Schedule> PatientDetailSchedules(int patientId);
 
 
         [OperationContract]
-        Patient PatientDetailInfoById(int id);
+        Patient PatientDetailInfoById(int patientId);
     }
 }

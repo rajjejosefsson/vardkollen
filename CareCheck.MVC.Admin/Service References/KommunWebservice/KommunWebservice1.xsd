@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/CareCheck.DomainClasses" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CareCheck.DomainClasses" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:49368/KommunWebservice.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="Relative">
+  <xs:complexType name="ArrayOfEmployee">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Employee" nillable="true" type="tns:Employee" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployee" nillable="true" type="tns:ArrayOfEmployee" />
+  <xs:complexType name="Employee">
     <xs:sequence>
       <xs:element minOccurs="0" name="Adress" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Patients" nillable="true" type="tns:ArrayOfPatient" />
+      <xs:element minOccurs="0" name="PersonNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
     </xs:sequence>
     <xs:attribute ref="ser:Id" />
     <xs:attribute ref="ser:Ref" />
   </xs:complexType>
-  <xs:element name="Relative" nillable="true" type="tns:Relative" />
+  <xs:element name="Employee" nillable="true" type="tns:Employee" />
   <xs:complexType name="ArrayOfPatient">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Patient" nillable="true" type="tns:Patient" />
@@ -62,6 +67,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRelative" nillable="true" type="tns:ArrayOfRelative" />
+  <xs:complexType name="Relative">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Patients" nillable="true" type="tns:ArrayOfPatient" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Relative" nillable="true" type="tns:Relative" />
   <xs:complexType name="ArrayOfSchedule">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Schedule" nillable="true" type="tns:Schedule" />
@@ -82,20 +102,6 @@
     <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Schedule" nillable="true" type="tns:Schedule" />
-  <xs:complexType name="Employee">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Adress" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PersonNumber" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
-    </xs:sequence>
-    <xs:attribute ref="ser:Id" />
-    <xs:attribute ref="ser:Ref" />
-  </xs:complexType>
-  <xs:element name="Employee" nillable="true" type="tns:Employee" />
   <xs:complexType name="ArrayOfTodoList">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="TodoList" nillable="true" type="tns:TodoList" />
@@ -124,12 +130,6 @@
     <xs:attribute ref="ser:Ref" />
   </xs:complexType>
   <xs:element name="Task" nillable="true" type="tns:Task" />
-  <xs:complexType name="ArrayOfEmployee">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Employee" nillable="true" type="tns:Employee" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfEmployee" nillable="true" type="tns:ArrayOfEmployee" />
   <xs:complexType name="ArrayOfTask">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
